@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 /*
- * @author Alessandro Fazio Pérez
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class RelDatabase {
 
