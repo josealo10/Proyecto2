@@ -10,9 +10,9 @@ public class Solicitud {
     private int codigo;
     private ArrayList<Bien> bienes;
 
-    public Solicitud(int codigo, ArrayList<Bien> bienes) {
+    public Solicitud(int codigo) {
         this.codigo = codigo;
-        this.bienes = bienes;
+        bienes = new ArrayList<>();
     }
 
     public int getCodigo() {

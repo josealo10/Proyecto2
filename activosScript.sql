@@ -1,9 +1,16 @@
 use activos;
 
+create table Solicitud (
+	numero int auto_increment not null primary key
+);
+
 create table Bien (
 	codigo int auto_increment primary key,
 	marca varchar(15) not null,
-    modelo varchar(15) not null
+    modelo varchar(15) not null,
+    solicitud int not null,
+    cantidad int not null,
+    foreign key(solicitud) references Solicitud(numero)
 );
 
 create table Dependencia (
@@ -16,3 +23,19 @@ create table Administrador (
     dependencia varchar(50) not null,
     foreign key(dependencia) references Dependencia(nombre)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
