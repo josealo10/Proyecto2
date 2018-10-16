@@ -24,8 +24,13 @@ create table Administrador (
     foreign key(dependencia) references Dependencia(nombre)
 );
 
-
-
+create table Activo (
+	codigo int auto_increment primary key,
+	marca varchar(15) not null,
+    modelo varchar(15) not null,
+    bien int not null,
+    foreign key(bien) references Bien(codigo)
+);
 
 
 
