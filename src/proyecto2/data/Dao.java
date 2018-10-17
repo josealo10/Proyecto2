@@ -19,7 +19,7 @@ public class Dao {
     public void addUsuario(Usuario u) throws Exception {
         String sql = "insert into Usuario (id, clave, permiso) "
                 + "values('%s', '%s', '%s')";
-        sql = String.format(u.getId(), u.getClave(), u.getPermiso());
+        sql = String.format(sql, u.getId(), u.getClave(), u.getPermiso());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Usuario ya existe");
@@ -29,7 +29,7 @@ public class Dao {
     public void addBien(Bien b) throws Exception {
         String sql = "insert into Bien (codigo, marca, modelo, solicitud, cantidad) "
                 + "values('%s', '%s', %d, %d)";
-        sql = String.format(b.getMarca(), b.getModelo(), b.getSolicitud().getCodigo(), b.getCantidad());
+        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getSolicitud().getCodigo(), b.getCantidad());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Bien ya existe");
@@ -39,7 +39,7 @@ public class Dao {
     public void addDependencia(Dependencia d) throws Exception {
         String sql = "insert into Dependencia (nombre) "
                 + "values('%s')";
-        sql = String.format(d.getNombre());
+        sql = String.format(sql, d.getNombre());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Dependencia ya existe");
@@ -57,7 +57,7 @@ public class Dao {
     public void addActivo(Activo a) throws Exception {
         String sql = "insert into Activo (marca, modelo, bien) "
                 + "values('%s', '%s', %d)";
-        sql = String.format(a.getMarca(), a.getModelo(), a.getBien().getCodigo());
+        sql = String.format(sql, a.getMarca(), a.getModelo(), a.getBien().getCodigo());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Activo ya existe");
