@@ -2,6 +2,7 @@ package proyecto2.presentation.ingreso;
 
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
 
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
@@ -104,7 +105,11 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jb_salirActionPerformed
 
     private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
-        
+        try {
+            controller.ingresar(jtf_usuario.getText(), jtf_clave.getText());
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jb_entrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

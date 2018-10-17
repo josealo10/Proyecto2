@@ -14,4 +14,8 @@ public class ControllerUsuario {
         view.setModel(model);
         view.setController(this);
     }
+    
+    public void ingresar(String id, String clave) throws Exception{
+        model.ingresar(id, clave);
+    }
 }

@@ -1,8 +1,7 @@
 package proyecto2;
 
-
-import proyecto2.data.Dao;
-import proyecto2.logic.Usuario;
+import proyecto2.presentation.ingreso.ControllerUsuario;
+import proyecto2.presentation.ingreso.ModelUsuario;
 import proyecto2.presentation.ingreso.ViewUsuario;
 
 /*
@@ -11,7 +10,10 @@ import proyecto2.presentation.ingreso.ViewUsuario;
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        Dao d = new Dao();
-        System.out.println(d.searchUsuario("001").getId());
+        ModelUsuario mu = new ModelUsuario();
+        ViewUsuario vu = new ViewUsuario();
+        ControllerUsuario cu = new ControllerUsuario(mu, vu);
+        
+        vu.setVisible(true);
     }
 }
