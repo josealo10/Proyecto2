@@ -12,6 +12,9 @@ public class Usuario {
         this.permiso = puesto;
     }
 
+    public Usuario() {
+    }
+
     public String getId() {
         return id;
     }

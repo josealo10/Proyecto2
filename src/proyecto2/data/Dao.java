@@ -1,5 +1,9 @@
 package proyecto2.data;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Dependencia;
@@ -62,5 +66,21 @@ public class Dao {
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Activo ya existe");
         }
+    }
+
+    public Usuario searchUsuario(String id) throws Exception {
+        String sql = "select * from Usuario where id = '%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        if (rs.next()) {
+            Usuario u = new Usuario();
+            u.setId(rs.getString("id"));
+            u.setClave(rs.getString("clave"));
+            u.setPermiso(rs.getString("permiso"));
+            return u;
+        } else {
+            throw new Exception("Usuario no existe");
+        }
+
     }
 }
