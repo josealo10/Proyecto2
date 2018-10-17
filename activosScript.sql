@@ -32,18 +32,10 @@ create table Usuario (
     permiso varchar(20) not null
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+create table Activo (
+	codigo int auto_increment primary key,
+	marca varchar(15) not null,
+    modelo varchar(15) not null,
+    bien int not null,
+    foreign key(bien) references Bien(codigo)
+);
