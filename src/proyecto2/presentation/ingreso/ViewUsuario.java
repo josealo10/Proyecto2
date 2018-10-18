@@ -33,8 +33,8 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
         jb_entrar = new javax.swing.JButton();
         jb_salir = new javax.swing.JButton();
         jtf_usuario = new javax.swing.JTextField();
-        jtf_clave = new javax.swing.JTextField();
         jl_clave = new javax.swing.JLabel();
+        jpf_clave = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso");
@@ -62,8 +62,8 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jb_entrar)
@@ -74,10 +74,10 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                             .addComponent(jl_usuario)
                             .addComponent(jl_clave))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtf_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(59, 59, 59))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(jpf_clave))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,9 +87,9 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                     .addComponent(jl_usuario)
                     .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_clave)
-                    .addComponent(jtf_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpf_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_entrar)
@@ -106,8 +106,8 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
     private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
         try {
-            controller.ingresar(jtf_usuario.getText(), jtf_clave.getText());
-        } catch(Exception e){
+            controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jb_entrarActionPerformed
@@ -117,7 +117,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton jb_salir;
     private javax.swing.JLabel jl_clave;
     private javax.swing.JLabel jl_usuario;
-    private javax.swing.JTextField jtf_clave;
+    private javax.swing.JPasswordField jpf_clave;
     private javax.swing.JTextField jtf_usuario;
     // End of variables declaration//GEN-END:variables
 
