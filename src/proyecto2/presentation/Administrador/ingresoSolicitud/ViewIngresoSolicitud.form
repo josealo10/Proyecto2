@@ -31,12 +31,12 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                      <Component id="Ingresar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jb_ingresar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                      <Component id="jb_cancelar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,8 +47,8 @@
               <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Ingresar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_ingresar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
@@ -77,17 +77,17 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="Ingresar">
+    <Component class="javax.swing.JButton" name="jb_ingresar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ingresa Solicitud"/>
+        <Property name="text" type="java.lang.String" value="Ingresar Solicitud"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Cancelar">
+    <Component class="javax.swing.JButton" name="jb_cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar Solicitud"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_cancelarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
