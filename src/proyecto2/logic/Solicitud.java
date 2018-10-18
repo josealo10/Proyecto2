@@ -6,6 +6,7 @@ import java.util.Date;
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
+
 public class Solicitud {
 
     private int codigo;
