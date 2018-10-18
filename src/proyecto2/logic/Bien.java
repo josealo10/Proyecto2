@@ -3,6 +3,7 @@ package proyecto2.logic;
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
+
 public class Bien {
 
     private String marca, modelo;
