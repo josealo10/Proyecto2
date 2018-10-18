@@ -36,7 +36,6 @@ public class Solicitud {
     }
 
     public Date getFecha() {
-        int x=1;
         return fecha;
     }
 
