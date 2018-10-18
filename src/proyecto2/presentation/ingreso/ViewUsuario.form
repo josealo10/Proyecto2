@@ -27,8 +27,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jb_entrar" min="-2" max="-2" attributes="0"/>
@@ -41,13 +41,13 @@
                           <Component id="jl_clave" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtf_clave" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
-                          <Component id="jtf_usuario" min="-2" pref="68" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jtf_usuario" pref="83" max="32767" attributes="0"/>
+                          <Component id="jpf_clave" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,9 +60,9 @@
                   <Component id="jtf_usuario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jl_clave" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtf_clave" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jl_clave" min="-2" max="-2" attributes="0"/>
+                  <Component id="jpf_clave" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -98,12 +98,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtf_usuario">
     </Component>
-    <Component class="javax.swing.JTextField" name="jtf_clave">
-    </Component>
     <Component class="javax.swing.JLabel" name="jl_clave">
       <Properties>
         <Property name="text" type="java.lang.String" value="Clave"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jpf_clave">
     </Component>
   </SubComponents>
 </Form>
