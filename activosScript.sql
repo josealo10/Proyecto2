@@ -39,16 +39,3 @@ create table Activo (
     bien int not null,
     foreign key(bien) references Bien(codigo)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
