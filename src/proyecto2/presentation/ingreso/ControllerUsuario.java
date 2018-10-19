@@ -1,5 +1,7 @@
 package proyecto2.presentation.ingreso;
 
+import proyecto2.Application;
+
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
@@ -14,8 +16,11 @@ public class ControllerUsuario {
         view.setModel(model);
         view.setController(this);
     }
-    
-    public void ingresar(String id, String clave) throws Exception{
-        model.ingresar(id, clave);
+
+    public void ingresar(String id, String clave) throws Exception {
+        if (model.ingresar(id, clave)) {
+            this.view.setVisible(false);
+            Application.CONTROLLER_INSERTA_BIEN.getViewInsertaBien().setVisible(true);
+        }
     }
 }

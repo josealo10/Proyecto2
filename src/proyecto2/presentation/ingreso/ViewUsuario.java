@@ -1,5 +1,8 @@
 package proyecto2.presentation.ingreso;
 
+import com.sun.glass.events.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
@@ -57,7 +60,19 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
             }
         });
 
+        jtf_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtf_usuarioKeyPressed(evt);
+            }
+        });
+
         jl_clave.setText("Clave");
+
+        jpf_clave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jpf_claveKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,13 +123,33 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
         try {
             controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
-            this.setVisible(false);
-            Application.CONTROLLER_INSERTA_BIEN.getViewInsertaBien().setVisible(true);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jb_entrarActionPerformed
+
+    private void jpf_claveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpf_claveKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jpf_claveKeyPressed
+
+    private void jtf_usuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_usuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jtf_usuarioKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jb_entrar;

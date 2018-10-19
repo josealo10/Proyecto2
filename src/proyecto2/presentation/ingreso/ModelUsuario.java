@@ -33,9 +33,10 @@ public class ModelUsuario extends Observable {
         this.usuario = usuario;
     }
 
-    public void ingresar(String id, String clave) throws Exception {
+    public boolean ingresar(String id, String clave) throws Exception {
         if (db.searchUsuario(id).getId().equals(id) && db.searchUsuario(id).getClave().equals(clave)) {
             this.setUsuario(db.searchUsuario(id));
+            return true;
         } else {
             throw new Exception("Usuario o clave incorrecta");
         }
