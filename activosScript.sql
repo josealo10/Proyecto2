@@ -1,64 +1,47 @@
-use activos;
+create database if not exists Activos;
 
-create table Catalogo(
-	codigo int auto_increment not null primary key
+use Activos;
+
+create table if not exists Solicitud (
+	numero int not null auto_increment primary key,
+    funcionario varchar(10) not null,
+    foreign key (funcionario) references Funcionario (id)
 );
 
-CREATE TABLE `activo` (
-  `codigo` int(11) NOT NULL AUTO_INCREMENT,
-  `marca` varchar(15) NOT NULL,
-  `modelo` varchar(15) NOT NULL,
-  `bien` int(11) NOT NULL,
-  PRIMARY KEY (`codigo`),
-  KEY `bien` (`bien`),
-  CONSTRAINT `activo_ibfk_1` FOREIGN KEY (`bien`) REFERENCES `bien` (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+create table if not exists Bien (
+	codigo int not null auto_increment primary key,
+	marca varchar(15) not null,
+	modelo varchar(15) not null,
+	solicitud int not null,
+	cantidad int not null,
+	foreign key (solicitud) references Solicitud (numero)
+);
 
-CREATE TABLE `bien` (
-  `codigo` int(11) NOT NULL AUTO_INCREMENT,
-  `marca` varchar(15) NOT NULL,
-  `modelo` varchar(15) NOT NULL,
-  `solicitud` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  PRIMARY KEY (`codigo`),
-  KEY `solicitud` (`solicitud`),
-  CONSTRAINT `bien_ibfk_1` FOREIGN KEY (`solicitud`) REFERENCES `solicitud` (`numero`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+create table if not exists Activo (
+	codigo int(11) not null auto_increment primary key,
+	marca varchar(15) not null,
+	modelo varchar(15) not null,
+	bien int(11) not null,
+	foreign key (bien) references bien (codigo)
+);
 
-CREATE TABLE `catalogo` (
-  `codigo` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+create table if not exists Dependencia(
+	nombre varchar(50) not null primary key
+);
 
+create table if not exists Usuario (
+	id varchar(10) not null primary key,
+	clave varchar(15) not null,
+	permiso varchar(20) not null
+);
 
-CREATE TABLE `dependencia` (
-  `nombre` varchar(50) NOT NULL,
-  PRIMARY KEY (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `funcionario` (
-  `id` varchar(10) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `puesto` varchar(30) NOT NULL,
-  `dependencia` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `dependencia` (`dependencia`),
-  KEY `puesto` (`puesto`),
-  CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`dependencia`) REFERENCES `dependencia` (`nombre`),
-  CONSTRAINT `funcionario_ibfk_2` FOREIGN KEY (`puesto`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `solicitud` (
-  numero int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`numero`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `usuario` (
-  id varchar(10) NOT NULL,
-  clave varchar(15) NOT NULL,
-  permiso varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ;
-
+create table if not exists Funcionario(
+	id varchar(10) not null primary key,
+	nombre varchar(30) not null,
+	puesto varchar(30) not null,
+	dependencia varchar(50) not null,
+	foreign key (dependencia) references Dependencia (nombre),
+	foreign key (puesto) references Usuario (id)
+);
 
 

@@ -20,7 +20,7 @@ public class ControllerUsuario {
     public void ingresar(String id, String clave) throws Exception {
         if (model.ingresar(id, clave)) {
             this.view.setVisible(false);
-            Application.CONTROLLER_INSERTA_BIEN.getViewInsertaBien().setVisible(true);
+            Application.CONTROLLER_LISTA_SOLICITUD.getViewListaSolicitud().setVisible(true);
         }
     }
 }
