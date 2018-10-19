@@ -1,14 +1,26 @@
 package proyecto2.logic;
 
+import java.util.ArrayList;
+
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
-public class Administrador {
+public class Funcionario {
     private String nombre, cedula;
+    ArrayList<Solicitud> solicitudes;
 
-    public Administrador(String nombre, String cedula) {
+    public Funcionario(String nombre, String cedula) {
         this.nombre = nombre;
         this.cedula = cedula;
+        solicitudes = new ArrayList<>();
+    }
+
+    public ArrayList<Solicitud> getSolicitudes() {
+        return solicitudes;
+    }
+
+    public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
+        this.solicitudes = solicitudes;
     }
 
     public String getNombre() {

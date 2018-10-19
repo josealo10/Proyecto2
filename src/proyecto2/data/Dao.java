@@ -7,6 +7,8 @@ import java.util.List;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Dependencia;
+import proyecto2.logic.Funcionario;
+import proyecto2.logic.Solicitud;
 import proyecto2.logic.Usuario;
 
 /*
@@ -81,6 +83,15 @@ public class Dao {
         } else {
             throw new Exception("Usuario no existe");
         }
+    }
 
+    public void searchSolicitudes(Funcionario f) throws Exception {
+        String sql = "select * from Solicitud where funcionario.id = '%s'";
+        sql = String.format(sql, f.getCedula());
+        ResultSet rs = db.executeQuery(sql);
+        while (rs.next()) {
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
+            f.getSolicitudes().add(s);
+        } 
     }
 }
