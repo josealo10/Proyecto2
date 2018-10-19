@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2.presentation.Administrador.InsertarBien;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ControllerInsertaBien {
+
     private ModelInsertaBien modelInsertaBien;
     private ViewInsertaBien viewInsertaBien;
 
@@ -34,7 +29,4 @@ public class ControllerInsertaBien {
     public void setViewInsertaBien(ViewInsertaBien viewInsertaBien) {
         this.viewInsertaBien = viewInsertaBien;
     }
-
-    
-    
 }
