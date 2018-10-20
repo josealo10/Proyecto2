@@ -1,2 +1,6 @@
 /build/
 src/proyecto2/data/activosDB\.properties
+
+*.properties
+
+*.xml
