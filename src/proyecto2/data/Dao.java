@@ -52,9 +52,10 @@ public class Dao {
         }
     }
 
-    public void addSolicitud() throws Exception {
-        String sql = "insert into Solicitud (numero) values(0)";
-
+    public void addSolicitud(Solicitud s, Funcionario f) throws Exception {
+        String sql = "insert into Solicitud (funcionario) values('%s')";
+        sql = String.format(sql, f.getId());
+        
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Solicitud ya existe");
         }
@@ -74,11 +75,9 @@ public class Dao {
         String sql = "select * from Usuario where id = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
+        
         if (rs.next()) {
-            Usuario u = new Usuario();
-            u.setId(rs.getString("id"));
-            u.setClave(rs.getString("clave"));
-            u.setPermiso(rs.getString("permiso"));
+            Usuario u = new Usuario(rs.getString("id"), rs.getString("clave"), rs.getString("permiso"));
             return u;
         } else {
             throw new Exception("Usuario no existe");
@@ -86,12 +85,13 @@ public class Dao {
     }
 
     public void searchSolicitudes(Funcionario f) throws Exception {
-        String sql = "select * from Solicitud where funcionario.id = '%s'";
-        sql = String.format(sql, f.getCedula());
+        String sql = "select * from Solicitud where funcionario = '%s'";
+        sql = String.format(sql, f.getId());
         ResultSet rs = db.executeQuery(sql);
+
         while (rs.next()) {
             Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
             f.getSolicitudes().add(s);
-        } 
+        }
     }
 }
