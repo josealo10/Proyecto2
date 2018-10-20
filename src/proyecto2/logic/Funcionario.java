@@ -6,13 +6,33 @@ import java.util.ArrayList;
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
 public class Funcionario {
-    private String nombre, cedula;
-    ArrayList<Solicitud> solicitudes;
+    private String nombre, id;
+    private ArrayList<Solicitud> solicitudes;
+    private Usuario usuario;
+    private Dependencia dependencia;
 
-    public Funcionario(String nombre, String cedula) {
+    public Funcionario(String nombre, String id, Usuario usuario, Dependencia dependencia) {
         this.nombre = nombre;
-        this.cedula = cedula;
-        solicitudes = new ArrayList<>();
+        this.id = id;
+        this.solicitudes = new ArrayList<>();
+        this.usuario = usuario;
+        this.dependencia = dependencia;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Dependencia getDependencia() {
+        return dependencia;
+    }
+
+    public void setDependencia(Dependencia dependencia) {
+        this.dependencia = dependencia;
     }
 
     public ArrayList<Solicitud> getSolicitudes() {
@@ -31,12 +51,12 @@ public class Funcionario {
         this.nombre = nombre;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getId() {
+        return id;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setId(String id) {
+        this.id = id;
     }
     
     
