@@ -38,11 +38,10 @@ public class Application {
         CONTROLLER_LISTA_SOLICITUD = cls;
         
         vu.setVisible(true);
-        vib.setVisible(true);
         Dao db = new Dao();
         Funcionario f = new Funcionario("Fazio", "001", new Usuario("001", "001", "Administrador"), new Dependencia("Informatica"));
         Solicitud s = new Solicitud(2, new Date(), f);
-        db.searchSolicitudes(f);
-        System.out.println(f.getSolicitudes().get(0).getFecha());
+        
+        db.addSolicitud(s, f);
     }
 }
