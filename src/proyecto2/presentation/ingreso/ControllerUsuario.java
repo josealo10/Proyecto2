@@ -20,7 +20,27 @@ public class ControllerUsuario {
     public void ingresar(String id, String clave) throws Exception {
         if (model.ingresar(id, clave)) {
             this.view.setVisible(false);
-            Application.CONTROLLER_LISTA_SOLICITUD.getViewListaSolicitud().setVisible(true);
+
+            if (model.getUsuario().getPermiso().equals("Administrador")) {
+                Application.CONTROLLER_LISTA_SOLICITUD.getViewListaSolicitud().setVisible(true);
+            }
+
+            if (model.getUsuario().getPermiso().equals("Jefe OCCB")) {
+
+            }
+            
+            if (model.getUsuario().getPermiso().equals("Secretaria")) {
+
+            }
+            
+            if (model.getUsuario().getPermiso().equals("Registrador")) {
+
+            }
+            
+            if (model.getUsuario().getPermiso().equals("Jefe RH")) {
+
+            }
+
         }
     }
 }
