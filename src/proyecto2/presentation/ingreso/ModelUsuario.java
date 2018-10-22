@@ -10,8 +10,8 @@ import proyecto2.logic.Usuario;
  */
 public class ModelUsuario extends Observable {
 
-    Usuario usuario;
-    Dao db;
+    private Usuario usuario;
+    private Dao db;
 
     public ModelUsuario() {
         usuario = new Usuario();
@@ -31,6 +31,10 @@ public class ModelUsuario extends Observable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public Dao getDao(){
+        return db;
     }
 
     public boolean ingresar(String id, String clave) throws Exception {

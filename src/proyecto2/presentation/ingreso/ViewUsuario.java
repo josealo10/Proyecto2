@@ -1,6 +1,7 @@
 package proyecto2.presentation.ingreso;
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
@@ -94,7 +95,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                             .addComponent(jpf_clave))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +112,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_entrar)
                     .addComponent(jb_salir))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,6 +134,8 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private void jpf_claveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpf_claveKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
+                JOptionPane.showMessageDialog(null, "Bienvenido: " + model.getDao().searchFuncionario(jtf_usuario.getText()).getNombre() + " (" + model.getDao().searchUsuario(jtf_usuario.getText()).getPermiso() + ")",
+                        "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
 
             } catch (Exception e) {
@@ -142,14 +145,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jpf_claveKeyPressed
 
     private void jtf_usuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_usuarioKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+        this.jpf_claveKeyPressed(evt);
     }//GEN-LAST:event_jtf_usuarioKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

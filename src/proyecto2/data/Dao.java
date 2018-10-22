@@ -55,7 +55,7 @@ public class Dao {
     public void addSolicitud(Solicitud s, Funcionario f) throws Exception {
         String sql = "insert into Solicitud (funcionario) values('%s')";
         sql = String.format(sql, f.getId());
-        
+
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Solicitud ya existe");
         }
@@ -75,12 +75,39 @@ public class Dao {
         String sql = "select * from Usuario where id = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
-        
+
         if (rs.next()) {
             Usuario u = new Usuario(rs.getString("id"), rs.getString("clave"), rs.getString("permiso"));
             return u;
         } else {
             throw new Exception("Usuario no existe");
+        }
+    }
+
+    public Dependencia searchDependencia(String nombre) throws Exception {
+        String sql = "select * from Dependencia where nombre = '%s'";
+        sql = String.format(sql, nombre);
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            Dependencia d = new Dependencia(rs.getString("nombre"));
+            return d;
+        } else {
+            throw new Exception("Dependencia no existe");
+        }
+    }
+
+    public Funcionario searchFuncionario(String id) throws Exception {
+        String sql = "select * from Funcionario where id = '%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
+                    this.searchUsuario(rs.getString("puesto")), this.searchDependencia(rs.getString("dependencia")));
+            return f;
+        } else {
+            throw new Exception("Funcionario no existe");
         }
     }
 

@@ -20,29 +20,25 @@ import proyecto2.presentation.ingreso.ViewUsuario;
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
 public class Application {
+
     public static ControllerInsertaBien CONTROLLER_INSERTA_BIEN;
     public static ControllerListaSolicitud CONTROLLER_LISTA_SOLICITUD;
+
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
         ViewUsuario vu = new ViewUsuario();
         ControllerUsuario cu = new ControllerUsuario(mu, vu);
-        
+
         ModelInsertaBien mib = new ModelInsertaBien();
         ViewInsertaBien vib = new ViewInsertaBien();
         ControllerInsertaBien cib = new ControllerInsertaBien(mib, vib);
         CONTROLLER_INSERTA_BIEN = cib;
-        
+
         ModelListaSolicitud mls = new ModelListaSolicitud();
         ViewListaSolicitud vls = new ViewListaSolicitud();
         ControllerListaSolicitud cls = new ControllerListaSolicitud(mls, vls);
         CONTROLLER_LISTA_SOLICITUD = cls;
-        
+
         vu.setVisible(true);
-        vib.setVisible(true);
-        Dao db = new Dao();
-        Funcionario f = new Funcionario("Fazio", "001", new Usuario("001", "001", "Administrador"), new Dependencia("Informatica"));
-        Solicitud s = new Solicitud(2, new Date(), f);
-        db.searchSolicitudes(f);
-        System.out.println(f.getSolicitudes().get(0).getFecha());
     }
 }
