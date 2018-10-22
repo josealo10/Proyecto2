@@ -10,6 +10,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
     public ViewIngresoSolicitud() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

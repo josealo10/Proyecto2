@@ -134,6 +134,8 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private void jpf_claveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpf_claveKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
+                JOptionPane.showMessageDialog(null, "Bienvenido: " + model.getDao().searchFuncionario(jtf_usuario.getText()).getNombre() + " (" + model.getDao().searchUsuario(jtf_usuario.getText()).getPermiso() + ")",
+                        "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
 
             } catch (Exception e) {
