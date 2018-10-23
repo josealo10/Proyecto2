@@ -6,10 +6,11 @@ import java.util.Observer;
 /*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
-public class ViewListaSolicitud extends javax.swing.JFrame implements Observer{
+public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     public ViewListaSolicitud() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -90,7 +91,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object o1) {
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
