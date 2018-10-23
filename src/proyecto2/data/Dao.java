@@ -1,9 +1,7 @@
 package proyecto2.data;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Dependencia;
@@ -77,7 +75,10 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            Usuario u = new Usuario(rs.getString("id"), rs.getString("clave"), rs.getString("permiso"));
+            Usuario u = new Usuario();
+            u.setId(rs.getString("id"));
+            u.setClave(rs.getString("clave"));
+            u.setPermiso(rs.getString("permiso"));
             return u;
         } else {
             throw new Exception("Usuario no existe");
@@ -116,9 +117,38 @@ public class Dao {
         sql = String.format(sql, f.getId());
         ResultSet rs = db.executeQuery(sql);
 
-        while (rs.next()) {
-            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
-            f.getSolicitudes().add(s);
+        if (rs.next()) {
+            Dependencia d = new Dependencia(rs.getString("nombre"));
+            return d;
+        } else {
+            throw new Exception("Dependencia no existe");
         }
+    }
+
+    public Funcionario searchFuncionario(String id) throws Exception {
+        String sql = "select * from Funcionario where id = '%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
+                    this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
+            return f;
+        } else {
+            throw new Exception("Funcionario no existe");
+        }
+    }
+
+    public ArrayList<Solicitud> searchSolicitudes(String id) throws Exception {
+        String sql = "select * from Solicitud where id = '%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Solicitud> solicitudes = new ArrayList<>();
+        while (rs.next()) {
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
+            solicitudes.add(s);
+        }
+        
+        return solicitudes;
     }
 }

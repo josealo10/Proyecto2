@@ -1,6 +1,5 @@
 package proyecto2.logic;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /*
@@ -9,13 +8,11 @@ import java.util.Date;
 public class Solicitud {
 
     private int codigo;
-    private ArrayList<Bien> bienes;
     private Date fecha;
     private Funcionario funcionario;
 
     public Solicitud(int codigo, Date fecha, Funcionario funcionario) {
         this.codigo = codigo;
-        bienes = new ArrayList<>();
         this.fecha = fecha;
         this.funcionario = funcionario;
     }
@@ -26,14 +23,6 @@ public class Solicitud {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public ArrayList<Bien> getBienes() {
-        return bienes;
-    }
-
-    public void setBienes(ArrayList<Bien> bienes) {
-        this.bienes = bienes;
     }
 
     public Date getFecha() {

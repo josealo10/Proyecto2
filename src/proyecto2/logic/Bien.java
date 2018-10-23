@@ -17,6 +17,8 @@ public class Bien {
         this.cantidad = cantidad;
     }
 
+    public Bien() {}
+
     public String getMarca() {
         return marca;
     }
