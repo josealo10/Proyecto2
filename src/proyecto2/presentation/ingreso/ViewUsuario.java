@@ -1,10 +1,12 @@
 package proyecto2.presentation.ingreso;
 
 import com.sun.glass.events.KeyEvent;
-import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
+import proyecto2.Application;
 
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
@@ -16,7 +18,6 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
     public ViewUsuario() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     public void setModel(ModelUsuario model) {
@@ -42,9 +43,6 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocation(new java.awt.Point(0, 0));
-        setLocationByPlatform(true);
-        setResizable(false);
 
         jl_usuario.setText("Usuario");
 
@@ -95,7 +93,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                             .addComponent(jpf_clave))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +110,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_entrar)
                     .addComponent(jb_salir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();

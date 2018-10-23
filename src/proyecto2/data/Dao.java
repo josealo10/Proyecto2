@@ -77,7 +77,10 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            Usuario u = new Usuario(rs.getString("id"), rs.getString("clave"), rs.getString("permiso"));
+            Usuario u = new Usuario();
+            u.setId(rs.getString("id"));
+            u.setClave(rs.getString("clave"));
+            u.setPermiso(rs.getString("permiso"));
             return u;
         } else {
             throw new Exception("Usuario no existe");
@@ -112,13 +115,12 @@ public class Dao {
     }
 
     public void searchSolicitudes(Funcionario f) throws Exception {
-        String sql = "select * from Solicitud where funcionario = '%s'";
-        sql = String.format(sql, f.getId());
+        String sql = "select * from Solicitud where funcionario.id = '%s'";
+        sql = String.format(sql, f.getCedula());
         ResultSet rs = db.executeQuery(sql);
-
         while (rs.next()) {
             Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
             f.getSolicitudes().add(s);
-        }
+        } 
     }
 }

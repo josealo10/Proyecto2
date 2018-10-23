@@ -1,11 +1,5 @@
 package proyecto2;
 
-import java.util.Date;
-import proyecto2.data.Dao;
-import proyecto2.logic.Dependencia;
-import proyecto2.logic.Funcionario;
-import proyecto2.logic.Solicitud;
-import proyecto2.logic.Usuario;
 import proyecto2.presentation.Administrador.InsertarBien.ControllerInsertaBien;
 import proyecto2.presentation.Administrador.InsertarBien.ModelInsertaBien;
 import proyecto2.presentation.Administrador.InsertarBien.ViewInsertaBien;
