@@ -1,10 +1,16 @@
 package proyecto2.presentation.ingreso;
 
 import com.sun.glass.events.KeyEvent;
+<<<<<<< HEAD
 import java.awt.Color;
+=======
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+>>>>>>> master
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
+import proyecto2.Application;
 
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
@@ -42,9 +48,6 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocation(new java.awt.Point(0, 0));
-        setLocationByPlatform(true);
-        setResizable(false);
 
         jl_usuario.setText("Usuario");
 
@@ -95,7 +98,11 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                             .addComponent(jpf_clave))))
+<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addContainerGap(52, Short.MAX_VALUE))
+>>>>>>> master
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +119,11 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_entrar)
                     .addComponent(jb_salir))
+<<<<<<< HEAD
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                .addContainerGap(48, Short.MAX_VALUE))
+>>>>>>> master
         );
 
         pack();

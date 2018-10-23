@@ -8,6 +8,25 @@ import java.util.Observer;
  */
 public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
 
+    private ControllerInsertaBien controller;
+    private ModelInsertaBien model;
+
+    public ControllerInsertaBien getController() {
+        return controller;
+    }
+
+    public void setController(ControllerInsertaBien controller) {
+        this.controller = controller;
+    }
+
+    public ModelInsertaBien getModel() {
+        return model;
+    }
+
+    public void setModel(ModelInsertaBien model) {
+        this.model = model;
+    }
+    
     public ViewInsertaBien() {
         initComponents();
         jtf_precioT.setEditable(false);
@@ -165,11 +184,19 @@ public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
             jtf_precioT.setText("");
         }
     }//GEN-LAST:event_jtf_precioUKeyReleased
+<<<<<<< HEAD
 
     private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_cantidadKeyReleased
         this.jtf_precioUKeyReleased(evt);
     }//GEN-LAST:event_jtf_cantidadKeyReleased
 
+=======
+
+    private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_cantidadKeyReleased
+        this.jtf_precioUKeyReleased(evt);
+    }//GEN-LAST:event_jtf_cantidadKeyReleased
+
+>>>>>>> master
     private void jcb_bienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_bienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcb_bienActionPerformed

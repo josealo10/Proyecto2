@@ -8,10 +8,24 @@ import java.util.Observer;
  */
 public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer {
 
+    private ModelIngresoSolicitud model;
+    private ControllerIngresoSolicitud controller;
+    
     public ViewIngresoSolicitud() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
+    public void setModel(ModelIngresoSolicitud model) {
+        this.model = model;
+    }
+
+    public void setController(ControllerIngresoSolicitud controller) {
+        this.controller = controller;
+    }
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,6 +67,11 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
         jScrollPane1.setViewportView(jTable1);
 
         jb_agregarB.setText("Agregar Bien");
+        jb_agregarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +115,10 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
     private void jb_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ingresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_ingresarActionPerformed
+
+    private void jb_agregarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarBActionPerformed
+        controller.MostrarBien();
+    }//GEN-LAST:event_jb_agregarBActionPerformed
 
     @Override
     public void update(Observable o, Object o1) {

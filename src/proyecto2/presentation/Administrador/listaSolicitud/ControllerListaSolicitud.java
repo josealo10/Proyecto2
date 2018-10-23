@@ -5,34 +5,42 @@
  */
 package proyecto2.presentation.Administrador.listaSolicitud;
 
+import proyecto2.Application;
+
 /**
  *
  * @author jaalf
  */
 public class ControllerListaSolicitud {
-   private ModelListaSolicitud modelListaSolicitud;
-   private ViewListaSolicitud viewListaSolicitud;
+   private ModelListaSolicitud model;
+   private ViewListaSolicitud view;
 
-    public ControllerListaSolicitud(ModelListaSolicitud modelListaSolicitud, ViewListaSolicitud viewListaSolicitud) {
-        this.modelListaSolicitud = modelListaSolicitud;
-        this.viewListaSolicitud = viewListaSolicitud;
-        this.modelListaSolicitud.addObserver(viewListaSolicitud);
+    public ControllerListaSolicitud(ModelListaSolicitud model, ViewListaSolicitud view) {
+        this.model = model;
+        this.view = view;
+        this.model.addObserver(view);
+        view.setModel(model);
+        view.setController(this);
     }
 
     public ModelListaSolicitud getModelListaSolicitud() {
-        return modelListaSolicitud;
+        return model;
     }
 
-    public void setModelListaSolicitud(ModelListaSolicitud modelListaSolicitud) {
-        this.modelListaSolicitud = modelListaSolicitud;
+    public void setModelListaSolicitud(ModelListaSolicitud model) {
+        this.model = model;
     }
 
     public ViewListaSolicitud getViewListaSolicitud() {
-        return viewListaSolicitud;
+        return view;
     }
 
-    public void setViewListaSolicitud(ViewListaSolicitud viewListaSolicitud) {
-        this.viewListaSolicitud = viewListaSolicitud;
+    public void setViewListaSolicitud(ViewListaSolicitud view) {
+        this.view = view;
+    }
+
+    void MostrarIngresoSolicitud() {
+        Application.CONTROLLER_INGRESO_SOLICITUD.getView().setVisible(true);
     }
    
    

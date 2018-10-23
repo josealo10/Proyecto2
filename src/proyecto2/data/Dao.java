@@ -1,9 +1,6 @@
 package proyecto2.data;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Dependencia;
@@ -77,7 +74,10 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            Usuario u = new Usuario(rs.getString("id"), rs.getString("clave"), rs.getString("permiso"));
+            Usuario u = new Usuario();
+            u.setId(rs.getString("id"));
+            u.setClave(rs.getString("clave"));
+            u.setPermiso(rs.getString("permiso"));
             return u;
         } else {
             throw new Exception("Usuario no existe");
@@ -104,7 +104,11 @@ public class Dao {
 
         if (rs.next()) {
             Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
+<<<<<<< HEAD
                     this.searchUsuario(rs.getString("puesto")), this.searchDependencia(rs.getString("dependencia")));
+=======
+                    this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
+>>>>>>> master
             return f;
         } else {
             throw new Exception("Funcionario no existe");
@@ -112,10 +116,9 @@ public class Dao {
     }
 
     public void searchSolicitudes(Funcionario f) throws Exception {
-        String sql = "select * from Solicitud where funcionario = '%s'";
+        String sql = "select * from Solicitud where funcionario.id = '%s'";
         sql = String.format(sql, f.getId());
         ResultSet rs = db.executeQuery(sql);
-
         while (rs.next()) {
             Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
             f.getSolicitudes().add(s);

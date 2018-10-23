@@ -7,32 +7,16 @@ import java.util.ArrayList;
  */
 public class Funcionario {
     private String nombre, id;
-    private ArrayList<Solicitud> solicitudes;
-    private Usuario usuario;
+    ArrayList<Solicitud> solicitudes;
     private Dependencia dependencia;
+    private Usuario usuario;
 
-    public Funcionario(String nombre, String id, Usuario usuario, Dependencia dependencia) {
+    public Funcionario(String nombre, String id, Dependencia dependencia, Usuario usuario) {
         this.nombre = nombre;
         this.id = id;
         this.solicitudes = new ArrayList<>();
-        this.usuario = usuario;
         this.dependencia = dependencia;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Dependencia getDependencia() {
-        return dependencia;
-    }
-
-    public void setDependencia(Dependencia dependencia) {
-        this.dependencia = dependencia;
     }
 
     public ArrayList<Solicitud> getSolicitudes() {

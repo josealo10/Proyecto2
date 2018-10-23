@@ -5,28 +5,31 @@ package proyecto2.presentation.Administrador.InsertarBien;
  */
 public class ControllerInsertaBien {
 
-    private ModelInsertaBien modelInsertaBien;
-    private ViewInsertaBien viewInsertaBien;
+    private ModelInsertaBien model;
+    private ViewInsertaBien view;
 
-    public ControllerInsertaBien(ModelInsertaBien modelInsertaBien, ViewInsertaBien viewInsertaBien) {
-        this.modelInsertaBien = modelInsertaBien;
-        this.viewInsertaBien = viewInsertaBien;
-        this.modelInsertaBien.addObserver(viewInsertaBien);
+    public ControllerInsertaBien(ModelInsertaBien model, ViewInsertaBien view) {
+        this.model = model;
+        this.view = view;
+        this.model.addObserver(view);
+        this.view.setModel(model);
+        this.view.setController(this);
+        
     }
 
-    public ModelInsertaBien getModelInsertaBien() {
-        return modelInsertaBien;
+    public ModelInsertaBien getModel() {
+        return model;
     }
 
-    public void setModelInsertaBien(ModelInsertaBien modelInsertaBien) {
-        this.modelInsertaBien = modelInsertaBien;
+    public void setModel(ModelInsertaBien model) {
+        this.model = model;
     }
 
-    public ViewInsertaBien getViewInsertaBien() {
-        return viewInsertaBien;
+    public ViewInsertaBien getView() {
+        return view;
     }
 
-    public void setViewInsertaBien(ViewInsertaBien viewInsertaBien) {
-        this.viewInsertaBien = viewInsertaBien;
+    public void setView(ViewInsertaBien view) {
+        this.view = view;
     }
 }

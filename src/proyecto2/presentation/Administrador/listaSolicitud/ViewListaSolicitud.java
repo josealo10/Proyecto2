@@ -8,11 +8,24 @@ import java.util.Observer;
  */
 public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
+    ModelListaSolicitud model;
+    ControllerListaSolicitud controller;
+    
     public ViewListaSolicitud() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    public void setModel(ModelListaSolicitud model) {
+        this.model = model;
+    }
+
+    public void setController(ControllerListaSolicitud controller) {
+        this.controller = controller;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -86,7 +99,8 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_agregarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarSActionPerformed
-        // TODO add your handling code here:
+        controller.MostrarIngresoSolicitud();
+        
     }//GEN-LAST:event_jb_agregarSActionPerformed
 
     @Override
