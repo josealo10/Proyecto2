@@ -5,8 +5,10 @@ use Activos;
 create table if not exists Solicitud (
 	numero int not null auto_increment primary key,
     funcionario varchar(10) not null,
+    fecha date not null,
     foreign key (funcionario) references Funcionario (id)
 );
+
 
 create table if not exists Bien (
 	codigo int not null auto_increment primary key,

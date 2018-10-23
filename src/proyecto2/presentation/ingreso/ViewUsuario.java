@@ -18,6 +18,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
     public ViewUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public void setModel(ModelUsuario model) {

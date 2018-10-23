@@ -1,9 +1,6 @@
 package proyecto2.data;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Dependencia;
@@ -107,7 +104,7 @@ public class Dao {
 
         if (rs.next()) {
             Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
-                    this.searchUsuario(rs.getString("puesto")), this.searchDependencia(rs.getString("dependencia")));
+                    this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
             return f;
         } else {
             throw new Exception("Funcionario no existe");
@@ -116,11 +113,11 @@ public class Dao {
 
     public void searchSolicitudes(Funcionario f) throws Exception {
         String sql = "select * from Solicitud where funcionario.id = '%s'";
-        sql = String.format(sql, f.getCedula());
+        sql = String.format(sql, f.getId());
         ResultSet rs = db.executeQuery(sql);
         while (rs.next()) {
             Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
             f.getSolicitudes().add(s);
-        } 
+        }
     }
 }
