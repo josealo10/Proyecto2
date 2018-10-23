@@ -1,6 +1,7 @@
 package proyecto2.data;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Dependencia;
@@ -111,13 +112,16 @@ public class Dao {
         }
     }
 
-    public void searchSolicitudes(Funcionario f) throws Exception {
-        String sql = "select * from Solicitud where funcionario.id = '%s'";
-        sql = String.format(sql, f.getId());
+    public ArrayList<Solicitud> searchSolicitudes(String id) throws Exception {
+        String sql = "select * from Solicitud where id = '%s'";
+        sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
+        ArrayList<Solicitud> solicitudes = new ArrayList<>();
         while (rs.next()) {
-            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), f);
-            f.getSolicitudes().add(s);
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
+            solicitudes.add(s);
         }
+        
+        return solicitudes;
     }
 }
