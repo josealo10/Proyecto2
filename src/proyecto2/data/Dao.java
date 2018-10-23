@@ -104,11 +104,7 @@ public class Dao {
 
         if (rs.next()) {
             Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
-<<<<<<< HEAD
-                    this.searchUsuario(rs.getString("puesto")), this.searchDependencia(rs.getString("dependencia")));
-=======
                     this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
->>>>>>> master
             return f;
         } else {
             throw new Exception("Funcionario no existe");

@@ -62,12 +62,6 @@ public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jtf_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtf_cantidadKeyReleased(evt);
-            }
-        });
-
         jl_tipo.setText("Tipo de bien");
 
         jl_cantidad.setText("Cantidad");
@@ -184,21 +178,13 @@ public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
             jtf_precioT.setText("");
         }
     }//GEN-LAST:event_jtf_precioUKeyReleased
-<<<<<<< HEAD
 
-    private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_cantidadKeyReleased
+    private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {                                         
         this.jtf_precioUKeyReleased(evt);
-    }//GEN-LAST:event_jtf_cantidadKeyReleased
+    }                                        
 
-=======
-
-    private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_cantidadKeyReleased
-        this.jtf_precioUKeyReleased(evt);
-    }//GEN-LAST:event_jtf_cantidadKeyReleased
-
->>>>>>> master
     private void jcb_bienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_bienActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcb_bienActionPerformed
 
     @Override
