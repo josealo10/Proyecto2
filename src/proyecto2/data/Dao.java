@@ -113,7 +113,7 @@ public class Dao {
     }
 
     public ArrayList<Solicitud> searchSolicitudes(String id) throws Exception {
-        String sql = "select * from Solicitud where id = '%s'";
+        String sql = "select * from Solicitud where funcionario = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Solicitud> solicitudes = new ArrayList<>();

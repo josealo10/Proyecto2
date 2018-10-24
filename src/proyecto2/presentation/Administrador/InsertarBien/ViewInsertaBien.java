@@ -8,25 +8,22 @@ import java.util.Observer;
  */
 public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
 
-    private ControllerInsertaBien controller;
     private ModelInsertaBien model;
+    private ControllerInsertaBien controller;
 
     public ControllerInsertaBien getController() {
         return controller;
     }
-
+    
+    public void setModel(ModelInsertaBien model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+    
     public void setController(ControllerInsertaBien controller) {
         this.controller = controller;
     }
 
-    public ModelInsertaBien getModel() {
-        return model;
-    }
-
-    public void setModel(ModelInsertaBien model) {
-        this.model = model;
-    }
-    
     public ViewInsertaBien() {
         initComponents();
         jtf_precioT.setEditable(false);

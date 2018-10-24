@@ -5,6 +5,7 @@
  */
 package proyecto2.presentation.Administrador.listaSolicitud;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import proyecto2.data.Dao;
@@ -15,10 +16,17 @@ import proyecto2.logic.Solicitud;
  *
  * @author jaalf
  */
-public class ModelListaSolicitud extends Observable{
+public class ModelListaSolicitud extends Observable {
+
     private Funcionario funcionario;
     private Solicitud solicitud;
     private Dao db;
+
+    public ModelListaSolicitud() {
+        this.funcionario = new Funcionario();
+        this.solicitud = new Solicitud();
+        this.db = new Dao();
+    }
 
     @Override
     public synchronized void addObserver(Observer o) {
@@ -43,12 +51,7 @@ public class ModelListaSolicitud extends Observable{
         this.solicitud = solicitud;
     }
 
-    public Dao getDb() {
+    public Dao getDao() {
         return db;
     }
-    
-    
-    
-    
-    
 }

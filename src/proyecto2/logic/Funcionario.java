@@ -17,6 +17,9 @@ public class Funcionario {
         this.usuario = usuario;
     }
 
+    public Funcionario() {
+    }
+
     public String getNombre() {
         return nombre;
     }

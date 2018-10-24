@@ -2,56 +2,66 @@ package proyecto2.presentation.Administrador.listaSolicitud;
 
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyecto2.logic.Solicitud;
 
 /*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
-    ModelListaSolicitud model;
-    ControllerListaSolicitud controller;
-    
+    private ModelListaSolicitud model;
+    private ControllerListaSolicitud controller;
+    private DefaultTableModel tableModel;
+
     public ViewListaSolicitud() {
+        this.tableModel = new DefaultTableModel();
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
     public void setModel(ModelListaSolicitud model) {
         this.model = model;
+        model.addObserver(this);
     }
 
     public void setController(ControllerListaSolicitud controller) {
         this.controller = controller;
     }
 
-    
-    
+    public void llenarTabla() {
+        tableModel.addColumn("Codigo");
+        tableModel.addColumn("Fecha");
+        tableModel.addColumn("Funcionario");
+
+        try {
+            for (Solicitud s : model.getDao().searchSolicitudes(controller.getUsuario().getId())) {
+                Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId()};
+                tableModel.addRow(o);
+            }
+
+            jt_solicitudes.setModel(tableModel);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jt_solicitudes = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jl_solicitudes = new javax.swing.JLabel();
         jb_agregarS = new javax.swing.JButton();
         jb_salir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_solicitudes = new javax.swing.JTable();
+        jb_mostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jt_solicitudes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Numero", "Fecha", "Funcionario"
-            }
-        ));
-        jScrollPane2.setViewportView(jt_solicitudes);
-
-        jLabel1.setText("Mis solicitudes");
+        jl_solicitudes.setText("Mis solicitudes");
 
         jb_agregarS.setText("Agregar Solicitud");
         jb_agregarS.addActionListener(new java.awt.event.ActionListener() {
@@ -61,38 +71,73 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         });
 
         jb_salir.setText("Salir");
+        jb_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_salirActionPerformed(evt);
+            }
+        });
+
+        jt_solicitudes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Fecha", "Funcionario"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jt_solicitudes);
+
+        jb_mostrar.setText("Mostrar Solicitudes");
+        jb_mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_mostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(154, 154, 154))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jb_agregarS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_salir)
-                        .addGap(100, 100, 100))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(jl_solicitudes)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jb_agregarS)
+                .addGap(18, 18, 18)
+                .addComponent(jb_mostrar)
+                .addGap(18, 18, 18)
+                .addComponent(jb_salir)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jl_solicitudes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_agregarS)
-                    .addComponent(jb_salir))
-                .addContainerGap())
+                    .addComponent(jb_salir)
+                    .addComponent(jb_mostrar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,19 +145,26 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     private void jb_agregarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarSActionPerformed
         controller.MostrarIngresoSolicitud();
-        
     }//GEN-LAST:event_jb_agregarSActionPerformed
+
+    private void jb_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jb_salirActionPerformed
+
+    private void jb_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarActionPerformed
+        this.llenarTabla();
+    }//GEN-LAST:event_jb_mostrarActionPerformed
 
     @Override
     public void update(Observable o, Object o1) {
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_agregarS;
+    private javax.swing.JButton jb_mostrar;
     private javax.swing.JButton jb_salir;
+    private javax.swing.JLabel jl_solicitudes;
     private javax.swing.JTable jt_solicitudes;
     // End of variables declaration//GEN-END:variables
 }

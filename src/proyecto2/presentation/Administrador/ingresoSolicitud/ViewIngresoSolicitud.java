@@ -18,13 +18,12 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
     public void setModel(ModelIngresoSolicitud model) {
         this.model = model;
+        model.addObserver(this);
     }
 
     public void setController(ControllerIngresoSolicitud controller) {
         this.controller = controller;
     }
-    
-    
     
 
     @SuppressWarnings("unchecked")

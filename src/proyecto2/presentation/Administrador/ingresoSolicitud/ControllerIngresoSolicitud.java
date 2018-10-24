@@ -34,8 +34,12 @@ public class ControllerIngresoSolicitud {
         this.view = view;
     }
 
-    void MostrarBien() {
+    public void MostrarBien() {
         Application.CONTROLLER_INSERTA_BIEN.getView().setVisible(true);
+    }
+    
+    public void llenarTabla(){
+        
     }
 
 }
