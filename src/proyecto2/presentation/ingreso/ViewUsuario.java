@@ -36,7 +36,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
         jl_id = new javax.swing.JLabel();
         jl_clave = new javax.swing.JLabel();
-        jtf_id = new javax.swing.JTextField();
+        jtf_usuario = new javax.swing.JTextField();
         jpf_clave = new javax.swing.JPasswordField();
         jb_entrar = new javax.swing.JButton();
         jb_salir = new javax.swing.JButton();
@@ -49,9 +49,9 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
         jl_clave.setText("Clave");
 
-        jtf_id.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtf_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtf_idKeyPressed(evt);
+                jtf_usuarioKeyPressed(evt);
             }
         });
 
@@ -88,9 +88,13 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                             .addComponent(jl_id))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                            .addComponent(jpf_clave))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                            .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jpf_clave)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jb_entrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jb_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +102,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_id)
-                    .addComponent(jtf_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_clave)
@@ -107,7 +111,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_entrar)
                     .addComponent(jb_salir))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -119,28 +123,28 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
     private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
         try {
-            controller.ingresar(jtf_id.getText(), jpf_clave.getText());
+            controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jb_entrarActionPerformed
 
-    private void jtf_idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_idKeyPressed
+    private void jtf_usuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_usuarioKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                JOptionPane.showMessageDialog(null, "Bienvenido: " + model.getDao().searchFuncionario(jtf_id.getText()).getNombre() + " (" + model.getDao().searchUsuario(jtf_id.getText()).getPermiso() + ")",
+                JOptionPane.showMessageDialog(null, "Bienvenido: " + model.getDao().searchFuncionario(jtf_usuario.getText()).getNombre() + " (" + model.getDao().searchUsuario(jtf_usuario.getText()).getPermiso() + ")",
                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
-                controller.ingresar(jtf_id.getText(), jpf_clave.getText());
+                controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jtf_idKeyPressed
+    }//GEN-LAST:event_jtf_usuarioKeyPressed
 
     private void jpf_claveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpf_claveKeyPressed
-        this.jtf_idKeyPressed(evt);
+        this.jtf_usuarioKeyPressed(evt);
     }//GEN-LAST:event_jpf_claveKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -149,7 +153,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel jl_clave;
     private javax.swing.JLabel jl_id;
     private javax.swing.JPasswordField jpf_clave;
-    private javax.swing.JTextField jtf_id;
+    private javax.swing.JTextField jtf_usuario;
     // End of variables declaration//GEN-END:variables
 
     @Override

@@ -41,12 +41,6 @@ public class Application {
         ViewIngresoSolicitud vis = new ViewIngresoSolicitud();
         ControllerIngresoSolicitud cis = new ControllerIngresoSolicitud(mis, vis);
         CONTROLLER_INGRESO_SOLICITUD = cis;
-        
-
-        ModelIngresoSolicitud mis = new ModelIngresoSolicitud();
-        ViewIngresoSolicitud vis = new ViewIngresoSolicitud();
-        ControllerIngresoSolicitud cis = new ControllerIngresoSolicitud(mis, vis);
-        CONTROLLER_INGRESO_SOLICITUD = cis;
 
         vu.setVisible(true);
     }
