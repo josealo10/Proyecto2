@@ -17,6 +17,9 @@ public class Solicitud {
         this.funcionario = funcionario;
     }
 
+    public Solicitud() {
+    }
+
     public int getCodigo() {
         return codigo;
     }
