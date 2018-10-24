@@ -21,7 +21,7 @@ public class Application {
     public static ControllerInsertaBien CONTROLLER_INSERTA_BIEN;
     public static ControllerListaSolicitud CONTROLLER_LISTA_SOLICITUD;
     public static ControllerIngresoSolicitud CONTROLLER_INGRESO_SOLICITUD;
-
+    
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
         ViewUsuario vu = new ViewUsuario();
@@ -41,8 +41,6 @@ public class Application {
         ViewIngresoSolicitud vis = new ViewIngresoSolicitud();
         ControllerIngresoSolicitud cis = new ControllerIngresoSolicitud(mis, vis);
         CONTROLLER_INGRESO_SOLICITUD = cis;
-        
-
 
         vu.setVisible(true);
     }

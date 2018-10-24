@@ -7,8 +7,8 @@ import proyecto2.Application;
  */
 public class ControllerUsuario {
 
-    ModelUsuario model;
-    ViewUsuario view;
+    private ModelUsuario model;
+    private ViewUsuario view;
 
     public ControllerUsuario(ModelUsuario model, ViewUsuario view) {
         this.model = model;
