@@ -36,6 +36,12 @@ public class Application {
         ViewListaSolicitud vls = new ViewListaSolicitud();
         ControllerListaSolicitud cls = new ControllerListaSolicitud(mls, vls);
         CONTROLLER_LISTA_SOLICITUD = cls;
+        
+        ModelIngresoSolicitud mis = new ModelIngresoSolicitud();
+        ViewIngresoSolicitud vis = new ViewIngresoSolicitud();
+        ControllerIngresoSolicitud cis = new ControllerIngresoSolicitud(mis, vis);
+        CONTROLLER_INGRESO_SOLICITUD = cis;
+        
 
         ModelIngresoSolicitud mis = new ModelIngresoSolicitud();
         ViewIngresoSolicitud vis = new ViewIngresoSolicitud();

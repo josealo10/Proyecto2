@@ -1,9 +1,12 @@
 package proyecto2.presentation.ingreso;
 
-import java.awt.event.KeyEvent;
+import com.sun.glass.events.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
+import proyecto2.Application;
 
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
@@ -40,6 +43,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jl_id.setText("Id");
 
@@ -84,13 +88,9 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                             .addComponent(jl_id))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtf_id, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(jpf_clave)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jb_entrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(jtf_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(jpf_clave))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +107,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_entrar)
                     .addComponent(jb_salir))
-                .addGap(20, 20, 20))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
