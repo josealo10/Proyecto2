@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
  */
 public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
-    ModelUsuario model;
-    ControllerUsuario controller;
+    private ModelUsuario model;
+    private ControllerUsuario controller;
 
     public ViewUsuario() {
         initComponents();
