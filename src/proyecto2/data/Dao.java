@@ -105,34 +105,7 @@ public class Dao {
 
         if (rs.next()) {
             Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
-                    this.searchUsuario(rs.getString("puesto")), this.searchDependencia(rs.getString("dependencia")));
-            return f;
-        } else {
-            throw new Exception("Funcionario no existe");
-        }
-    }
-
-    public void searchSolicitudes(Funcionario f) throws Exception {
-        String sql = "select * from Solicitud where funcionario = '%s'";
-        sql = String.format(sql, f.getId());
-        ResultSet rs = db.executeQuery(sql);
-
-        if (rs.next()) {
-            Dependencia d = new Dependencia(rs.getString("nombre"));
-            return d;
-        } else {
-            throw new Exception("Dependencia no existe");
-        }
-    }
-
-    public Funcionario searchFuncionario(String id) throws Exception {
-        String sql = "select * from Funcionario where id = '%s'";
-        sql = String.format(sql, id);
-        ResultSet rs = db.executeQuery(sql);
-
-        if (rs.next()) {
-            Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
-                    this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
+                     this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
             return f;
         } else {
             throw new Exception("Funcionario no existe");
