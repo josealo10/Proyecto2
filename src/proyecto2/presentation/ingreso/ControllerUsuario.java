@@ -17,6 +17,14 @@ public class ControllerUsuario {
         view.setController(this);
     }
 
+    public ModelUsuario getModel() {
+        return model;
+    }
+
+    public ViewUsuario getView() {
+        return view;
+    }
+
     public void ingresar(String id, String clave) throws Exception {
         if (model.ingresar(id, clave)) {
             this.view.setVisible(false);

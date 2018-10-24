@@ -43,7 +43,7 @@ public class ModelListaSolicitud extends Observable{
         this.solicitud = solicitud;
     }
 
-    public Dao getDb() {
+    public Dao getDao() {
         return db;
     }
     

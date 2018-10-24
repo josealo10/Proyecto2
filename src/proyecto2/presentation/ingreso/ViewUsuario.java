@@ -1,12 +1,9 @@
 package proyecto2.presentation.ingreso;
 
 import com.sun.glass.events.KeyEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
-import proyecto2.Application;
 
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
