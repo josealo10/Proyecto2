@@ -105,7 +105,7 @@ public class Dao {
 
         if (rs.next()) {
             Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
-                     this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
+                    this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
             return f;
         } else {
             throw new Exception("Funcionario no existe");
@@ -117,11 +117,15 @@ public class Dao {
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Solicitud> solicitudes = new ArrayList<>();
-        while (rs.next()) {
-            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
-            solicitudes.add(s);
+        if (rs.next()) {
+            while (rs.next()) {
+                Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
+                solicitudes.add(s);
+            }
+
+            return solicitudes;
         }
-        
-        return solicitudes;
+
+        throw new Exception("No existen solicitudes");
     }
 }

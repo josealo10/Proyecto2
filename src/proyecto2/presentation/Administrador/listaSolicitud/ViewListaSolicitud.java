@@ -16,8 +16,8 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     private DefaultTableModel tableModel;
 
     public ViewListaSolicitud() {
-        this.tableModel = new DefaultTableModel();
         initComponents();
+        this.tableModel = (DefaultTableModel) jt_solicitudes.getModel();
         this.setLocationRelativeTo(null);
     }
 
@@ -28,24 +28,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     public void setController(ControllerListaSolicitud controller) {
         this.controller = controller;
-    }
-
-    public void llenarTabla() {
-        tableModel.addColumn("Codigo");
-        tableModel.addColumn("Fecha");
-        tableModel.addColumn("Funcionario");
-
-        try {
-            for (Solicitud s : model.getDao().searchSolicitudes(controller.getUsuario().getId())) {
-                Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId()};
-                tableModel.addRow(o);
-            }
-
-            jt_solicitudes.setModel(tableModel);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -91,6 +73,11 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jt_solicitudes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_solicitudesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jt_solicitudes);
@@ -152,8 +139,22 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jb_salirActionPerformed
 
     private void jb_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarActionPerformed
-        this.llenarTabla();
+        try {
+            for (Solicitud s : model.getDao().searchSolicitudes(controller.getUsuario().getId())) {
+                Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId()};
+                tableModel.addRow(o);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jb_mostrarActionPerformed
+
+    private void jt_solicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_solicitudesMouseClicked
+        if (evt.getClickCount() == 2) {
+            System.out.println(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString());
+        }
+    }//GEN-LAST:event_jt_solicitudesMouseClicked
 
     @Override
     public void update(Observable o, Object o1) {
