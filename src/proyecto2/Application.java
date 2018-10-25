@@ -1,5 +1,6 @@
 package proyecto2;
 
+import proyecto2.data.Dao;
 import proyecto2.presentation.Administrador.InsertarBien.ControllerInsertaBien;
 import proyecto2.presentation.Administrador.InsertarBien.ModelInsertaBien;
 import proyecto2.presentation.Administrador.InsertarBien.ViewInsertaBien;
@@ -21,10 +22,13 @@ public class Application {
     public static ControllerInsertaBien CONTROLLER_INSERTA_BIEN;
     public static ControllerListaSolicitud CONTROLLER_LISTA_SOLICITUD;
     public static ControllerIngresoSolicitud CONTROLLER_INGRESO_SOLICITUD;
+    public static ControllerUsuario CONTROLLER_USUARIO;
+
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
         ViewUsuario vu = new ViewUsuario();
         ControllerUsuario cu = new ControllerUsuario(mu, vu);
+        CONTROLLER_USUARIO = cu;
 
         ModelInsertaBien mib = new ModelInsertaBien();
         ViewInsertaBien vib = new ViewInsertaBien();
@@ -41,7 +45,9 @@ public class Application {
         ControllerIngresoSolicitud cis = new ControllerIngresoSolicitud(mis, vis);
         CONTROLLER_INGRESO_SOLICITUD = cis;
         
-
         vu.setVisible(true);
+
+//        Dao db = new Dao();
+//        System.out.println(db.searchBienes(9).get(0).getMarca());
     }
 }

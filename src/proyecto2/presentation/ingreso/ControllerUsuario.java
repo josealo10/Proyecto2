@@ -7,14 +7,22 @@ import proyecto2.Application;
  */
 public class ControllerUsuario {
 
-    ModelUsuario model;
-    ViewUsuario view;
+    private ModelUsuario model;
+    private ViewUsuario view;
 
     public ControllerUsuario(ModelUsuario model, ViewUsuario view) {
         this.model = model;
         this.view = view;
         view.setModel(model);
         view.setController(this);
+    }
+
+    public ModelUsuario getModel() {
+        return model;
+    }
+
+    public ViewUsuario getView() {
+        return view;
     }
 
     public void ingresar(String id, String clave) throws Exception {

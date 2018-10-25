@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2.presentation.Administrador.listaSolicitud;
 
 import proyecto2.Application;
+import proyecto2.logic.Usuario;
 
-/**
- *
- * @author jaalf
- */
+
 public class ControllerListaSolicitud {
    private ModelListaSolicitud model;
    private ViewListaSolicitud view;
@@ -39,11 +32,11 @@ public class ControllerListaSolicitud {
         this.view = view;
     }
 
-    void MostrarIngresoSolicitud() {
+    public void MostrarIngresoSolicitud() {
         Application.CONTROLLER_INGRESO_SOLICITUD.getView().setVisible(true);
     }
    
-   
-   
-   
+    public Usuario getUsuario(){
+        return Application.CONTROLLER_USUARIO.getModel().getUsuario();
+    }
 }

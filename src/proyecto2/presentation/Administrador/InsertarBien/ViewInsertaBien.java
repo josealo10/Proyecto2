@@ -8,25 +8,22 @@ import java.util.Observer;
  */
 public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
 
-    private ControllerInsertaBien controller;
     private ModelInsertaBien model;
+    private ControllerInsertaBien controller;
 
     public ControllerInsertaBien getController() {
         return controller;
     }
-
+    
+    public void setModel(ModelInsertaBien model) {
+        this.model = model;
+        model.addObserver(this);
+    }
+    
     public void setController(ControllerInsertaBien controller) {
         this.controller = controller;
     }
 
-    public ModelInsertaBien getModel() {
-        return model;
-    }
-
-    public void setModel(ModelInsertaBien model) {
-        this.model = model;
-    }
-    
     public ViewInsertaBien() {
         initComponents();
         jtf_precioT.setEditable(false);
@@ -59,12 +56,6 @@ public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
         jcb_bien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcb_bienActionPerformed(evt);
-            }
-        });
-
-        jtf_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtf_cantidadKeyReleased(evt);
             }
         });
 
@@ -185,12 +176,12 @@ public class ViewInsertaBien extends javax.swing.JFrame implements Observer {
         }
     }//GEN-LAST:event_jtf_precioUKeyReleased
 
-    private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_cantidadKeyReleased
+    private void jtf_cantidadKeyReleased(java.awt.event.KeyEvent evt) {                                         
         this.jtf_precioUKeyReleased(evt);
-    }//GEN-LAST:event_jtf_cantidadKeyReleased
+    }                                        
 
     private void jcb_bienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_bienActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcb_bienActionPerformed
 
     @Override

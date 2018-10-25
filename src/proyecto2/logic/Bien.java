@@ -10,11 +10,12 @@ public class Bien {
     private int codigo, cantidad;
     private Solicitud solicitud;
 
-    public Bien(String marca, String modelo, int codigo, int cantidad) {
+    public Bien(String marca, String modelo, int codigo, int cantidad, Solicitud solicitud) {
         this.marca = marca;
         this.modelo = modelo;
         this.codigo = codigo;
         this.cantidad = cantidad;
+        this.solicitud = solicitud;
     }
 
     public Bien() {}
