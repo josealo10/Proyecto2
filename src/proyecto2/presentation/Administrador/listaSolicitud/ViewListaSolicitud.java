@@ -19,6 +19,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         initComponents();
         this.tableModel = (DefaultTableModel) jt_solicitudes.getModel();
         this.setLocationRelativeTo(null);
+        this.jd_bienes.setLocationRelativeTo(null);
     }
 
     public void setModel(ModelListaSolicitud model) {
@@ -34,12 +35,53 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_bienes = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jl_solicitudes = new javax.swing.JLabel();
         jb_agregarS = new javax.swing.JButton();
         jb_salir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_solicitudes = new javax.swing.JTable();
         jb_mostrar = new javax.swing.JButton();
+
+        jd_bienes.setTitle("Bienes");
+        jd_bienes.setSize(new java.awt.Dimension(415, 370));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cantidad", "Marca", "Modelo", "Descripcion"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jd_bienesLayout = new javax.swing.GroupLayout(jd_bienes.getContentPane());
+        jd_bienes.getContentPane().setLayout(jd_bienesLayout);
+        jd_bienesLayout.setHorizontalGroup(
+            jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_bienesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_bienesLayout.setVerticalGroup(
+            jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_bienesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,24 +135,21 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jl_solicitudes)
+                .addGap(161, 161, 161))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jl_solicitudes)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jb_agregarS)
-                .addGap(18, 18, 18)
-                .addComponent(jb_mostrar)
-                .addGap(18, 18, 18)
-                .addComponent(jb_salir)
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addComponent(jb_agregarS)
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_mostrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_salir)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +163,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                     .addComponent(jb_agregarS)
                     .addComponent(jb_salir)
                     .addComponent(jb_mostrar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,7 +191,11 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     private void jt_solicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_solicitudesMouseClicked
         if (evt.getClickCount() == 2) {
-            System.out.println(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString());
+            //jf_bienes.setVisible(true);
+            jd_bienes.setVisible(true);
+           
+            
+            //System.out.println(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString());
         }
     }//GEN-LAST:event_jt_solicitudesMouseClicked
 
@@ -162,9 +205,12 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_agregarS;
     private javax.swing.JButton jb_mostrar;
     private javax.swing.JButton jb_salir;
+    private javax.swing.JDialog jd_bienes;
     private javax.swing.JLabel jl_solicitudes;
     private javax.swing.JTable jt_solicitudes;
     // End of variables declaration//GEN-END:variables
