@@ -75,11 +75,7 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            Usuario u = new Usuario();
-            u.setId(rs.getString("id"));
-            u.setClave(rs.getString("clave"));
-            u.setPermiso(rs.getString("permiso"));
-            return u;
+            return new Usuario(rs.getString("id"), rs.getString("clave"), rs.getString("permiso"));
         } else {
             throw new Exception("Usuario no existe");
         }
@@ -91,8 +87,7 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            Dependencia d = new Dependencia(rs.getString("nombre"));
-            return d;
+            return new Dependencia(rs.getString("nombre"));
         } else {
             throw new Exception("Dependencia no existe");
         }
@@ -104,11 +99,22 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            Funcionario f = new Funcionario(rs.getString("nombre"), rs.getString("id"),
+            return new Funcionario(rs.getString("nombre"), rs.getString("id"),
                     this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto")));
-            return f;
         } else {
             throw new Exception("Funcionario no existe");
+        }
+    }
+
+    public Solicitud searchSolicitud(int codigo) throws Exception {
+        String sql = "select * from Solicitud where numero = %d";
+        sql = String.format(sql, codigo);
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            return new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")));
+        } else {
+            throw new Exception("Solicitud no existe");
         }
     }
 
@@ -117,15 +123,34 @@ public class Dao {
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Solicitud> solicitudes = new ArrayList<>();
-        if (rs.next()) {
-            while (rs.next()) {
-                Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
-                solicitudes.add(s);
-            }
+        while (rs.next()) {
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
+            solicitudes.add(s);
+        }
+        
+        if (solicitudes.isEmpty()) {
 
-            return solicitudes;
+            throw new Exception("No existen solicitudes");
+        }
+        
+        return solicitudes;
+    }
+
+    public ArrayList<Bien> searchBienes(int codigo) throws Exception {
+        String sql = "select * from Bien where solicitud = %d";
+        sql = String.format(sql, codigo);
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Bien> bienes = new ArrayList<>();
+
+        while (rs.next()) {
+            Bien b = new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
+            bienes.add(b);
         }
 
-        throw new Exception("No existen solicitudes");
+        if (bienes.isEmpty()) {
+            throw new Exception("No existen bienes");
+        }
+
+        return bienes;
     }
 }

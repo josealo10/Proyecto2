@@ -3,7 +3,10 @@ package proyecto2.presentation.Administrador.listaSolicitud;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import proyecto2.logic.Bien;
 import proyecto2.logic.Solicitud;
 
 /*
@@ -13,11 +16,9 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     private ModelListaSolicitud model;
     private ControllerListaSolicitud controller;
-    private DefaultTableModel tableModel;
 
     public ViewListaSolicitud() {
         initComponents();
-        this.tableModel = (DefaultTableModel) jt_solicitudes.getModel();
         this.setLocationRelativeTo(null);
         this.jd_bienes.setLocationRelativeTo(null);
     }
@@ -37,7 +38,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
         jd_bienes = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jt_bienes = new javax.swing.JTable();
         jl_solicitudes = new javax.swing.JLabel();
         jb_agregarS = new javax.swing.JButton();
         jb_salir = new javax.swing.JButton();
@@ -48,12 +49,12 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         jd_bienes.setTitle("Bienes");
         jd_bienes.setSize(new java.awt.Dimension(415, 370));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cantidad", "Marca", "Modelo", "Descripcion"
+                "Codigo", "Cantidad", "Marca", "Modelo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -64,7 +65,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jt_bienes);
 
         javax.swing.GroupLayout jd_bienesLayout = new javax.swing.GroupLayout(jd_bienes.getContentPane());
         jd_bienes.getContentPane().setLayout(jd_bienesLayout);
@@ -179,6 +180,11 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     private void jb_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarActionPerformed
         try {
+            DefaultTableModel tableModel = (DefaultTableModel) jt_solicitudes.getModel();
+            DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
+            
+            alinear.setHorizontalAlignment(SwingConstants.CENTER);
+            tableModel.setRowCount(0);
             for (Solicitud s : model.getDao().searchSolicitudes(controller.getUsuario().getId())) {
                 Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId()};
                 tableModel.addRow(o);
@@ -191,11 +197,24 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     private void jt_solicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_solicitudesMouseClicked
         if (evt.getClickCount() == 2) {
-            //jf_bienes.setVisible(true);
-            jd_bienes.setVisible(true);
-           
-            
-            //System.out.println(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString());
+            try {
+                jd_bienes.setVisible(true);
+                DefaultTableModel tableModel = (DefaultTableModel) jt_bienes.getModel();
+                DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_bienes.getCellRenderer(0, 0);
+
+                alinear.setHorizontalAlignment(SwingConstants.CENTER);
+                tableModel.setRowCount(0);
+
+                for (Bien b : model.getDao().searchBienes(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()))) {
+                    Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo()};
+                    tableModel.addRow(o);
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                jd_bienes.setVisible(false);
+            }
+
         }
     }//GEN-LAST:event_jt_solicitudesMouseClicked
 
@@ -206,12 +225,12 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_agregarS;
     private javax.swing.JButton jb_mostrar;
     private javax.swing.JButton jb_salir;
     private javax.swing.JDialog jd_bienes;
     private javax.swing.JLabel jl_solicitudes;
+    private javax.swing.JTable jt_bienes;
     private javax.swing.JTable jt_solicitudes;
     // End of variables declaration//GEN-END:variables
 }
