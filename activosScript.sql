@@ -44,6 +44,3 @@ create table if not exists Activo(
 	bien int(11) not null,
 	foreign key (bien) references bien (codigo)
 );
-
-
-
