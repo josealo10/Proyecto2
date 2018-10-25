@@ -1,6 +1,7 @@
 package proyecto2.data;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
@@ -31,7 +32,7 @@ public class Dao {
     }
 
     public void addBien(Bien b) throws Exception {
-        String sql = "insert into Bien (codigo, marca, modelo, solicitud, cantidad) "
+        String sql = "insert into Bien (marca, modelo, solicitud, cantidad) "
                 + "values('%s', '%s', %d, %d)";
         sql = String.format(sql, b.getMarca(), b.getModelo(), b.getSolicitud().getCodigo(), b.getCantidad());
 
@@ -127,12 +128,12 @@ public class Dao {
             Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id));
             solicitudes.add(s);
         }
-        
+
         if (solicitudes.isEmpty()) {
 
             throw new Exception("No existen solicitudes");
         }
-        
+
         return solicitudes;
     }
 
@@ -152,5 +153,27 @@ public class Dao {
         }
 
         return bienes;
+    }
+
+    public int ultimoBien() throws Exception {
+        String sql = "select codigo from Bien where codigo = (select max(codigo) from Bien)";
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            return rs.getInt("codigo");
+        } else {
+            throw new Exception("No exiten Bienes");
+        }
+    }
+
+    public int ultimaSolicitud() throws Exception {
+        String sql = "select numero from Solicitud where numero = (select max(numero) from Solicitud)";
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            return rs.getInt("numero");
+        } else {
+            throw new Exception("No exiten Solicitudes");
+        }
     }
 }

@@ -185,6 +185,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
             
             alinear.setHorizontalAlignment(SwingConstants.CENTER);
             tableModel.setRowCount(0);
+            
             for (Solicitud s : model.getDao().searchSolicitudes(controller.getUsuario().getId())) {
                 Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId()};
                 tableModel.addRow(o);

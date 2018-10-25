@@ -40,10 +40,6 @@ public class Bien {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     public Solicitud getSolicitud() {
         return solicitud;
     }
