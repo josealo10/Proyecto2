@@ -1,7 +1,5 @@
 package proyecto2.presentation.Administrador.ingresoSolicitud;
 
-import proyecto2.Application;
-
 /*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
@@ -34,8 +32,11 @@ public class ControllerIngresoSolicitud {
         this.view = view;
     }
 
-    void MostrarBien() {
-        Application.CONTROLLER_INSERTA_BIEN.getView().setVisible(true);
+    public void agregarSolicitud() throws Exception {
+        this.model.agregarSolicitud();
     }
 
+    public void agregarBien() throws Exception {
+        this.model.agregarBien();
+    }
 }
