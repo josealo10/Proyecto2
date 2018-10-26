@@ -1,5 +1,6 @@
 package proyecto2.presentation.Administrador.ingresoSolicitud;
 
+import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
     public ViewIngresoSolicitud() {
         initComponents();
-        this.setLocationRelativeTo(null);            
+        this.setLocationRelativeTo(null);
         DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_bienes.getCellRenderer(0, 0);
         alinear.setHorizontalAlignment(SwingConstants.CENTER);
     }
@@ -44,31 +45,45 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
     }
 
     public boolean valido() {
+        boolean flag = true;
+        jl_cantidad.setForeground(Color.getColor("[0,0,0]"));
+        jl_descripcion.setForeground(Color.getColor("[0,0,0]"));
+        jl_marca.setForeground(Color.getColor("[0,0,0]"));
+        jl_modelo.setForeground(Color.getColor("[0,0,0]"));
+        jl_precioT.setForeground(Color.getColor("[0,0,0]"));
+        jl_precioU.setForeground(Color.getColor("[0,0,0]"));
+
         if ((jtf_cantidad.getText()).equals("")) {
-            return false;
+            flag = false;
+            jl_cantidad.setForeground(Color.RED);
         }
 
         if ((jtf_descripcion.getText()).equals("")) {
-            return false;
+            flag = false;
+            jl_descripcion.setForeground(Color.RED);
         }
 
         if ((jtf_marca.getText()).equals("")) {
-            return false;
+            flag = false;
+            jl_marca.setForeground(Color.RED);
         }
 
         if ((jtf_modelo.getText()).equals("")) {
-            return false;
+            flag = false;
+            jl_modelo.setForeground(Color.RED);
         }
 
         if ((jtf_precioT.getText()).equals("")) {
-            return false;
+            flag = false;
+            jl_precioT.setForeground(Color.RED);
         }
 
         if ((jtf_precioU.getText()).equals("")) {
-            return false;
+            flag = false;
+            jl_precioU.setForeground(Color.RED);
         }
 
-        return true;
+        return flag;
     }
 
     @SuppressWarnings("unchecked")
@@ -268,14 +283,28 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_cancelarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelarSolicitudActionPerformed
-        this.model.setBien(null);
-        this.model.setSolicitud(null);
-        this.setVisible(false);
+        try {
+            if (this.model.getSolicitud() != null) {
+                this.model.getDb().deleteSolicitud(this.model.getSolicitud().getCodigo());
+            }
+            
+            if (this.model.getTableModel() != null) {
+                this.model.getTableModel().setRowCount(0);
+            }
+            
+            this.model.setBien(null);
+            this.model.setSolicitud(null);
+            this.setVisible(false);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jb_cancelarSolicitudActionPerformed
 
     private void jb_agregarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarSolicitudActionPerformed
         try {
             this.controller.agregarSolicitud();
+            JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);
 
         } catch (Exception e) {

@@ -70,6 +70,15 @@ public class Dao {
         }
     }
 
+    public void deleteSolicitud(int codigo) throws Exception {
+        String sql = "delete from Solicitud where numero = %d";
+        sql = String.format(sql, codigo);
+
+        if (db.executeUpdate(sql) == 0) {
+            throw new Exception("Solicitud no existe");
+        }
+    }
+
     public Usuario searchUsuario(String id) throws Exception {
         String sql = "select * from Usuario where id = '%s'";
         sql = String.format(sql, id);
