@@ -31,8 +31,12 @@ public class ControllerIngresoSolicitud {
     public void setView(ViewIngresoSolicitud view) {
         this.view = view;
     }
-    
-    public void agregarSolicitud() throws Exception{
+
+    public void agregarSolicitud() throws Exception {
         this.model.agregarSolicitud();
+    }
+
+    public void agregarBien() throws Exception {
+        this.model.agregarBien();
     }
 }
