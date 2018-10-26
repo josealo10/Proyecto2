@@ -1,5 +1,6 @@
 package proyecto2.presentation.Administrador.ingresoSolicitud;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,12 +15,14 @@ import proyecto2.logic.Solicitud;
  */
 public class ModelIngresoSolicitud extends Observable {
 
+    private ArrayList<Bien> bienes;
     private Bien bien;
     private Solicitud solicitud;
     private DefaultTableModel tableModel;
     private Dao db;
 
     public ModelIngresoSolicitud() throws Exception {
+        this.bienes = new ArrayList<>();
         this.db = new Dao();
         this.bien = new Bien();
     }
@@ -60,17 +63,20 @@ public class ModelIngresoSolicitud extends Observable {
     }
 
     public void agregarSolicitud() throws Exception {
-        this.db.addSolicitud(solicitud, this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()));
+        for (Bien b: bienes){
+            this.db.addBien(b);
+        }
     }
 
     public void agregarBien() throws Exception {
         if (this.solicitud == null) {
             this.solicitud = new Solicitud(this.db.ultimaSolicitud() + 1, new Date(), this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()));
+            this.db.addSolicitud(solicitud, solicitud.getFuncionario());
         }
         
         this.bien.setSolicitud(this.solicitud);
         Object[] o = new Object[]{this.bien.getCantidad(), this.db.ultimoBien() + 1, this.bien.getMarca(), this.bien.getModelo()};
         this.tableModel.addRow(o);
-        this.db.addBien(bien);
+        this.bienes.add(bien);
     }
 }

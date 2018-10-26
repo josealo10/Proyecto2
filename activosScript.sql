@@ -44,3 +44,5 @@ create table if not exists Activo(
 	bien int(11) not null,
 	foreign key (bien) references bien (codigo)
 );
+
+insert into Bien (marca, modelo, solicitud, cantidad) values ("prueba", "prueba", 9, 2);

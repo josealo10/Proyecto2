@@ -88,7 +88,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
         jl_solicitudes.setText("Mis solicitudes");
 
-        jb_agregarS.setText("Agregar Solicitud");
+        jb_agregarS.setText("Nueva Solicitud");
         jb_agregarS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jb_agregarSActionPerformed(evt);
@@ -150,7 +150,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                         .addComponent(jb_mostrar)
                         .addGap(18, 18, 18)
                         .addComponent(jb_salir)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
