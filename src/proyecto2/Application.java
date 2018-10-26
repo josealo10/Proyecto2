@@ -14,6 +14,7 @@ import proyecto2.presentation.ingreso.ViewUsuario;
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
+
 public class Application {
 
     public static ControllerListaSolicitud CONTROLLER_LISTA_SOLICITUD;

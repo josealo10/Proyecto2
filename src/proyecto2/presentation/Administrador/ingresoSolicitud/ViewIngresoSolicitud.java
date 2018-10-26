@@ -335,7 +335,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                 this.model.getBien().setMarca(jtf_marca.getText());
                 this.model.getBien().setCantidad(Integer.parseInt(jtf_cantidad.getText()));
                 this.model.getBien().setModelo(jtf_modelo.getText());
-                this.model.agregarBien();
+                this.controller.agregarBien();
 
                 JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 this.limpiarCampos();

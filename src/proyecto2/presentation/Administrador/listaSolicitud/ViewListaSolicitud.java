@@ -21,6 +21,11 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         initComponents();
         this.setLocationRelativeTo(null);
         this.jd_bienes.setLocationRelativeTo(null);
+        DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_bienes.getCellRenderer(0, 0);
+        alinear.setHorizontalAlignment(SwingConstants.CENTER);
+
+        alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
+        alinear.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     public void setModel(ModelListaSolicitud model) {
@@ -180,16 +185,9 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
     private void jb_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarActionPerformed
         try {
-            DefaultTableModel tableModel = (DefaultTableModel) jt_solicitudes.getModel();
-            DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
-            
-            alinear.setHorizontalAlignment(SwingConstants.CENTER);
-            tableModel.setRowCount(0);
-            
-            for (Solicitud s : model.getDao().searchSolicitudes(controller.getUsuario().getId())) {
-                Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId()};
-                tableModel.addRow(o);
-            }
+            this.model.setJf_tableModel((DefaultTableModel) jt_solicitudes.getModel());
+            this.model.getJf_tableModel().setRowCount(0);
+            this.controller.jf_llenarTabla();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -200,16 +198,9 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         if (evt.getClickCount() == 2) {
             try {
                 jd_bienes.setVisible(true);
-                DefaultTableModel tableModel = (DefaultTableModel) jt_bienes.getModel();
-                DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_bienes.getCellRenderer(0, 0);
-
-                alinear.setHorizontalAlignment(SwingConstants.CENTER);
-                tableModel.setRowCount(0);
-
-                for (Bien b : model.getDao().searchBienes(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()))) {
-                    Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo()};
-                    tableModel.addRow(o);
-                }
+                this.model.setJd_tableModel((DefaultTableModel) jt_bienes.getModel());
+                this.model.getJd_tableModel().setRowCount(0);
+                this.controller.jd_llenarTabla(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()));
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
