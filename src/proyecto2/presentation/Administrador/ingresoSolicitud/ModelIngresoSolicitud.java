@@ -70,8 +70,10 @@ public class ModelIngresoSolicitud extends Observable {
 
     public void agregarBien() throws Exception {
         if (this.solicitud == null) {
-            this.solicitud = new Solicitud(this.db.ultimaSolicitud() + 1, new Date(), this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()));
-            this.db.addSolicitud(solicitud, solicitud.getFuncionario());
+            this.solicitud = new Solicitud(this.db.ultimaSolicitud() + 1, new Date(), 
+                    this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()), 
+                    this.db.searchDependencia(this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()).getDependencia().getId()));
+            this.db.addSolicitud(solicitud);
         }
         
         this.bien.setSolicitud(this.solicitud);

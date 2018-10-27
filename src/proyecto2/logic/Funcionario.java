@@ -35,6 +35,16 @@ public class Funcionario {
     public void setId(String id) {
         this.id = id;
     }
-    
-    
+
+    public Dependencia getDependencia() {
+        return dependencia;
+    }
+
+    public void setDependencia(Dependencia dependencia) {
+        this.dependencia = dependencia;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    } 
 }
