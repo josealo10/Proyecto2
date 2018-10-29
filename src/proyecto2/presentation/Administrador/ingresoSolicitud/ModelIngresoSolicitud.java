@@ -77,7 +77,7 @@ public class ModelIngresoSolicitud extends Observable {
         }
         
         this.bien.setSolicitud(this.solicitud);
-        Object[] o = new Object[]{this.bien.getCantidad(), this.db.ultimoBien() + 1, this.bien.getMarca(), this.bien.getModelo()};
+        Object[] o = new Object[]{this.bien.getCantidad(), this.bienes.size() + 1, this.bien.getMarca(), this.bien.getModelo()};
         this.tableModel.addRow(o);
         this.bienes.add(bien);
     }

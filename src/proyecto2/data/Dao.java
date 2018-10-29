@@ -80,7 +80,7 @@ public class Dao {
     }
 
     public Usuario searchUsuario(String id) throws Exception {
-        String sql = "select * from Usuario where id = '%s'";
+        String sql = "select * from Usuario u where u.id = '%s'";
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
 
@@ -104,7 +104,7 @@ public class Dao {
     }
 
     public Funcionario searchFuncionario(String id) throws Exception {
-        String sql = "select * from Funcionario where id = '%s'";
+        String sql = "select * from Funcionario where id = '001'";
         sql = String.format(sql, id);
         ResultSet rs = db.executeQuery(sql);
 
@@ -162,17 +162,6 @@ public class Dao {
         }
 
         return bienes;
-    }
-
-    public int ultimoBien() throws Exception {
-        String sql = "select codigo from Bien where codigo = (select max(codigo) from Bien)";
-        ResultSet rs = db.executeQuery(sql);
-
-        if (rs.next()) {
-            return rs.getInt("codigo");
-        } else {
-            throw new Exception("No exiten Bienes");
-        }
     }
 
     public int ultimaSolicitud() throws Exception {
