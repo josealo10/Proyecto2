@@ -10,11 +10,15 @@ public class Solicitud {
     private int codigo;
     private Date fecha;
     private Funcionario funcionario;
+    private Dependencia dependencia;
+    private String estado;
 
-    public Solicitud(int codigo, Date fecha, Funcionario funcionario) {
+    public Solicitud(int codigo, Date fecha, Funcionario funcionario, Dependencia dependencia) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.funcionario = funcionario;
+        this.dependencia = dependencia;
+        this.estado = "Espera";
     }
 
     public Solicitud() {
@@ -43,4 +47,22 @@ public class Solicitud {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
+
+    public Dependencia getDependencia() {
+        return dependencia;
+    }
+
+    public void setDependencia(Dependencia dependencia) {
+        this.dependencia = dependencia;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 }
