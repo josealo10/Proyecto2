@@ -167,7 +167,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
         jl_tipo.setText("Tipo");
 
-        jl_precioT.setText("Precio total            ₡");
+        jl_precioT.setText("Precio total            $");
 
         jl_cantidad.setText("Cantidad");
 
@@ -180,7 +180,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
             }
         });
 
-        jl_precioU.setText("Precio unitario       ₡");
+        jl_precioU.setText("Precio unitario       $");
 
         jtf_precioU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -287,12 +287,11 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
             if (this.model.getSolicitud() != null) {
                 this.model.getDb().deleteSolicitud(this.model.getSolicitud().getCodigo());
             }
-            
+
             if (this.model.getTableModel() != null) {
                 this.model.getTableModel().setRowCount(0);
             }
-            
-            this.model.setBien(null);
+
             this.model.setSolicitud(null);
             this.setVisible(false);
 
