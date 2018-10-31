@@ -138,7 +138,6 @@ public class Dao {
         }
 
         if (solicitudes.isEmpty()) {
-
             throw new Exception("No existen solicitudes");
         }
 
@@ -161,6 +160,23 @@ public class Dao {
         }
 
         return bienes;
+    }
+
+    public ArrayList<Solicitud> searchAllSolicitudes() throws Exception {
+        String sql = "select * from Solicitud";
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Solicitud> solicitudes = new ArrayList<>();
+        
+        while (rs.next()) {
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")), this.searchDependencia(rs.getString("dependencia")));
+            solicitudes.add(s);
+        }
+
+        if (solicitudes.isEmpty()) {
+            throw new Exception("No existen solicitudes");
+        }
+
+        return solicitudes;
     }
 
     public int ultimaSolicitud() throws Exception {

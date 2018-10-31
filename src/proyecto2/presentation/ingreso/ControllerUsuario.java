@@ -38,7 +38,7 @@ public class ControllerUsuario {
             }
             
             if (model.getUsuario().getPermiso().equals("Secretaria")) {
-
+                Application.CONTROLLER_APROBAR_SOLICITUD.getViewAprobarSolicitud().setVisible(true);
             }
             
             if (model.getUsuario().getPermiso().equals("Registrador")) {

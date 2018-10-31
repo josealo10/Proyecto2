@@ -3,6 +3,9 @@ package proyecto2.presentation.Administrador.listaSolicitud;
 import proyecto2.Application;
 import proyecto2.logic.Usuario;
 
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
+ */
 public class ControllerListaSolicitud {
 
     private ModelListaSolicitud model;

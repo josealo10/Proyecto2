@@ -7,9 +7,8 @@ import proyecto2.data.Dao;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Solicitud;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ModelListaSolicitud extends Observable {
 
