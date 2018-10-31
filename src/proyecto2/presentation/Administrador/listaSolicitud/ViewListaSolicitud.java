@@ -6,8 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import proyecto2.logic.Bien;
-import proyecto2.logic.Solicitud;
 
 /*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
