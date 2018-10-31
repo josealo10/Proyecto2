@@ -32,7 +32,7 @@ public class ControllerListaSolicitud {
         this.view = view;
     }
 
-    public void MostrarIngresoSolicitud() {
+    public void mostrarIngresoSolicitud() {
         Application.CONTROLLER_INGRESO_SOLICITUD.getView().setVisible(true);
     }
 
@@ -44,7 +44,11 @@ public class ControllerListaSolicitud {
         this.model.jd_llenarTabla(codigo);
     }
 
-    void jf_llenarTabla() throws Exception {
+    public void jf_llenarTabla() throws Exception {
         this.model.jf_llenarTabla(this.getUsuario().getId());
+    }
+
+    public void cerrarSesion() {
+        Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
 }

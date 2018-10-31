@@ -64,6 +64,7 @@ public class ModelIngresoSolicitud extends Observable {
 
     public void agregarSolicitud() throws Exception {
         if (!bienes.isEmpty()) {
+            this.db.addSolicitud(solicitud);
             for (Bien b : bienes) {
                 this.db.addBien(b);
             }
@@ -77,7 +78,6 @@ public class ModelIngresoSolicitud extends Observable {
             this.solicitud = new Solicitud(0, new Date(),
                     this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()),
                     this.db.searchDependencia(this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()).getDependencia().getId()));
-            this.db.addSolicitud(solicitud);
             this.solicitud.setCodigo(this.db.ultimaSolicitud());
         }
 
