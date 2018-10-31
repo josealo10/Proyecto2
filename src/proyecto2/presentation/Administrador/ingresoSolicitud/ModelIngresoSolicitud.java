@@ -79,7 +79,7 @@ public class ModelIngresoSolicitud extends Observable {
         if (this.solicitud == null) {
             this.solicitud = new Solicitud(0, new Date(),
                     this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()),
-                    this.db.searchDependencia(this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()).getDependencia().getId()));
+                    this.db.searchDependencia(this.db.searchFuncionario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()).getDependencia().getId()),"Espera");
         }
 
         this.bien.setSolicitud(this.solicitud);

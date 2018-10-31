@@ -69,6 +69,11 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
 
         jb_aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/aceptar.png"))); // NOI18N
         jb_aceptar.setText("Aceptar");
+        jb_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_aceptarActionPerformed(evt);
+            }
+        });
 
         jb_rechazar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/rechazar.png"))); // NOI18N
         jb_rechazar.setText("Rechazar");
@@ -155,6 +160,10 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
         this.setVisible(false);
         this.controller.cerrarSesion();
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
+
+    private void jb_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_aceptarActionPerformed
 
     @Override
     public void update(Observable o, Object o1) {
