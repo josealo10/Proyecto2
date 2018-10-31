@@ -36,7 +36,7 @@ public class ControllerAsignarRegistrador {
         this.view = view;
     }
 
-    void jf_llenarTabla() {
+    void jf_llenarTabla() throws Exception {
         this.model.jf_llenarTabla();
     }
     
