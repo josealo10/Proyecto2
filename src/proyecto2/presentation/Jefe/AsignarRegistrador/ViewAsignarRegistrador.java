@@ -5,10 +5,14 @@
  */
 package proyecto2.presentation.Jefe.AsignarRegistrador;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import proyecto2.logic.Funcionario;
 
 /**
  *
@@ -49,6 +53,11 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
         jcb_registradores = new javax.swing.JComboBox<>();
         jb_Asignar = new javax.swing.JButton();
         jb_mostrarS = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jmi_cerrarS = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jt_solicitudes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,33 +97,48 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
             }
         });
 
+        jMenu1.setText("Opciones");
+
+        jmi_cerrarS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jmi_cerrarS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/exit.png"))); // NOI18N
+        jmi_cerrarS.setText("Cerrar sesion");
+        jmi_cerrarS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_cerrarSActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmi_cerrarS);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jl_solicitudes)
-                        .addGap(189, 189, 189)
-                        .addComponent(jl_registradores))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jb_mostrarS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jb_Asignar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcb_registradores, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jb_mostrarS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_Asignar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jcb_registradores, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(jl_solicitudes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jl_registradores)
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_registradores)
                     .addComponent(jl_solicitudes))
@@ -122,7 +146,7 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcb_registradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_mostrarS)
                     .addComponent(jb_Asignar))
@@ -151,14 +175,21 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
         }
     }//GEN-LAST:event_jb_mostrarSActionPerformed
 
+    private void jmi_cerrarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cerrarSActionPerformed
+        controller.CerrarSesion();
+    }//GEN-LAST:event_jmi_cerrarSActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_Asignar;
     private javax.swing.JButton jb_mostrarS;
     private javax.swing.JComboBox<String> jcb_registradores;
     private javax.swing.JLabel jl_registradores;
     private javax.swing.JLabel jl_solicitudes;
+    private javax.swing.JMenuItem jmi_cerrarS;
     private javax.swing.JTable jt_solicitudes;
     // End of variables declaration//GEN-END:variables
 
@@ -166,4 +197,21 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
     public void update(Observable o, Object o1) {
         
     }
+
+    @Override
+    public void setVisible(boolean bln) {
+        super.setVisible(bln);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Jefe OCCB");
+        try {
+            ArrayList<Funcionario> registradores = this.model.mostrarRegistradores();
+            for(Funcionario x:registradores){
+                this.jcb_registradores.addItem(x.getNombre());
+            }
+            //To change body of generated methods, choose Tools | Templates.
+        } catch (Exception ex) {
+            Logger.getLogger(ViewAsignarRegistrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

@@ -5,6 +5,8 @@
  */
 package proyecto2.presentation.Jefe.AsignarRegistrador;
 
+import proyecto2.Application;
+
 /**
  *
  * @author jaalf
@@ -18,6 +20,7 @@ public class ControllerAsignarRegistrador {
         this.view = view;
         this.model.addObserver(view);
         this.view.setController(this);
+        this.view.setModel(model);
     }
 
     public ModelAsignarRegistrador getModel() {
@@ -38,6 +41,11 @@ public class ControllerAsignarRegistrador {
 
     void jf_llenarTabla() throws Exception {
         this.model.jf_llenarTabla();
+    }
+
+    void CerrarSesion() {
+        this.view.setVisible(false);
+        Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
     
     

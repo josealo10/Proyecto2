@@ -5,9 +5,11 @@
  */
 package proyecto2.presentation.Jefe.AsignarRegistrador;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import javax.swing.table.DefaultTableModel;
 import proyecto2.data.Dao;
+import proyecto2.logic.Funcionario;
 import proyecto2.logic.Solicitud;
 
 /**
@@ -39,11 +41,16 @@ public class ModelAsignarRegistrador extends Observable{
         this.jd_tableModel = jd_tableModel;
     }
 
-    void jf_llenarTabla() throws Exception {
+    public void jf_llenarTabla() throws Exception {
         for (Solicitud s : this.db.searchSolicitudesAprobadas()) {
             Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId(), s.getDependencia().getId()};
             jf_tableModel.addRow(o);
         }
+    }
+
+    public ArrayList<Funcionario> mostrarRegistradores() throws Exception {
+        ArrayList<Funcionario> registradores = db.searchAllRegistradores();
+        return registradores;
     }
 
     
