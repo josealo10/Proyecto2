@@ -31,9 +31,9 @@ public class Dao {
     }
 
     public void addBien(Bien b) throws Exception {
-        String sql = "insert into Bien (marca, modelo, solicitud, cantidad) "
-                + "values('%s', '%s', %d, %d)";
-        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getSolicitud().getCodigo(), b.getCantidad());
+        String sql = "insert into Bien (marca, modelo, tipo, descripcion, solicitud, cantidad) "
+                + "values('%s', '%s', '%s', '%s', %d, %d)";
+        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getTipo(), b.getDescripcion(), b.getSolicitud().getCodigo(), b.getCantidad());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Bien ya existe");
@@ -51,8 +51,8 @@ public class Dao {
     }
 
     public void addSolicitud(Solicitud s) throws Exception {
-        String sql = "insert into Solicitud (funcionario, dependencia) values('%s', '%s')";
-        sql = String.format(sql, s.getFuncionario().getId(), s.getDependencia().getId());
+        String sql = "insert into Solicitud (funcionario, dependencia, estado) values('%s', '%s', '%s')";
+        sql = String.format(sql, s.getFuncionario().getId(), s.getDependencia().getId(), s.getEstado());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Solicitud ya existe");
@@ -151,7 +151,8 @@ public class Dao {
         ArrayList<Bien> bienes = new ArrayList<>();
 
         while (rs.next()) {
-            Bien b = new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
+            Bien b = new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getString("tipo"), rs.getString("descripcion"), 
+                    rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
             bienes.add(b);
         }
 

@@ -27,6 +27,7 @@ create table if not exists Solicitud(
     funcionario varchar(10) not null,
     dependencia varchar(50) not null,
     fecha timestamp not null default current_timestamp on update current_timestamp not null,
+    estado varchar(10) not null,
     foreign key (funcionario) references Funcionario (id),
     foreign key (dependencia) references Dependencia (id)
 );
@@ -35,6 +36,8 @@ create table if not exists Bien(
 	codigo int not null auto_increment primary key,
 	marca varchar(15) not null,
 	modelo varchar(15) not null,
+    tipo varchar(8) not null,
+    descripcion varchar(25) not null,
 	solicitud int not null,
 	cantidad int not null,
 	foreign key (solicitud) references Solicitud (numero)

@@ -118,7 +118,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
             },
             new String [] {
-                "Codigo", "Fecha", "Funcionario"
+                "Codigo", "Fecha", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -53,5 +53,6 @@ public class ControllerListaSolicitud {
 
     public void cerrarSesion() {
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
+        Application.CONTROLLER_INGRESO_SOLICITUD.getView().setVisible(false);
     }
 }

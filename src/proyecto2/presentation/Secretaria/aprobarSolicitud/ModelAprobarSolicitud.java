@@ -7,10 +7,7 @@ import proyecto2.data.Dao;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Solicitud;
 
-/**
- * /
- *
- *
+/*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ModelAprobarSolicitud extends Observable {
@@ -52,7 +49,7 @@ public class ModelAprobarSolicitud extends Observable {
 
     public void jf_llenarTabla() throws Exception {
         for (Solicitud s : this.db.searchAllSolicitudes()) {
-            Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId(), s.getDependencia().getId()};
+            Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getId(),  s.getFuncionario().getId(), s.getFecha(), s.getEstado()};
             jf_tableModel.addRow(o);
         }
     }

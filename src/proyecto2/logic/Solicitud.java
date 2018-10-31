@@ -18,7 +18,7 @@ public class Solicitud {
         this.fecha = fecha;
         this.funcionario = funcionario;
         this.dependencia = dependencia;
-        this.estado = "Espera";
+        this.estado = "En espera";
     }
 
     public Solicitud() {
