@@ -1,7 +1,6 @@
 package proyecto2.data;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;

@@ -167,7 +167,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
         jl_tipo.setText("Tipo");
 
-        jl_precioT.setText("Precio total            ₡");
+        jl_precioT.setText("Precio total            $");
 
         jl_cantidad.setText("Cantidad");
 
@@ -180,7 +180,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
             }
         });
 
-        jl_precioU.setText("Precio unitario       ₡");
+        jl_precioU.setText("Precio unitario       $");
 
         jtf_precioU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -284,15 +284,10 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
     private void jb_cancelarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelarSolicitudActionPerformed
         try {
-            if (this.model.getSolicitud() != null) {
-                this.model.getDb().deleteSolicitud(this.model.getSolicitud().getCodigo());
-            }
-            
             if (this.model.getTableModel() != null) {
                 this.model.getTableModel().setRowCount(0);
             }
             
-            this.model.setBien(null);
             this.model.setSolicitud(null);
             this.setVisible(false);
 
@@ -305,6 +300,8 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
         try {
             this.controller.agregarSolicitud();
             JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            this.model.setSolicitud(null);
+            this.model.getTableModel().setRowCount(0);
             this.setVisible(false);
 
         } catch (Exception e) {

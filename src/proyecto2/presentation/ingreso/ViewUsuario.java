@@ -27,6 +27,11 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
         this.controller = controller;
     }
 
+    public void limpiaCampos() {
+        this.jtf_usuario.setText("");
+        this.jpf_clave.setText("");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,6 +138,8 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
                 JOptionPane.showMessageDialog(null, "Bienvenido: " + model.getDao().searchFuncionario(jtf_usuario.getText()).getNombre() + " (" + model.getDao().searchUsuario(jtf_usuario.getText()).getPermiso() + ")",
                         "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
+                this.limpiaCampos();
+                jtf_usuario.requestFocus();
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

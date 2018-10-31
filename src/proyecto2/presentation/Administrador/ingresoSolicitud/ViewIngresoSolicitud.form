@@ -213,7 +213,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jl_precioT">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio total            &#x20a1;"/>
+        <Property name="text" type="java.lang.String" value="Precio total            $"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jl_cantidad">
@@ -238,7 +238,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jl_precioU">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio unitario       &#x20a1;"/>
+        <Property name="text" type="java.lang.String" value="Precio unitario       $"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtf_precioU">
