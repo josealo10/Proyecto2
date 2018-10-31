@@ -44,7 +44,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         jt_bienes = new javax.swing.JTable();
         jl_solicitudes = new javax.swing.JLabel();
         jb_agregarS = new javax.swing.JButton();
-        jb_salir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_solicitudes = new javax.swing.JTable();
         jb_mostrar = new javax.swing.JButton();
@@ -105,14 +104,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jb_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/cancelar.png"))); // NOI18N
-        jb_salir.setText("Salir");
-        jb_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_salirActionPerformed(evt);
-            }
-        });
-
         jt_solicitudes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -170,15 +161,13 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jb_agregarS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_mostrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jb_salir)))
+                        .addComponent(jb_mostrar)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addComponent(jl_solicitudes)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +179,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_mostrar)
-                    .addComponent(jb_salir)
                     .addComponent(jb_agregarS))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -201,10 +189,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     private void jb_agregarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarSActionPerformed
         controller.mostrarIngresoSolicitud();
     }//GEN-LAST:event_jb_agregarSActionPerformed
-
-    private void jb_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_salirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jb_salirActionPerformed
 
     private void jb_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarActionPerformed
         try {
@@ -229,7 +213,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 jd_bienes.setVisible(false);
             }
-
         }
     }//GEN-LAST:event_jt_solicitudesMouseClicked
 
@@ -247,7 +230,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jb_agregarS;
     private javax.swing.JButton jb_mostrar;
-    private javax.swing.JButton jb_salir;
     private javax.swing.JDialog jd_bienes;
     private javax.swing.JLabel jl_solicitudes;
     private javax.swing.JMenu jm_opciones;

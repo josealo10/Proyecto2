@@ -45,4 +45,8 @@ public class ControllerAprobarSolicitud {
     public void cerrarSesion() {
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
+
+    public void cambiarEstado(int codigo, String estado) throws Exception {
+        this.model.cambiarEstado(codigo, estado);
+    }
 }

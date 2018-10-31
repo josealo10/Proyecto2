@@ -48,7 +48,7 @@ public class ModelListaSolicitud extends Observable {
     }
 
     public void jf_llenarTabla(String id) throws Exception {
-        for (Solicitud s : this.db.searchSolicitudes(id)) {
+        for (Solicitud s : this.db.searchSolicitudes("funcionario", id)) {
             Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getEstado()};
             jf_tableModel.addRow(o);
         }

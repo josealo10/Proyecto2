@@ -37,7 +37,7 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_solicitudes = new javax.swing.JTable();
-        jb_aceptar = new javax.swing.JButton();
+        jb_aprobar = new javax.swing.JButton();
         jb_rechazar = new javax.swing.JButton();
         jl_solicitudes = new javax.swing.JLabel();
         jb_mostrar = new javax.swing.JButton();
@@ -67,11 +67,21 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
         });
         jScrollPane1.setViewportView(jt_solicitudes);
 
-        jb_aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/aceptar.png"))); // NOI18N
-        jb_aceptar.setText("Aceptar");
+        jb_aprobar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/aceptar.png"))); // NOI18N
+        jb_aprobar.setText("Aprobar");
+        jb_aprobar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_aprobarActionPerformed(evt);
+            }
+        });
 
         jb_rechazar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/rechazar.png"))); // NOI18N
         jb_rechazar.setText("Rechazar");
+        jb_rechazar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_rechazarActionPerformed(evt);
+            }
+        });
 
         jl_solicitudes.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jl_solicitudes.setText("Solicitudes");
@@ -106,22 +116,20 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 128, Short.MAX_VALUE)
-                        .addComponent(jb_aceptar)
-                        .addGap(16, 16, 16)
-                        .addComponent(jb_mostrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_rechazar)
-                        .addGap(115, 115, 115))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(263, 263, 263)
                 .addComponent(jl_solicitudes)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_aprobar)
+                .addGap(16, 16, 16)
+                .addComponent(jb_mostrar)
+                .addGap(18, 18, 18)
+                .addComponent(jb_rechazar)
+                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +140,7 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_aprobar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_mostrar)
                     .addComponent(jb_rechazar))
                 .addContainerGap())
@@ -148,7 +156,7 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
             this.controller.jf_llenarTabla();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage() + " en estado de espera", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jb_mostrarActionPerformed
 
@@ -157,13 +165,43 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
         this.controller.cerrarSesion();
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
 
+    private void jb_aprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_aprobarActionPerformed
+        try {
+            if (jt_solicitudes.getSelectedRow() == -1) {
+                throw new Exception("No hay fila seleccionada");
+            }
+
+            this.controller.cambiarEstado(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()), "Aprobada");
+            JOptionPane.showMessageDialog(null, "Solicitud aprobada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            this.jb_mostrarActionPerformed(evt);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jb_aprobarActionPerformed
+
+    private void jb_rechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_rechazarActionPerformed
+        try {
+            if (jt_solicitudes.getSelectedRow() == -1) {
+                throw new Exception("No hay fila seleccionada");
+            }
+
+            this.controller.cambiarEstado(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()), "Rechazada");
+            JOptionPane.showMessageDialog(null, "Solicitud rechazada", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            this.jb_mostrarActionPerformed(evt);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jb_rechazarActionPerformed
+
     @Override
     public void update(Observable o, Object o1) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jb_aceptar;
+    private javax.swing.JButton jb_aprobar;
     private javax.swing.JButton jb_mostrar;
     private javax.swing.JButton jb_rechazar;
     private javax.swing.JLabel jl_solicitudes;
