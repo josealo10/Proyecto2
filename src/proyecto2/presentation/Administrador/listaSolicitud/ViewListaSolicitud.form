@@ -111,10 +111,8 @@
                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jb_agregarS" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jb_mostrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jb_salir" min="-2" max="-2" attributes="0"/>
+                      <Component id="jb_mostrar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -122,7 +120,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
               <Component id="jl_solicitudes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="144" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -136,7 +134,6 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jb_mostrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jb_salir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jb_agregarS" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -164,17 +161,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_agregarSActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jb_salir">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/proyecto2/presentation/iconos/cancelar.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Salir"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jb_salirActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -188,7 +174,7 @@
               <Table columnCount="3" rowCount="0">
                 <Column editable="false" title="Codigo" type="java.lang.Object"/>
                 <Column editable="false" title="Fecha" type="java.lang.Object"/>
-                <Column editable="false" title="Funcionario" type="java.lang.Object"/>
+                <Column editable="false" title="Estado" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>

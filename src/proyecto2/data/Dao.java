@@ -31,9 +31,9 @@ public class Dao {
     }
 
     public void addBien(Bien b) throws Exception {
-        String sql = "insert into Bien (marca, modelo, solicitud, cantidad) "
-                + "values('%s', '%s', %d, %d)";
-        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getSolicitud().getCodigo(), b.getCantidad());
+        String sql = "insert into Bien (marca, modelo, tipo, descripcion, solicitud, cantidad) "
+                + "values('%s', '%s', '%s', '%s', %d, %d)";
+        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getTipo(), b.getDescripcion(), b.getSolicitud().getCodigo(), b.getCantidad());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Bien ya existe");
@@ -51,8 +51,8 @@ public class Dao {
     }
 
     public void addSolicitud(Solicitud s) throws Exception {
-        String sql = "insert into Solicitud (funcionario, dependencia) values('%s', '%s')";
-        sql = String.format(sql, s.getFuncionario().getId(), s.getDependencia().getId());
+        String sql = "insert into Solicitud (funcionario, dependencia, estado) values('%s', '%s', '%s')";
+        sql = String.format(sql, s.getFuncionario().getId(), s.getDependencia().getId(), s.getEstado());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Solicitud ya existe");
@@ -121,7 +121,9 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
 
         if (rs.next()) {
-            return new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")), this.searchDependencia(rs.getString("dependencia")),rs.getString("estado"));
+            return new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")),
+                    this.searchDependencia(rs.getString("dependencia")), rs.getString("estado"));
+
         } else {
             throw new Exception("Solicitud no existe");
         }
@@ -132,27 +134,19 @@ public class Dao {
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Funcionario> registradores = new ArrayList<>();
 
-        while (rs.next()) {
-            if(this.searchUsuario(rs.getString("puesto")).equals("Registrador")){
-            registradores.add(new Funcionario(rs.getString("nombre"), rs.getString("id"),
-                    this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto"))));
-            }
-        } if(registradores.isEmpty()) {
-            throw new Exception("No hay registradores");
-        }
-        return registradores;
-    }
-    public ArrayList<Solicitud> searchSolicitudes(String id) throws Exception {
-        String sql = "select * from Solicitud where funcionario = '%s'";
-        sql = String.format(sql, id);
+    public ArrayList<Solicitud> searchSolicitudes(String objeto, String condicion) throws Exception {
+        String sql = "select * from Solicitud where %s = '%s'";
+        sql = String.format(sql, objeto, condicion);
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Solicitud> solicitudes = new ArrayList<>();
+        
         while (rs.next()) {
-            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(id), this.searchDependencia(rs.getString("dependencia")),rs.getString("estado"));
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")),
+                    this.searchDependencia(rs.getString("dependencia")), rs.getString("estado"));
             solicitudes.add(s);
         }
-
-        if (solicitudes.isEmpty()) {
+        
+        if (solicitudes.isEmpty()){
             throw new Exception("No existen solicitudes");
         }
 
@@ -180,7 +174,8 @@ public ArrayList<Solicitud> searchSolicitudesAprobadas() throws Exception {
         ArrayList<Bien> bienes = new ArrayList<>();
 
         while (rs.next()) {
-            Bien b = new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
+            Bien b = new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getString("tipo"), rs.getString("descripcion"),
+                    rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
             bienes.add(b);
         }
 
@@ -195,9 +190,10 @@ public ArrayList<Solicitud> searchSolicitudesAprobadas() throws Exception {
         String sql = "select * from Solicitud";
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Solicitud> solicitudes = new ArrayList<>();
-        
+
         while (rs.next()) {
-            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")), this.searchDependencia(rs.getString("dependencia")),rs.getString("estado"));
+            Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")),
+                    this.searchDependencia(rs.getString("dependencia")), rs.getString("estado"));
             solicitudes.add(s);
         }
 
@@ -206,6 +202,16 @@ public ArrayList<Solicitud> searchSolicitudesAprobadas() throws Exception {
         }
 
         return solicitudes;
+    }
+
+    public void setEstadoSolicitud(int codigo, String estado) throws Exception {
+        String sql = "update Solicitud set estado = '%s' where numero = %d";
+        sql = String.format(sql, estado, codigo);
+
+        if (db.executeUpdate(sql) == 0) {
+            throw new Exception("No se puede actualizar");
+        }
+
     }
 
     public int ultimaSolicitud() throws Exception {

@@ -13,7 +13,7 @@ public class Solicitud {
     private Dependencia dependencia;
     private String estado;
 
-    public Solicitud(int codigo, Date fecha, Funcionario funcionario, Dependencia dependencia,String estado) {
+    public Solicitud(int codigo, Date fecha, Funcionario funcionario, Dependencia dependencia, String estado) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.funcionario = funcionario;

@@ -6,16 +6,26 @@ package proyecto2.logic;
 
 public class Bien {
 
-    private String marca, modelo;
+    private String marca, modelo, tipo, descripcion;
     private int codigo, cantidad;
     private Solicitud solicitud;
 
-    public Bien(String marca, String modelo, int codigo, int cantidad, Solicitud solicitud) {
+    public Bien(String marca, String modelo, String tipo, String descripcion, int codigo, int cantidad, Solicitud solicitud) {
         this.marca = marca;
         this.modelo = modelo;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
         this.codigo = codigo;
         this.cantidad = cantidad;
         this.solicitud = solicitud;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Bien() {}
@@ -36,6 +46,14 @@ public class Bien {
         this.modelo = modelo;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
     public int getCodigo() {
         return codigo;
     }

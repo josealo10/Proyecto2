@@ -3,13 +3,10 @@ package proyecto2.presentation.Administrador.ingresoSolicitud;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import proyecto2.logic.Bien;
 
 /*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
@@ -95,7 +92,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_bienes = new javax.swing.JTable();
         jl_marca = new javax.swing.JLabel();
-        jcb_bien = new javax.swing.JComboBox<>();
+        jcb_tipo = new javax.swing.JComboBox<>();
         jb_agregarBien = new javax.swing.JButton();
         jtf_cantidad = new javax.swing.JTextField();
         jl_descripcion = new javax.swing.JLabel();
@@ -148,7 +145,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
 
         jl_marca.setText("Marca");
 
-        jcb_bien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Compra", "Donativo" }));
+        jcb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Compra", "Donativo" }));
 
         jb_agregarBien.setText("Agregar bien");
         jb_agregarBien.addActionListener(new java.awt.event.ActionListener() {
@@ -195,11 +192,8 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -210,7 +204,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                                     .addComponent(jl_tipo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jcb_bien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcb_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtf_marca)
                                     .addComponent(jtf_modelo)
                                     .addComponent(jtf_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -221,10 +215,11 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jb_cancelarBien))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jl_precioT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jl_precioU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jl_descripcion, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jl_precioT)
+                                                .addComponent(jl_descripcion, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(jl_precioU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jtf_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,19 +231,22 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                                 .addGap(69, 69, 69)
                                 .addComponent(jb_cancelarSolicitud)
                                 .addGap(57, 57, 57)))
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(js_separador, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(17, 17, 17))
+                    .addComponent(js_separador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcb_bien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_tipo)
                     .addComponent(jl_descripcion)
                     .addComponent(jtf_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,7 +274,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_cancelarSolicitud)
                     .addComponent(jb_agregarSolicitud))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,6 +330,8 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                 this.model.getBien().setMarca(jtf_marca.getText());
                 this.model.getBien().setCantidad(Integer.parseInt(jtf_cantidad.getText()));
                 this.model.getBien().setModelo(jtf_modelo.getText());
+                this.model.getBien().setTipo(jcb_tipo.getSelectedItem().toString());
+                this.model.getBien().setDescripcion(jtf_descripcion.getText());
                 this.controller.agregarBien();
 
                 JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -357,7 +357,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
     private javax.swing.JButton jb_agregarSolicitud;
     private javax.swing.JButton jb_cancelarBien;
     private javax.swing.JButton jb_cancelarSolicitud;
-    private javax.swing.JComboBox<String> jcb_bien;
+    private javax.swing.JComboBox<String> jcb_tipo;
     private javax.swing.JLabel jl_cantidad;
     private javax.swing.JLabel jl_descripcion;
     private javax.swing.JLabel jl_marca;

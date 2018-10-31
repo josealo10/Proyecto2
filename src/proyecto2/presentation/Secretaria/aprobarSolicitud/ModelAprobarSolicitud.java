@@ -1,5 +1,6 @@
 package proyecto2.presentation.Secretaria.aprobarSolicitud;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.DefaultTableModel;
@@ -7,10 +8,7 @@ import proyecto2.data.Dao;
 import proyecto2.logic.Bien;
 import proyecto2.logic.Solicitud;
 
-/**
- * /
- *
- *
+/*
  * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ModelAprobarSolicitud extends Observable {
@@ -19,7 +17,7 @@ public class ModelAprobarSolicitud extends Observable {
     private DefaultTableModel jf_tableModel;
     private DefaultTableModel jd_tableModel;
 
-    public ModelAprobarSolicitud() {
+    public ModelAprobarSolicitud() throws Exception {
         this.db = new Dao();
     }
 
@@ -51,8 +49,8 @@ public class ModelAprobarSolicitud extends Observable {
     }
 
     public void jf_llenarTabla() throws Exception {
-        for (Solicitud s : this.db.searchAllSolicitudes()) {
-            Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId(), s.getDependencia().getId()};
+        for (Solicitud s : this.db.searchSolicitudes("estado", "Espera")) {
+            Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getId(), s.getFuncionario().getId(), s.getFecha(), s.getEstado()};
             jf_tableModel.addRow(o);
         }
     }
@@ -64,4 +62,7 @@ public class ModelAprobarSolicitud extends Observable {
         }
     }
 
+    public void cambiarEstado(int codigo, String estado) throws Exception {
+        this.db.setEstadoSolicitud(codigo, estado);
+    }
 }
