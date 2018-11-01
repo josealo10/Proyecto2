@@ -52,7 +52,8 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         jmi_cerrarSesion = new javax.swing.JMenuItem();
 
         jd_bienes.setTitle("Bienes");
-        jd_bienes.setSize(new java.awt.Dimension(415, 370));
+        jd_bienes.setResizable(false);
+        jd_bienes.setSize(new java.awt.Dimension(405, 330));
 
         jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,7 +87,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
             .addGroup(jd_bienesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

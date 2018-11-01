@@ -6,10 +6,13 @@ package proyecto2.logic;
 public class Dependencia {
 
     private String id, nombre;
-
+    
     public Dependencia(String id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+    }
+
+    public Dependencia() {
     }
 
     public String getNombre() {

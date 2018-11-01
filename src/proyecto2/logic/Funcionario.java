@@ -1,7 +1,5 @@
 package proyecto2.logic;
 
-import java.util.ArrayList;
-
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
@@ -42,6 +40,10 @@ public class Funcionario {
 
     public void setDependencia(Dependencia dependencia) {
         this.dependencia = dependencia;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Usuario getUsuario() {

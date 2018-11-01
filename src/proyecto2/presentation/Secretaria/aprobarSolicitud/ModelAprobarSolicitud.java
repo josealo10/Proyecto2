@@ -50,7 +50,8 @@ public class ModelAprobarSolicitud extends Observable {
 
     public void jf_llenarTabla() throws Exception {
         for (Solicitud s : this.db.searchSolicitudes("estado", "Espera")) {
-            Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getId(), s.getFuncionario().getId(), s.getFecha(), s.getEstado()};
+            Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getNombre() + " (" + s.getDependencia().getId() + ")",
+                s.getFuncionario().getNombre() + " (" + s.getFuncionario().getId() + ")", s.getFecha(), s.getEstado()};
             jf_tableModel.addRow(o);
         }
     }

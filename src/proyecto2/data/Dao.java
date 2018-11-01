@@ -69,6 +69,16 @@ public class Dao {
         }
     }
 
+    public void addFuncionario(Funcionario f) throws Exception {
+        String sql = "insert into Funcionario (id, nombre, puesto, dependencia) "
+                + "values('%s', '%s', '%s', '%s')";
+        sql = String.format(sql, f.getId(), f.getNombre(), f.getUsuario().getId(), f.getDependencia().getId());
+
+        if (db.executeUpdate(sql) == 0) {
+            throw new Exception("Funcionario ya existe");
+        }
+    }
+
     public void deleteSolicitud(int codigo) throws Exception {
         String sql = "delete from Solicitud where numero = %d";
         sql = String.format(sql, codigo);
@@ -133,14 +143,26 @@ public class Dao {
         String sql = "select * from Funcionario";
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Funcionario> registradores = new ArrayList<>();
-        while(rs.next()){
-            if(this.searchUsuario(rs.getString("id")).getPermiso().equals("Registrador")){
+        while (rs.next()) {
+            if (this.searchUsuario(rs.getString("id")).getPermiso().equals("Registrador")) {
                 registradores.add(new Funcionario(rs.getString("nombre"), rs.getString("id"),
                         this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto"))));
             }
         }
-            
+
         return registradores;
+    }
+
+    public ArrayList<Dependencia> searchAllDependencias() throws Exception {
+        String sql = "select * from Dependencia";
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Dependencia> dependencias = new ArrayList<>();
+        
+        while (rs.next()) {
+            dependencias.add(new Dependencia(rs.getString("id"), rs.getString("nombre")));
+        }
+
+        return dependencias;
     }
 
     public ArrayList<Solicitud> searchSolicitudes(String objeto, String condicion) throws Exception {
