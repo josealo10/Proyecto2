@@ -43,6 +43,7 @@ public class ControllerAprobarSolicitud {
     }
 
     public void cerrarSesion() {
+        this.view.setVisible(false);
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
 
