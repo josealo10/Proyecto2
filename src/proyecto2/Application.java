@@ -9,6 +9,9 @@ import proyecto2.presentation.Administrador.listaSolicitud.ViewListaSolicitud;
 import proyecto2.presentation.Jefe.AsignarRegistrador.ControllerAsignarRegistrador;
 import proyecto2.presentation.Jefe.AsignarRegistrador.ModelAsignarRegistrador;
 import proyecto2.presentation.Jefe.AsignarRegistrador.ViewAsignarRegistrador;
+import proyecto2.presentation.RRHH.ControllerRRHH;
+import proyecto2.presentation.RRHH.ModelRRHH;
+import proyecto2.presentation.RRHH.ViewRRHH;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ControllerAprobarSolicitud;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ModelAprobarSolicitud;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ViewAprobarSolicitud;
@@ -27,6 +30,7 @@ public class Application {
     public static ControllerIngresoSolicitud CONTROLLER_INGRESO_SOLICITUD;
     public static ControllerUsuario CONTROLLER_USUARIO;
     public static ControllerAsignarRegistrador CONTROLLER_ASIGNAR_REGISTRADOR;
+    public static ControllerRRHH CONTROLLER_RRHH;
 
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
@@ -53,6 +57,12 @@ public class Application {
         ViewAsignarRegistrador var = new ViewAsignarRegistrador();
         ControllerAsignarRegistrador car = new ControllerAsignarRegistrador(mar, var);
         CONTROLLER_ASIGNAR_REGISTRADOR = car;
+        
+        ModelRRHH mrh = new ModelRRHH();
+        ViewRRHH vrh = new ViewRRHH();
+        ControllerRRHH crh = new ControllerRRHH(vrh, mrh);
+        CONTROLLER_RRHH = crh;
+        
         vu.setVisible(true);
     }
 }

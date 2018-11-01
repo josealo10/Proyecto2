@@ -46,7 +46,7 @@ public class ControllerUsuario {
             }
             
             if (model.getUsuario().getPermiso().equals("Jefe RH")) {
-
+                Application.CONTROLLER_RRHH.getView().setVisible(true);
             }
 
         }
