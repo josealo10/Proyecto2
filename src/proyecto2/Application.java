@@ -6,6 +6,9 @@ import proyecto2.presentation.Administrador.ingresoSolicitud.ViewIngresoSolicitu
 import proyecto2.presentation.Administrador.listaSolicitud.ControllerListaSolicitud;
 import proyecto2.presentation.Administrador.listaSolicitud.ModelListaSolicitud;
 import proyecto2.presentation.Administrador.listaSolicitud.ViewListaSolicitud;
+import proyecto2.presentation.Jefe.AsignarRegistrador.ControllerAsignarRegistrador;
+import proyecto2.presentation.Jefe.AsignarRegistrador.ModelAsignarRegistrador;
+import proyecto2.presentation.Jefe.AsignarRegistrador.ViewAsignarRegistrador;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ControllerAprobarSolicitud;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ModelAprobarSolicitud;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ViewAprobarSolicitud;
@@ -16,12 +19,14 @@ import proyecto2.presentation.ingreso.ViewUsuario;
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
+
 public class Application {
 
     public static ControllerListaSolicitud CONTROLLER_LISTA_SOLICITUD;
     public static ControllerAprobarSolicitud CONTROLLER_APROBAR_SOLICITUD;
     public static ControllerIngresoSolicitud CONTROLLER_INGRESO_SOLICITUD;
     public static ControllerUsuario CONTROLLER_USUARIO;
+    public static ControllerAsignarRegistrador CONTROLLER_ASIGNAR_REGISTRADOR;
 
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
@@ -44,6 +49,10 @@ public class Application {
         ControllerAprobarSolicitud cas = new ControllerAprobarSolicitud(mas, vas);
         CONTROLLER_APROBAR_SOLICITUD = cas;
 
+        ModelAsignarRegistrador mar = new ModelAsignarRegistrador();
+        ViewAsignarRegistrador var = new ViewAsignarRegistrador();
+        ControllerAsignarRegistrador car = new ControllerAsignarRegistrador(mar, var);
+        CONTROLLER_ASIGNAR_REGISTRADOR = car;
         vu.setVisible(true);
     }
 }

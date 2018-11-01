@@ -34,7 +34,7 @@ public class ControllerUsuario {
             }
 
             if (model.getUsuario().getPermiso().equals("Jefe OCCB")) {
-
+                Application.CONTROLLER_ASIGNAR_REGISTRADOR.getView().setVisible(true);
             }
             
             if (model.getUsuario().getPermiso().equals("Secretaria")) {
