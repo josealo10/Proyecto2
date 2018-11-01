@@ -133,15 +133,13 @@ public class Dao {
         String sql = "select * from Funcionario";
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Funcionario> registradores = new ArrayList<>();
-
-        while (rs.next()) {
-            if (this.searchUsuario(rs.getString("puesto")).getPermiso().equals("Registrador")) {
+        while(rs.next()){
+            if(this.searchUsuario(rs.getString("id")).getPermiso().equals("Registrador")){
                 registradores.add(new Funcionario(rs.getString("nombre"), rs.getString("id"),
                         this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto"))));
             }
-
         }
-        
+            
         return registradores;
     }
 
