@@ -18,7 +18,11 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
     public ViewAprobarSolicitud() {
         initComponents();
         this.setLocationRelativeTo(null);
-        DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
+        this.jd_bienes.setLocationRelativeTo(null);
+        DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_bienes.getCellRenderer(0, 0);
+        alinear.setHorizontalAlignment(SwingConstants.CENTER);
+
+        alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
         alinear.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
@@ -35,6 +39,9 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_bienes = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_bienes = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_solicitudes = new javax.swing.JTable();
         jb_aprobar = new javax.swing.JButton();
@@ -44,6 +51,47 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
         jmb_menu = new javax.swing.JMenuBar();
         jm_opciones = new javax.swing.JMenu();
         jmi_cerrarSesion = new javax.swing.JMenuItem();
+
+        jd_bienes.setTitle("Bienes");
+        jd_bienes.setLocation(new java.awt.Point(0, 0));
+        jd_bienes.setPreferredSize(new java.awt.Dimension(395, 333));
+        jd_bienes.setResizable(false);
+        jd_bienes.setSize(new java.awt.Dimension(405, 330));
+
+        jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Cantidad", "Marca", "Modelo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jt_bienes);
+
+        javax.swing.GroupLayout jd_bienesLayout = new javax.swing.GroupLayout(jd_bienes.getContentPane());
+        jd_bienes.getContentPane().setLayout(jd_bienesLayout);
+        jd_bienesLayout.setHorizontalGroup(
+            jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_bienesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_bienesLayout.setVerticalGroup(
+            jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_bienesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Secretaria");
@@ -63,6 +111,11 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jt_solicitudes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_solicitudesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jt_solicitudes);
@@ -194,19 +247,37 @@ public class ViewAprobarSolicitud extends javax.swing.JFrame implements Observer
         }
     }//GEN-LAST:event_jb_rechazarActionPerformed
 
+    private void jt_solicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_solicitudesMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+                jd_bienes.setVisible(true);
+                this.model.setJd_tableModel((DefaultTableModel) jt_bienes.getModel());
+                this.model.getJd_tableModel().setRowCount(0);
+                this.controller.jd_llenarTabla(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                jd_bienes.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_jt_solicitudesMouseClicked
+
     @Override
     public void update(Observable o, Object o1) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jb_aprobar;
     private javax.swing.JButton jb_mostrar;
     private javax.swing.JButton jb_rechazar;
+    private javax.swing.JDialog jd_bienes;
     private javax.swing.JLabel jl_solicitudes;
     private javax.swing.JMenu jm_opciones;
     private javax.swing.JMenuBar jmb_menu;
     private javax.swing.JMenuItem jmi_cerrarSesion;
+    private javax.swing.JTable jt_bienes;
     private javax.swing.JTable jt_solicitudes;
     // End of variables declaration//GEN-END:variables
 }

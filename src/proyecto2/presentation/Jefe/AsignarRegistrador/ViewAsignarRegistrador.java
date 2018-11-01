@@ -1,10 +1,7 @@
 package proyecto2.presentation.Jefe.AsignarRegistrador;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -195,7 +192,7 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
         try {
             jcb_registradores.removeAllItems();
             for (Funcionario f : this.model.mostrarRegistradores()) {
-                jcb_registradores.addItem(f.getNombre());
+                jcb_registradores.addItem(f.getNombre() + " (" + f.getId() + ")");
             }
 
         } catch (Exception e) {

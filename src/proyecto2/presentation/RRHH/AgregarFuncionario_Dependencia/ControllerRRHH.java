@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto2.presentation.RRHH;
+package proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia;
 
 import proyecto2.Application;
 
@@ -12,6 +12,7 @@ import proyecto2.Application;
  * @author jaalf
  */
 public class ControllerRRHH {
+
     private ViewRRHH view;
     private ModelRRHH model;
 
@@ -20,7 +21,6 @@ public class ControllerRRHH {
         this.model = model;
         this.view.setController(this);
         this.view.setModel(model);
-        
     }
 
     public ViewRRHH getView() {
@@ -39,12 +39,17 @@ public class ControllerRRHH {
         this.model = model;
     }
 
-    void cerrarSesion() {
+    public void cerrarSesion() {
         this.view.setVisible(false);
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
-    
-    
-    
-    
+
+    public void agregarFuncionario() throws Exception {
+        this.model.agregarFuncionario();
+    }
+
+    public void agregarDependencia() throws Exception {
+        this.model.agregarDependencia();
+    }
+
 }
