@@ -217,7 +217,6 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jt_solicitudesMouseClicked
 
     private void jmi_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cerrarSesionActionPerformed
-        this.setVisible(false);
         this.controller.cerrarSesion();
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
 

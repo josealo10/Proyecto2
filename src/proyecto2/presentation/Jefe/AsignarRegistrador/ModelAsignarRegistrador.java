@@ -43,16 +43,12 @@ public class ModelAsignarRegistrador extends Observable{
 
     public void jf_llenarTabla() throws Exception {
         for (Solicitud s : this.db.searchSolicitudesAprobadas()) {
-            Object[] o = new Object[]{s.getCodigo(), s.getFecha(), s.getFuncionario().getId(), s.getDependencia().getId()};
+            Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getId(), s.getFuncionario().getId(), s.getFecha()};
             jf_tableModel.addRow(o);
         }
     }
 
     public ArrayList<Funcionario> mostrarRegistradores() throws Exception {
-        ArrayList<Funcionario> registradores = db.searchAllRegistradores();
-        return registradores;
-    }
-
-    
-    
+        return db.searchAllRegistradores();
+    }  
 }

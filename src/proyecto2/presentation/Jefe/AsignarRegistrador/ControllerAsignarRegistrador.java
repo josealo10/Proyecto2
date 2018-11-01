@@ -39,14 +39,12 @@ public class ControllerAsignarRegistrador {
         this.view = view;
     }
 
-    void jf_llenarTabla() throws Exception {
+    public void jf_llenarTabla() throws Exception {
         this.model.jf_llenarTabla();
     }
 
-    void CerrarSesion() {
+    public void cerrarSesion() {
         this.view.setVisible(false);
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
-    
-    
 }
