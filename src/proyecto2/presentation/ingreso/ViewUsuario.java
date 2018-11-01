@@ -130,6 +130,7 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
         try {
             controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
+            this.limpiaCampos();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
