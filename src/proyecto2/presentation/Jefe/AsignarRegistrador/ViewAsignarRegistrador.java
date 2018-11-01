@@ -210,7 +210,7 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
             }
             //To change body of generated methods, choose Tools | Templates.
         } catch (Exception ex) {
-            Logger.getLogger(ViewAsignarRegistrador.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

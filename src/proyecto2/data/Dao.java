@@ -129,12 +129,13 @@ public class Dao {
         }
     }
     public ArrayList<Funcionario> searchAllRegistradores() throws Exception {
-        String sql = "select * from Funcionario = '%s'";
+        String sql = "select * from Funcionario";
         sql = String.format(sql);
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Funcionario> registradores = new ArrayList<>();
         while(rs.next()){
-            if(this.searchUsuario(rs.getString("puesto")).getPermiso().equals("Registrador")){
+            
+            if(this.searchUsuario(rs.getString("id")).getPermiso().equals("Administrador")){
                 registradores.add(new Funcionario(rs.getString("nombre"), rs.getString("id"),
                     this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto"))));
             }
