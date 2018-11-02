@@ -356,6 +356,7 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
 
                 JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 this.limpiarCamposDependencia();
+                this.setVisible(true);
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -363,6 +364,7 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
         } else {
             JOptionPane.showMessageDialog(null, "Campos sin llenar", "Error", JOptionPane.ERROR_MESSAGE);
         }
+       
     }//GEN-LAST:event_jb_agregarDependenciaActionPerformed
 
     private void jtf_idDependenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_idDependenciaKeyPressed
