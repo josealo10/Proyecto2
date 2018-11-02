@@ -221,7 +221,7 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
             this.controller.asignarRegistrador(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()), jcb_registradores.getSelectedItem().toString().substring(jcb_registradores.getSelectedItem().toString().indexOf("(") + 1, jcb_registradores.getSelectedItem().toString().length() - 1));
             JOptionPane.showMessageDialog(null, "Se asigno registrador correctamente", "Information", JOptionPane.INFORMATION_MESSAGE);
             this.jb_mostrarActionPerformed(evt);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -263,7 +263,7 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
 
     @Override
     public void setVisible(boolean bln) {
-        super.setVisible(bln);
+        super.setVisible(bln);    
         try {
             jcb_registradores.removeAllItems();
             for (Funcionario f : this.model.mostrarRegistradores()) {
