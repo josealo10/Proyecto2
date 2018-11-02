@@ -26,10 +26,12 @@ create table if not exists Solicitud(
 	numero int not null auto_increment primary key,
     funcionario varchar(10) not null,
     dependencia varchar(50) not null,
+    registrador varchar(10),
     fecha timestamp not null default current_timestamp on update current_timestamp not null,
     estado varchar(10) not null,
     foreign key (funcionario) references Funcionario (id),
-    foreign key (dependencia) references Dependencia (id)
+    foreign key (dependencia) references Dependencia (id),
+    foreign key (registrador) references Funcionario (id)
 );
 
 create table if not exists Bien(

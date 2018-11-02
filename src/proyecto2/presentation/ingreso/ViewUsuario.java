@@ -129,7 +129,11 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
 
     private void jb_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_entrarActionPerformed
         try {
+            JOptionPane.showMessageDialog(null, "Bienvenido: " + model.getDao().searchFuncionario(jtf_usuario.getText()).getNombre() + " (" + model.getDao().searchUsuario(jtf_usuario.getText()).getPermiso() + ")",
+                    "Informacion", JOptionPane.INFORMATION_MESSAGE);
             controller.ingresar(jtf_usuario.getText(), jpf_clave.getText());
+            this.limpiaCampos();
+            jtf_usuario.requestFocus();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -154,7 +158,11 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private void jpf_claveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpf_claveKeyPressed
         this.jtf_usuarioKeyPressed(evt);
     }//GEN-LAST:event_jpf_claveKeyPressed
-
+    
+    @Override
+    public void update(Observable o, Object o1) {
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jb_entrar;
     private javax.swing.JButton jb_salir;
@@ -164,7 +172,4 @@ public class ViewUsuario extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextField jtf_usuario;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void update(Observable o, Object o1) {
-    }
 }

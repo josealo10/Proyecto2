@@ -4,8 +4,6 @@ import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto2.logic.Dependencia;
 
@@ -379,6 +377,7 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
 
                     JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                     this.limpiarCamposDependencia();
+                    this.setVisible(true);
 
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

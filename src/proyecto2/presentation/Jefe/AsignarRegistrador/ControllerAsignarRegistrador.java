@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2.presentation.Jefe.AsignarRegistrador;
 
 import proyecto2.Application;
 
-/**
- *
+/*
  * @author jaalf
  */
 public class ControllerAsignarRegistrador {
+
     private ModelAsignarRegistrador model;
     private ViewAsignarRegistrador view;
 
@@ -41,6 +36,14 @@ public class ControllerAsignarRegistrador {
 
     public void jf_llenarTabla() throws Exception {
         this.model.jf_llenarTabla();
+    }
+
+    public void jd_llenarTabla(int codigo) throws Exception {
+        this.model.jd_llenarTabla(codigo);
+    }
+
+    public void asignarRegistrador(int codigo, String registrador) throws Exception {
+        this.model.asignarRegistrador(codigo, registrador);
     }
 
     public void cerrarSesion() {
