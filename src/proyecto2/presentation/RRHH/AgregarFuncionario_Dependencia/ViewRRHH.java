@@ -4,6 +4,8 @@ import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyecto2.logic.Dependencia;
 
@@ -401,26 +403,37 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jb_cancelarDependenciaActionPerformed
 
     private void jb_agregarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarFuncionarioActionPerformed
-        if (this.isValidoFuncionario()) {
+        if (this.isValidoFuncionario() ) {
             try {
-                this.model.getUsuario().setId(jtf_idFuncionario.getText());
-                this.model.getUsuario().setClave(jtf_claveFuncionario.getText());
-                this.model.getUsuario().setPermiso(jcb_puestoFuncionario.getSelectedItem().toString());
-
-                this.model.getFuncionario().setId(jtf_idFuncionario.getText());
-                this.model.getFuncionario().setNombre(jtf_nombreFuncionario.getText());
-                this.model.getFuncionario().setDependencia(this.model.getDb().searchDependencia(jcb_depdenciaFuncionario.getSelectedItem().toString().substring(jcb_depdenciaFuncionario.getSelectedItem().toString().indexOf("(") + 1, jcb_depdenciaFuncionario.getSelectedItem().toString().length() - 1)));
-                this.model.getFuncionario().setUsuario(this.model.getDb().searchUsuario(jtf_idFuncionario.getText()));
-                this.controller.agregarFuncionario();
-
-                JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-                this.limpiarCamposFuncionario();
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                if(!this.model.getDb().isSearchUsuario(jtf_idFuncionario.getText())){
+                    try {
+                        this.model.getUsuario().setId(jtf_idFuncionario.getText());
+                        this.model.getUsuario().setClave(jtf_claveFuncionario.getText());
+                        this.model.getUsuario().setPermiso(jcb_puestoFuncionario.getSelectedItem().toString());
+                        
+                        this.model.getFuncionario().setId(jtf_idFuncionario.getText());
+                        this.model.getFuncionario().setNombre(jtf_nombreFuncionario.getText());
+                        this.model.getFuncionario().setDependencia(this.model.getDb().searchDependencia(jcb_depdenciaFuncionario.getSelectedItem().toString().substring(jcb_depdenciaFuncionario.getSelectedItem().toString().indexOf("(") + 1, jcb_depdenciaFuncionario.getSelectedItem().toString().length() - 1)));
+                        this.model.getFuncionario().setUsuario(this.model.getUsuario());
+                        this.controller.agregarFuncionario();
+                        
+                        JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+                        this.limpiarCamposFuncionario();
+                        
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } 
+            catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Campos sin llenar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-        } else {
+        } 
+        else {
             JOptionPane.showMessageDialog(null, "Campos sin llenar", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jb_agregarFuncionarioActionPerformed

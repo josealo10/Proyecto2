@@ -99,6 +99,16 @@ public class Dao {
             throw new Exception("Usuario no existe");
         }
     }
+    public boolean isSearchUsuario(String id) throws Exception {
+        String sql = "select * from Usuario u where u.id = '%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        if (rs.next()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public Dependencia searchDependencia(String id) throws Exception {
         String sql = "select * from Dependencia where id = '%s'";
