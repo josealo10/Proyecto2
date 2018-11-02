@@ -20,7 +20,11 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
     public ViewAsignarRegistrador() throws Exception {
         initComponents();
         this.setLocationRelativeTo(null);
-        DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
+        this.jd_bienes.setLocationRelativeTo(null);
+        DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_bienes.getCellRenderer(0, 0);
+        alinear.setHorizontalAlignment(SwingConstants.CENTER);
+
+        alinear = (DefaultTableCellRenderer) jt_solicitudes.getCellRenderer(0, 0);
         alinear.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
@@ -44,6 +48,9 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_bienes = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_bienes = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_solicitudes = new javax.swing.JTable();
         jl_solicitudes = new javax.swing.JLabel();
@@ -54,6 +61,44 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
         jmb_menu = new javax.swing.JMenuBar();
         jm_opciones = new javax.swing.JMenu();
         jmi_cerrarSesion = new javax.swing.JMenuItem();
+
+        jd_bienes.setTitle("Bienes");
+        jd_bienes.setSize(new java.awt.Dimension(415, 340));
+
+        jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Cantidad", "Marca", "Modelo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jt_bienes);
+
+        javax.swing.GroupLayout jd_bienesLayout = new javax.swing.GroupLayout(jd_bienes.getContentPane());
+        jd_bienes.getContentPane().setLayout(jd_bienesLayout);
+        jd_bienesLayout.setHorizontalGroup(
+            jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_bienesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_bienesLayout.setVerticalGroup(
+            jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_bienesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jefe OCCB");
@@ -73,6 +118,11 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jt_solicitudes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_solicitudesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jt_solicitudes);
@@ -125,21 +175,24 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jl_solicitudes)))
+                        .addGap(190, 190, 190)
+                        .addComponent(jl_solicitudes)
+                        .addGap(212, 212, 212))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jcb_registradores, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jb_asignar))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jl_registradores)
-                        .addGap(114, 114, 114))))
+                        .addGap(79, 79, 79))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +217,14 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
     }// </editor-fold>//GEN-END:initComponents
 
     private void jb_asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_asignarActionPerformed
-        // TODO add your handling code here:
+        try {
+            this.controller.asignarRegistrador(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()), jcb_registradores.getSelectedItem().toString().substring(jcb_registradores.getSelectedItem().toString().indexOf("(") + 1, jcb_registradores.getSelectedItem().toString().length() - 1));
+            JOptionPane.showMessageDialog(null, "Se asigno registrador correctamente", "Information", JOptionPane.INFORMATION_MESSAGE);
+            this.jb_mostrarActionPerformed(evt);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jb_asignarActionPerformed
 
     private void jb_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarActionPerformed
@@ -181,6 +241,21 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
     private void jmi_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cerrarSesionActionPerformed
         controller.cerrarSesion();
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
+
+    private void jt_solicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_solicitudesMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+                jd_bienes.setVisible(true);
+                this.model.setJd_tableModel((DefaultTableModel) jt_bienes.getModel());
+                this.model.getJd_tableModel().setRowCount(0);
+                this.controller.jd_llenarTabla(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                jd_bienes.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_jt_solicitudesMouseClicked
 
     @Override
     public void update(Observable o, Object o1) {
@@ -203,14 +278,17 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jb_asignar;
     private javax.swing.JButton jb_mostrar;
     private javax.swing.JComboBox<String> jcb_registradores;
+    private javax.swing.JDialog jd_bienes;
     private javax.swing.JLabel jl_registradores;
     private javax.swing.JLabel jl_solicitudes;
     private javax.swing.JMenu jm_opciones;
     private javax.swing.JMenuBar jmb_menu;
     private javax.swing.JMenuItem jmi_cerrarSesion;
+    private javax.swing.JTable jt_bienes;
     private javax.swing.JTable jt_solicitudes;
     // End of variables declaration//GEN-END:variables
 }
