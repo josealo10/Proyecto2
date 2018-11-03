@@ -47,6 +47,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_solicitudes = new javax.swing.JTable();
         jb_mostrar = new javax.swing.JButton();
+        jb_eliminar = new javax.swing.JButton();
         jmb_menu = new javax.swing.JMenuBar();
         jm_opciones = new javax.swing.JMenu();
         jmi_cerrarSesion = new javax.swing.JMenuItem();
@@ -136,6 +137,14 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
             }
         });
 
+        jb_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/cancelar.png"))); // NOI18N
+        jb_eliminar.setText("Eliminar Solicitud");
+        jb_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarActionPerformed(evt);
+            }
+        });
+
         jm_opciones.setText("Opciones");
 
         jmi_cerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -159,14 +168,16 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jb_agregarS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jb_mostrar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_mostrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
+                .addGap(181, 181, 181)
                 .addComponent(jl_solicitudes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -180,7 +191,8 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_mostrar)
-                    .addComponent(jb_agregarS))
+                    .addComponent(jb_agregarS)
+                    .addComponent(jb_eliminar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -221,6 +233,24 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
         this.controller.cerrarSesion();
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
 
+    private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
+        try {
+            if (jt_solicitudes.getSelectedRow() == -1) {
+                throw new Exception("No hay fila seleccionada");
+            }
+            if (!this.model.getDao().searchSolicitud(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString())).getEstado().equals("Espera")) {
+                throw new Exception("Solo se pueden eliminar solicitudes en espera");
+            }
+
+            this.controller.eliminarSolicitud(Integer.parseInt(jt_solicitudes.getValueAt(jt_solicitudes.getSelectedRow(), 0).toString()));
+            JOptionPane.showMessageDialog(null, "Se borro correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            this.jb_mostrarActionPerformed(evt);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jb_eliminarActionPerformed
+
     @Override
     public void update(Observable o, Object o1) {
     }
@@ -229,6 +259,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jb_agregarS;
+    private javax.swing.JButton jb_eliminar;
     private javax.swing.JButton jb_mostrar;
     private javax.swing.JDialog jd_bienes;
     private javax.swing.JLabel jl_solicitudes;

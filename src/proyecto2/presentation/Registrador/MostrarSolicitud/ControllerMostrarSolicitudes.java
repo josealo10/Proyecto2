@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2.presentation.Registrador.MostrarSolicitud;
 
+import javax.swing.table.DefaultTableModel;
 import proyecto2.Application;
-import proyecto2.logic.Funcionario;
-import proyecto2.logic.Usuario;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ControllerMostrarSolicitudes {
 
@@ -51,7 +44,11 @@ public class ControllerMostrarSolicitudes {
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
 
-    public void agregarCategoria() throws Exception {
-        this.model.agregarCategoria();
+    public void mostrarBienes(int codigo) throws Exception {
+        Application.CONTROLLER_BIENES.getView().setVisible(true);
+        Application.CONTROLLER_BIENES.llenarTabla(codigo);
+        Application.CONTROLLER_BIENES.getModel().setSolicitud(this.model.getDb().searchSolicitud(codigo));
     }
+
+
 }

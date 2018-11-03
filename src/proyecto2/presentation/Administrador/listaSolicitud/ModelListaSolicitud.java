@@ -60,4 +60,13 @@ public class ModelListaSolicitud extends Observable {
             jd_tableModel.addRow(o);
         }
     }
+
+    public void elimiarSolicitud(int codigo) throws Exception {
+        this.eliminarBienes(codigo);
+        this.db.deleteSolicitud(codigo);
+    }
+
+    public void eliminarBienes(int codigo) throws Exception {
+        this.db.deleteBien(codigo);
+    }
 }
