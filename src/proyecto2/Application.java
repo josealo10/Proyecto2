@@ -12,6 +12,9 @@ import proyecto2.presentation.Jefe.AsignarRegistrador.ViewAsignarRegistrador;
 import proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia.ControllerRRHH;
 import proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia.ModelRRHH;
 import proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia.ViewRRHH;
+import proyecto2.presentation.Registrador.MostrarSolicitud.ControllerMostrarSolicitudes;
+import proyecto2.presentation.Registrador.MostrarSolicitud.ModelMostrarSolicitudes;
+import proyecto2.presentation.Registrador.MostrarSolicitud.ViewMostrarSolicitudes;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ControllerAprobarSolicitud;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ModelAprobarSolicitud;
 import proyecto2.presentation.Secretaria.aprobarSolicitud.ViewAprobarSolicitud;
@@ -31,6 +34,8 @@ public class Application {
     public static ControllerUsuario CONTROLLER_USUARIO;
     public static ControllerAsignarRegistrador CONTROLLER_ASIGNAR_REGISTRADOR;
     public static ControllerRRHH CONTROLLER_RRHH;
+    public static ControllerMostrarSolicitudes CONTROLLER_MOSTRAR_SOLICITUDES;
+            
 
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
@@ -62,6 +67,12 @@ public class Application {
         ViewRRHH vrh = new ViewRRHH();
         ControllerRRHH crh = new ControllerRRHH(vrh, mrh);
         CONTROLLER_RRHH = crh;
+        
+        ModelMostrarSolicitudes mms = new ModelMostrarSolicitudes();
+        ViewMostrarSolicitudes vms = new ViewMostrarSolicitudes();
+        ControllerMostrarSolicitudes cms = new ControllerMostrarSolicitudes(mms, vms);
+        CONTROLLER_MOSTRAR_SOLICITUDES = cms;
+        
         
         vu.setVisible(true);
     }

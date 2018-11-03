@@ -5,6 +5,10 @@
  */
 package proyecto2.presentation.Registrador.MostrarSolicitud;
 
+import proyecto2.Application;
+import proyecto2.logic.Funcionario;
+import proyecto2.logic.Usuario;
+
 /**
  *
  * @author jaalf
@@ -35,6 +39,20 @@ public class ControllerMostrarSolicitudes {
 
     public void setView(ViewMostrarSolicitudes view) {
         this.view = view;
+    }
+
+    void LlenarTabla() throws Exception {
+        this.model.LlenarTabla();    
+    }
+
+    void CerrarSesion() {
+        this.view.setVisible(false);
+        Application.CONTROLLER_USUARIO.getView().setVisible(true);
+    }
+
+    public void setFuncionario(Usuario usuario) throws Exception {
+        Funcionario registrador = this.model.getDb().searchFuncionario(usuario.getId());
+        this.model.setRegistrador(registrador);
     }
     
     

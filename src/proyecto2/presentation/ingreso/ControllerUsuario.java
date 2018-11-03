@@ -42,7 +42,9 @@ public class ControllerUsuario {
             }
             
             if (model.getUsuario().getPermiso().equals("Registrador")) {
-
+                Application.CONTROLLER_MOSTRAR_SOLICITUDES.getView().setVisible(true);
+                this.model.getUsuario();
+                Application.CONTROLLER_MOSTRAR_SOLICITUDES.setFuncionario(this.model.getUsuario());
             }
             
             if (model.getUsuario().getPermiso().equals("Jefe RRHH")) {
