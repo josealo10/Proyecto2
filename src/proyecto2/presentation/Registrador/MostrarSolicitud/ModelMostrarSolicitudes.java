@@ -9,6 +9,7 @@ import java.util.Observable;
 import javax.swing.table.DefaultTableModel;
 import proyecto2.data.Dao;
 import proyecto2.logic.Funcionario;
+import proyecto2.logic.Solicitud;
 
 /**
  *
@@ -19,6 +20,11 @@ public class ModelMostrarSolicitudes extends Observable  {
     private Funcionario registrador;
     private DefaultTableModel jf_tableModel;
 
+    public ModelMostrarSolicitudes() {
+        this.db = new Dao();
+    }
+
+    
     public Dao getDb() {
         return db;
     }
@@ -37,6 +43,13 @@ public class ModelMostrarSolicitudes extends Observable  {
 
     public void setJf_tableModel(DefaultTableModel jf_tableModel) {
         this.jf_tableModel = jf_tableModel;
+    }
+
+    void LlenarTabla() throws Exception {
+        for (Solicitud s : this.db.searchSolicitudOfRegistrador(this.registrador.getId())) {
+            Object[] o = new Object[]{s.getCodigo(), s.getDependencia(),s.getFuncionario(), s.getEstado()};
+            jf_tableModel.addRow(o);
+        }
     }
     
     

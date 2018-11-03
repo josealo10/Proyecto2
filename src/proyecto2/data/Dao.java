@@ -149,6 +149,20 @@ public class Dao {
             throw new Exception("Solicitud no existe");
         }
     }
+    public ArrayList<Solicitud> searchSolicitudOfRegistrador(String id) throws Exception {
+        String sql = "select * from Solicitud where registrador = id";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Solicitud> solicitudes = new ArrayList<>();
+        while (rs.next()) {
+            solicitudes.add(new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")),
+                    this.searchFuncionario(rs.getString("registrador")), this.searchDependencia(rs.getString("dependencia")), rs.getString("estado")));
+        } 
+        if(solicitudes.isEmpty()){
+            throw new Exception("No hay solicitudes asignadas");
+        }
+        return solicitudes;
+    }
 
     public ArrayList<Funcionario> searchAllRegistradores() throws Exception {
         String sql = "select * from Funcionario";
