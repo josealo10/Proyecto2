@@ -12,6 +12,9 @@ import proyecto2.presentation.Jefe.AsignarRegistrador.ViewAsignarRegistrador;
 import proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia.ControllerRRHH;
 import proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia.ModelRRHH;
 import proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia.ViewRRHH;
+import proyecto2.presentation.Registrador.Bienes.ControllerBienes;
+import proyecto2.presentation.Registrador.Bienes.ModelBienes;
+import proyecto2.presentation.Registrador.Bienes.ViewBienes;
 import proyecto2.presentation.Registrador.MostrarSolicitud.ControllerMostrarSolicitudes;
 import proyecto2.presentation.Registrador.MostrarSolicitud.ModelMostrarSolicitudes;
 import proyecto2.presentation.Registrador.MostrarSolicitud.ViewMostrarSolicitudes;
@@ -25,7 +28,6 @@ import proyecto2.presentation.ingreso.ViewUsuario;
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
-
 public class Application {
 
     public static ControllerListaSolicitud CONTROLLER_LISTA_SOLICITUD;
@@ -35,7 +37,7 @@ public class Application {
     public static ControllerAsignarRegistrador CONTROLLER_ASIGNAR_REGISTRADOR;
     public static ControllerRRHH CONTROLLER_RRHH;
     public static ControllerMostrarSolicitudes CONTROLLER_MOSTRAR_SOLICITUDES;
-            
+    public static ControllerBienes CONTROLLER_BIENES;
 
     public static void main(String[] args) throws Exception {
         ModelUsuario mu = new ModelUsuario();
@@ -62,18 +64,22 @@ public class Application {
         ViewAsignarRegistrador var = new ViewAsignarRegistrador();
         ControllerAsignarRegistrador car = new ControllerAsignarRegistrador(mar, var);
         CONTROLLER_ASIGNAR_REGISTRADOR = car;
-        
+
         ModelRRHH mrh = new ModelRRHH();
         ViewRRHH vrh = new ViewRRHH();
         ControllerRRHH crh = new ControllerRRHH(vrh, mrh);
         CONTROLLER_RRHH = crh;
-        
+
         ModelMostrarSolicitudes mms = new ModelMostrarSolicitudes();
         ViewMostrarSolicitudes vms = new ViewMostrarSolicitudes();
         ControllerMostrarSolicitudes cms = new ControllerMostrarSolicitudes(mms, vms);
         CONTROLLER_MOSTRAR_SOLICITUDES = cms;
         
-        
+        ModelBienes mb = new ModelBienes();
+        ViewBienes vb = new ViewBienes();
+        ControllerBienes cb = new ControllerBienes(mb, vb);
+        CONTROLLER_BIENES = cb;
+
         vu.setVisible(true);
     }
 }

@@ -56,4 +56,8 @@ public class ControllerListaSolicitud {
         Application.CONTROLLER_INGRESO_SOLICITUD.getView().setVisible(false);
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
+    
+    public void eliminarSolicitud(int codigo) throws Exception {
+        this.model.elimiarSolicitud(codigo);
+    }
 }

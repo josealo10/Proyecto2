@@ -29,13 +29,20 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jl_modelo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_marca" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_cantidad" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jl_tipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jl_modelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl_marca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl_tipo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jl_cantidad" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jcb_tipo" max="32767" attributes="0"/>
                                   <Component id="jtf_marca" alignment="0" max="32767" attributes="0"/>
@@ -51,13 +58,13 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jl_precioT" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jl_descripcion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl_descripcion" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jl_precioU" max="32767" attributes="0"/>
+                                              <Component id="jl_precioT" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jl_precioU" alignment="1" min="-2" pref="104" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jtf_descripcion" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -79,7 +86,7 @@
                   </Group>
                   <Component id="js_separador" alignment="1" min="-2" pref="442" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -115,11 +122,15 @@
                   <Component id="jtf_modelo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jl_cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtf_cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jb_cancelarBien" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jb_agregarBien" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jb_cancelarBien" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jb_agregarBien" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="jtf_cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="js_separador" min="-2" pref="2" max="-2" attributes="0"/>
@@ -128,7 +139,7 @@
                   <Component id="jb_cancelarSolicitud" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jb_agregarSolicitud" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -136,6 +147,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jb_agregarSolicitud">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/proyecto2/presentation/iconos/agregar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agregar  solicitud"/>
       </Properties>
       <Events>
@@ -144,6 +158,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jb_cancelarSolicitud">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/proyecto2/presentation/iconos/cancelar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar solicitud"/>
       </Properties>
       <Events>
@@ -191,6 +208,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jb_agregarBien">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/proyecto2/presentation/iconos/agregar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agregar bien"/>
       </Properties>
       <Events>
@@ -214,7 +234,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jl_precioT">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio total            $"/>
+        <Property name="text" type="java.lang.String" value="Precio total           $"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jl_cantidad">
@@ -229,6 +249,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jb_cancelarBien">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/proyecto2/presentation/iconos/cancelar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar bien"/>
       </Properties>
       <Events>
@@ -239,7 +262,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jl_precioU">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Precio unitario       $"/>
+        <Property name="text" type="java.lang.String" value="Precio unitario      $"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtf_precioU">

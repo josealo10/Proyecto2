@@ -18,6 +18,9 @@ public class Activo {
         this.categoria = categoria;
     }
 
+    public Activo() {
+    }
+
     public String getMarca() {
         return marca;
     }

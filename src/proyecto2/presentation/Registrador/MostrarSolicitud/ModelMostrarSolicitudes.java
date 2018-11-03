@@ -13,24 +13,14 @@ import proyecto2.logic.Solicitud;
 public class ModelMostrarSolicitudes extends Observable {
 
     private Dao db;
-    private Categoria categoria;
     private DefaultTableModel jf_tableModel;
 
     public ModelMostrarSolicitudes() {
         this.db = new Dao();
-        this.categoria = new Categoria();
     }
 
     public Dao getDb() {
         return db;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public DefaultTableModel getJf_tableModel() {
@@ -43,13 +33,20 @@ public class ModelMostrarSolicitudes extends Observable {
 
     public void llenarTabla() throws Exception {
         for (Solicitud s : this.db.searchSolicitudes("registrador", this.db.searchUsuario(Application.CONTROLLER_USUARIO.getModel().getUsuario().getId()).getId())) {
-            Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getNombre() + " (" + s.getDependencia().getId() + ")",
-                s.getFuncionario().getNombre() + " (" + s.getFuncionario().getId() + ")"};
-            jf_tableModel.addRow(o);
+            if (s.getEstado().equals("Aprobada")) {
+                Object[] o = new Object[]{s.getCodigo(), s.getDependencia().getNombre() + " (" + s.getDependencia().getId() + ")",
+                    s.getFuncionario().getNombre() + " (" + s.getFuncionario().getId() + ")"};
+                jf_tableModel.addRow(o);
+            }
+        }
+        
+        if (jf_tableModel.getRowCount() == 0) {
+            throw new Exception("No existen solicitudes por procesar");
         }
     }
 
-    public void agregarCategoria() throws Exception {
-        this.db.addCategoria(this.categoria);
+    public void cambiarEstado(int codigo, String estado) throws Exception {
+        this.db.setEstadoSolicitud(codigo, estado);
     }
+
 }

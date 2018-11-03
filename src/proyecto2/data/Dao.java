@@ -61,9 +61,9 @@ public class Dao {
     }
 
     public void addActivo(Activo a) throws Exception {
-        String sql = "insert into Activo (marca, modelo, bien) "
-                + "values('%s', '%s', %d)";
-        sql = String.format(sql, a.getMarca(), a.getModelo(), a.getBien().getCodigo());
+        String sql = "insert into Activo (marca, modelo, bien, categoria) "
+                + "values('%s', '%s', %d, '%s')";
+        sql = String.format(sql, a.getMarca(), a.getModelo(), a.getBien().getCodigo(), a.getCategoria().getNombre());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Activo ya existe");
@@ -94,7 +94,16 @@ public class Dao {
         sql = String.format(sql, codigo);
 
         if (db.executeUpdate(sql) == 0) {
-            throw new Exception("Solicitud no existe");
+            throw new Exception("No se pudo borrar");
+        }
+    }
+
+    public void deleteBien(int codigo) throws Exception {
+        String sql = "delete from Bien where solicitud = %d";
+        sql = String.format(sql, codigo);
+
+        if (db.executeUpdate(sql) == 0) {
+            throw new Exception("No se pudo borrar");
         }
     }
 
@@ -130,6 +139,31 @@ public class Dao {
             return new Dependencia(rs.getString("id"), rs.getString("nombre"));
         } else {
             throw new Exception("Dependencia no existe");
+        }
+    }
+
+    public Categoria searchCategoria(String nombre) throws Exception {
+        String sql = "select * from Categoria where nombre = '%s'";
+        sql = String.format(sql, nombre);
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            return new Categoria(rs.getString("nombre"));
+        } else {
+            throw new Exception("Categoria no existe");
+        }
+    }
+
+    public Bien searchBien(int codigo) throws Exception {
+        String sql = "select * from Bien where codigo = %d";
+        sql = String.format(sql, codigo);
+        ResultSet rs = db.executeQuery(sql);
+
+        if (rs.next()) {
+            return new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getString("tipo"), rs.getString("descripcion"),
+                    rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
+        } else {
+            throw new Exception("Categoria no existe");
         }
     }
 
@@ -185,6 +219,18 @@ public class Dao {
         }
 
         return dependencias;
+    }
+
+    public ArrayList<Categoria> searchAllCategorias() throws Exception {
+        String sql = "select * from Categoria";
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Categoria> categorias = new ArrayList<>();
+
+        while (rs.next()) {
+            categorias.add(new Categoria(rs.getString("nombre")));
+        }
+
+        return categorias;
     }
 
     public ArrayList<Solicitud> searchSolicitudes(String objeto, String condicion) throws Exception {
