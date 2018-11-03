@@ -52,3 +52,7 @@ create table if not exists Activo(
 	bien int(11) not null,
 	foreign key (bien) references bien (codigo)
 );
+
+create table if not exists Categoria(
+	categoria varchar(15) not null primary key
+);

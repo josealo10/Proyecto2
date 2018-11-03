@@ -8,6 +8,7 @@ package proyecto2.presentation.Registrador.Bienes;
 import java.util.Observable;
 import javax.swing.table.DefaultTableModel;
 import proyecto2.data.Dao;
+import proyecto2.logic.Bien;
 
 /**
  *
@@ -16,6 +17,7 @@ import proyecto2.data.Dao;
 public class ModelBienes extends Observable{
     private Dao db;
     private DefaultTableModel jf_tableModel;
+    private Bien bien;
 
     public Dao getDb() {
         return db;

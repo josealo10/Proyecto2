@@ -37,6 +37,7 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
     
     public ViewMostrarSolicitudes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -47,9 +48,13 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
         jtm_Solicitudes = new javax.swing.JTable();
         jl_CategoriaNueva = new javax.swing.JLabel();
         jl_Categoria = new javax.swing.JLabel();
-        jl_Solicitudes = new javax.swing.JLabel();
         jtf_Categoria = new javax.swing.JTextField();
         jb_AgregarCategoria = new javax.swing.JButton();
+        jl_Solicitudes = new javax.swing.JLabel();
+        jb_MostrarSolicitudes = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,8 +75,6 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
 
         jl_Categoria.setText("Categoria");
 
-        jl_Solicitudes.setText("Solicitudes");
-
         jtf_Categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_CategoriaActionPerformed(evt);
@@ -85,25 +88,46 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
             }
         });
 
+        jl_Solicitudes.setText("Solicitudes");
+
+        jb_MostrarSolicitudes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/search.png"))); // NOI18N
+        jb_MostrarSolicitudes.setText("Mostrar solicitudes");
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/exit.png"))); // NOI18N
+        jMenuItem1.setText("Cerrar sesion");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jb_MostrarSolicitudes)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(164, 164, 164)
+                            .addComponent(jl_Solicitudes))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jl_Categoria)
-                    .addComponent(jb_AgregarCategoria)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jl_Solicitudes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtf_Categoria)
-                    .addComponent(jl_CategoriaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(123, 123, 123))
+                    .addComponent(jb_AgregarCategoria)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jl_Categoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_CategoriaNueva)
+                            .addComponent(jtf_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,12 +140,14 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jl_Categoria)
-                            .addComponent(jtf_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtf_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_Categoria))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_AgregarCategoria))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_MostrarSolicitudes)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -141,8 +167,12 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_AgregarCategoria;
+    private javax.swing.JButton jb_MostrarSolicitudes;
     private javax.swing.JLabel jl_Categoria;
     private javax.swing.JLabel jl_CategoriaNueva;
     private javax.swing.JLabel jl_Solicitudes;
