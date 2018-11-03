@@ -43,26 +43,32 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jt_Bienes = new javax.swing.JTable();
+        jt_bienes = new javax.swing.JTable();
         Categoria = new javax.swing.JLabel();
         jcb_Categorias = new javax.swing.JComboBox<>();
         jb_Aplicar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registrar bienes");
+        setResizable(false);
 
-        jt_Bienes.setModel(new javax.swing.table.DefaultTableModel(
+        jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Cantidad", "Marca", "Modelo"
             }
-        ));
-        jScrollPane1.setViewportView(jt_Bienes);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jt_bienes);
 
         Categoria.setText("Categoria");
 
@@ -83,9 +89,11 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jb_Aplicar)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jb_Aplicar)
+                        .addGap(50, 50, 50)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -128,6 +136,6 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_Aplicar;
     private javax.swing.JComboBox<String> jcb_Categorias;
-    private javax.swing.JTable jt_Bienes;
+    private javax.swing.JTable jt_bienes;
     // End of variables declaration//GEN-END:variables
 }

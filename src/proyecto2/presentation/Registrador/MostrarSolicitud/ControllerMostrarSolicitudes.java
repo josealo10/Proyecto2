@@ -14,6 +14,7 @@ import proyecto2.logic.Usuario;
  * @author jaalf
  */
 public class ControllerMostrarSolicitudes {
+
     private ModelMostrarSolicitudes model;
     private ViewMostrarSolicitudes view;
 
@@ -41,19 +42,16 @@ public class ControllerMostrarSolicitudes {
         this.view = view;
     }
 
-    void LlenarTabla() throws Exception {
-        this.model.LlenarTabla();    
+    public void llenarTabla() throws Exception {
+        this.model.llenarTabla();
     }
 
-    void CerrarSesion() {
+    public void cerrarSesion() {
         this.view.setVisible(false);
         Application.CONTROLLER_USUARIO.getView().setVisible(true);
     }
 
-    public void setFuncionario(Usuario usuario) throws Exception {
-        Funcionario registrador = this.model.getDb().searchFuncionario(usuario.getId());
-        this.model.setRegistrador(registrador);
+    public void agregarCategoria() throws Exception {
+        this.model.agregarCategoria();
     }
-    
-    
 }
