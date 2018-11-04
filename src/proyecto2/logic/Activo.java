@@ -8,14 +8,12 @@ public class Activo {
     private String marca, modelo;
     private int codigo;
     private Bien bien;
-    private Categoria categoria;
 
-    public Activo(String marca, String modelo, int codigo, Bien bien, Categoria categoria) {
+    public Activo(String marca, String modelo, int codigo, Bien bien) {
         this.marca = marca;
         this.modelo = modelo;
         this.codigo = codigo;
         this.bien = bien;
-        this.categoria = categoria;
     }
 
     public Activo() {
@@ -52,13 +50,4 @@ public class Activo {
     public void setBien(Bien bien) {
         this.bien = bien;
     }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
 }

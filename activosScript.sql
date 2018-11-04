@@ -46,15 +46,13 @@ create table if not exists Bien(
 );
 
 create table if not exists Activo(
-	codigo int not null auto_increment primary key,
+	codigo int(11) not null auto_increment primary key,
 	marca varchar(15) not null,
 	modelo varchar(15) not null,
-	bien int not null,
-    categoria varchar(30) not null,
-	foreign key (bien) references bien (codigo),
-    foreign key (categoria) references Categoria (nombre)
+	bien int(11) not null,
+	foreign key (bien) references bien (codigo)
 );
 
 create table if not exists Categoria(
-	nombre varchar(30) not null primary key
+	categoria varchar(15) not null primary key
 );

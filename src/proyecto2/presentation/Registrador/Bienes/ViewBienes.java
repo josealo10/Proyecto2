@@ -83,6 +83,7 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
+<<<<<<< Updated upstream
         jt_bienes = new javax.swing.JTable();
         jl_categoria = new javax.swing.JLabel();
         jcb_categorias = new javax.swing.JComboBox<>();
@@ -94,27 +95,28 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
         jl_categoriaNueva = new javax.swing.JLabel();
         js_separador = new javax.swing.JSeparator();
         jb_auxiliar = new javax.swing.JButton();
+=======
+        jt_Bienes = new javax.swing.JTable();
+        Categoria = new javax.swing.JLabel();
+        jcb_Categorias = new javax.swing.JComboBox<>();
+        jb_Aplicar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+>>>>>>> Stashed changes
 
-        setTitle("Registrar bienes");
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
+        jt_Bienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Cantidad", "Marca", "Modelo"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jt_bienes);
+        ));
+        jScrollPane1.setViewportView(jt_Bienes);
 
         jl_categoria.setText("Categoria");
 
@@ -163,6 +165,7 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< Updated upstream
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -170,6 +173,13 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(jb_aplicar)))
+=======
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jb_Aplicar)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+>>>>>>> Stashed changes
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -354,6 +364,7 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< Updated upstream
     private javax.swing.JButton jb_agregarCategoria;
     private javax.swing.JButton jb_aplicar;
     private javax.swing.JButton jb_asignar;
@@ -365,5 +376,10 @@ public class ViewBienes extends javax.swing.JFrame implements Observer {
     private javax.swing.JSeparator js_separador;
     private javax.swing.JTable jt_bienes;
     private javax.swing.JTextField jtf_categoria;
+=======
+    private javax.swing.JButton jb_Aplicar;
+    private javax.swing.JComboBox<String> jcb_Categorias;
+    private javax.swing.JTable jt_Bienes;
+>>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
 }

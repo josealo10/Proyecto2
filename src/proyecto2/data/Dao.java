@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import proyecto2.logic.Activo;
 import proyecto2.logic.Bien;
-import proyecto2.logic.Categoria;
 import proyecto2.logic.Dependencia;
 import proyecto2.logic.Funcionario;
 import proyecto2.logic.Solicitud;
@@ -77,15 +76,6 @@ public class Dao {
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Funcionario ya existe");
-        }
-    }
-
-    public void addCategoria(Categoria c) throws Exception {
-        String sql = "insert into Categoria (nombre) values('%s')";
-        sql = String.format(sql, c.getNombre());
-
-        if (db.executeUpdate(sql) == 0) {
-            throw new Exception("Categoria ya existe");
         }
     }
 
@@ -193,12 +183,26 @@ public class Dao {
             throw new Exception("Solicitud no existe");
         }
     }
+    public ArrayList<Solicitud> searchSolicitudOfRegistrador(String id) throws Exception {
+        String sql = "select * from Solicitud where registrador = id";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Solicitud> solicitudes = new ArrayList<>();
+        while (rs.next()) {
+            solicitudes.add(new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")),
+                    this.searchFuncionario(rs.getString("registrador")), this.searchDependencia(rs.getString("dependencia")), rs.getString("estado")));
+        } 
+        if(solicitudes.isEmpty()){
+            throw new Exception("No hay solicitudes asignadas");
+        }
+        return solicitudes;
+    }
 
     public ArrayList<Funcionario> searchAllRegistradores() throws Exception {
         String sql = "select * from Funcionario";
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Funcionario> registradores = new ArrayList<>();
-
+        
         while (rs.next()) {
             if (this.searchUsuario(rs.getString("id")).getPermiso().equals("Registrador")) {
                 registradores.add(new Funcionario(rs.getString("nombre"), rs.getString("id"),
@@ -256,7 +260,7 @@ public class Dao {
         String sql = "select * from Solicitud where estado = 'Aprobada'";
         ResultSet rs = db.executeQuery(sql);
         ArrayList<Solicitud> solicitudes = new ArrayList<>();
-
+        
         while (rs.next()) {
             Solicitud s = new Solicitud(rs.getInt("numero"), rs.getDate("fecha"), this.searchFuncionario(rs.getString("funcionario")),
                     this.searchFuncionario(rs.getString("registrador")), this.searchDependencia(rs.getString("dependencia")), rs.getString("estado"));
@@ -334,6 +338,6 @@ public class Dao {
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("No se pudo asignar registrador");
-        }
+        } 
     }
 }
