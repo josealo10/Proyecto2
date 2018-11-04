@@ -8,9 +8,8 @@ import proyecto2.logic.Bien;
 import proyecto2.logic.Funcionario;
 import proyecto2.logic.Solicitud;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ModelAsignarRegistrador extends Observable {
 
@@ -54,7 +53,7 @@ public class ModelAsignarRegistrador extends Observable {
 
     public void jd_llenarTabla(int codigo) throws Exception {
         for (Bien b : this.db.searchBienes(codigo)) {
-            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo()};
+            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo(), "$" + b.getPrecio()};
             jd_tableModel.addRow(o);
         }
     }

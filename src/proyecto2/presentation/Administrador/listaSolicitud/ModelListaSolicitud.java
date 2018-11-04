@@ -56,7 +56,7 @@ public class ModelListaSolicitud extends Observable {
 
     public void jd_llenarTabla(int codigo) throws Exception {
         for (Bien b : this.db.searchBienes(codigo)) {
-            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo()};
+            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo(), "$" + b.getPrecio()};
             jd_tableModel.addRow(o);
         }
     }

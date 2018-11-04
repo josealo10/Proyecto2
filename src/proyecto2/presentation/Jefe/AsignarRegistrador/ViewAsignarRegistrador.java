@@ -8,9 +8,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import proyecto2.logic.Funcionario;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observer {
 
@@ -63,18 +62,18 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
         jmi_cerrarSesion = new javax.swing.JMenuItem();
 
         jd_bienes.setTitle("Bienes");
-        jd_bienes.setSize(new java.awt.Dimension(415, 340));
+        jd_bienes.setSize(new java.awt.Dimension(485, 330));
 
         jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Cantidad", "Marca", "Modelo"
+                "Codigo", "Cantidad", "Marca", "Modelo", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -89,15 +88,15 @@ public class ViewAsignarRegistrador extends javax.swing.JFrame implements Observ
             jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_bienesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_bienesLayout.setVerticalGroup(
             jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_bienesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

@@ -3,20 +3,20 @@ package proyecto2.logic;
 /*
  * @author Alessandro Fazio Perez / Jose Alonso Alfaro Perez
  */
-
 public class Bien {
 
     private String marca, modelo, tipo, descripcion;
-    private int codigo, cantidad;
+    private int codigo, cantidad, precio;
     private Solicitud solicitud;
 
-    public Bien(String marca, String modelo, String tipo, String descripcion, int codigo, int cantidad, Solicitud solicitud) {
+    public Bien(String marca, String modelo, String tipo, String descripcion, int codigo, int cantidad, int precio, Solicitud solicitud) {
         this.marca = marca;
         this.modelo = modelo;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.codigo = codigo;
         this.cantidad = cantidad;
+        this.precio = precio;
         this.solicitud = solicitud;
     }
 
@@ -28,7 +28,8 @@ public class Bien {
         this.descripcion = descripcion;
     }
 
-    public Bien() {}
+    public Bien() {
+    }
 
     public String getMarca() {
         return marca;
@@ -53,13 +54,9 @@ public class Bien {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+
     public int getCodigo() {
         return codigo;
-    }
-
-    public Solicitud getSolicitud() {
-        return solicitud;
     }
 
     public int getCantidad() {
@@ -68,6 +65,18 @@ public class Bien {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public Solicitud getSolicitud() {
+        return solicitud;
     }
 
     public void setSolicitud(Solicitud solicitud) {

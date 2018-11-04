@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2.presentation.RRHH.AgregarFuncionario_Dependencia;
 
 import proyecto2.Application;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ControllerRRHH {
 
@@ -52,4 +46,15 @@ public class ControllerRRHH {
         this.model.agregarDependencia();
     }
 
+    public void llenarTablaDependencias() throws Exception {
+        this.model.llenarTablaDependencias();
+    }
+
+    public void llenarTablaFuncionarios() throws Exception {
+        this.model.llenarTablaFuncionarios();
+    }
+
+    public void llenarTablaFuncionariosDependencia(String id) throws Exception {
+        this.model.llenarTablaFuncionariosDependencia(id);
+    }
 }

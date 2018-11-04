@@ -38,6 +38,7 @@ create table if not exists Bien(
 	codigo int not null auto_increment primary key,
 	marca varchar(15) not null,
 	modelo varchar(15) not null,
+    precio int not null,
     tipo varchar(8) not null,
     descripcion varchar(25) not null,
 	solicitud int not null,
@@ -49,9 +50,8 @@ create table if not exists Activo(
 	codigo int not null auto_increment primary key,
 	marca varchar(15) not null,
 	modelo varchar(15) not null,
-	bien int not null,
+    precio int not null,
     categoria varchar(30) not null,
-	foreign key (bien) references bien (codigo),
     foreign key (categoria) references Categoria (nombre)
 );
 

@@ -54,18 +54,18 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
 
         jd_bienes.setTitle("Bienes");
         jd_bienes.setResizable(false);
-        jd_bienes.setSize(new java.awt.Dimension(405, 330));
+        jd_bienes.setSize(new java.awt.Dimension(485, 330));
 
         jt_bienes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Cantidad", "Marca", "Modelo"
+                "Codigo", "Cantidad", "Marca", "Modelo", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -80,7 +80,7 @@ public class ViewListaSolicitud extends javax.swing.JFrame implements Observer {
             jd_bienesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_bienesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_bienesLayout.setVerticalGroup(

@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2.presentation.Registrador.Bienes;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 import javax.swing.table.DefaultTableModel;
 import proyecto2.data.Dao;
 import proyecto2.logic.Activo;
@@ -14,9 +10,8 @@ import proyecto2.logic.Bien;
 import proyecto2.logic.Categoria;
 import proyecto2.logic.Solicitud;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ModelBienes extends Observable {
 
@@ -33,6 +28,13 @@ public class ModelBienes extends Observable {
         this.activo = new Activo();
         this.activos = new ArrayList<>();
     }
+
+    @Override
+    public synchronized void addObserver(Observer o) {
+
+    }
+    
+    
 
     public Dao getDb() {
         return db;
@@ -80,7 +82,7 @@ public class ModelBienes extends Observable {
 
     public void llenarTabla(int codigo) throws Exception {
         for (Bien b : this.db.searchBienes(codigo)) {
-            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo()};
+            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo(), "$" + b.getPrecio(), b.getDescripcion()};
             jf_tableModel.addRow(o);
         }
     }

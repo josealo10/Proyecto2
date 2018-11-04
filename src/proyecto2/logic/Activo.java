@@ -6,15 +6,14 @@ package proyecto2.logic;
 public class Activo {
 
     private String marca, modelo;
-    private int codigo;
-    private Bien bien;
+    private int codigo, precio;
     private Categoria categoria;
 
-    public Activo(String marca, String modelo, int codigo, Bien bien, Categoria categoria) {
+    public Activo(String marca, String modelo, int codigo, int precio, Categoria categoria) {
         this.marca = marca;
         this.modelo = modelo;
         this.codigo = codigo;
-        this.bien = bien;
+        this.precio = precio;
         this.categoria = categoria;
     }
 
@@ -45,12 +44,12 @@ public class Activo {
         this.codigo = codigo;
     }
 
-    public Bien getBien() {
-        return bien;
+    public int getPrecio() {
+        return precio;
     }
 
-    public void setBien(Bien bien) {
-        this.bien = bien;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     public Categoria getCategoria() {
