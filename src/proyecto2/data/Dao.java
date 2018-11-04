@@ -31,9 +31,9 @@ public class Dao {
     }
 
     public void addBien(Bien b) throws Exception {
-        String sql = "insert into Bien (marca, modelo, tipo, descripcion, solicitud, cantidad) "
-                + "values('%s', '%s', '%s', '%s', %d, %d)";
-        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getTipo(), b.getDescripcion(), b.getSolicitud().getCodigo(), b.getCantidad());
+        String sql = "insert into Bien (marca, modelo, precio, tipo, descripcion, solicitud, cantidad) "
+                + "values('%s', '%s', %d, '%s', '%s', %d, %d)";
+        sql = String.format(sql, b.getMarca(), b.getModelo(), b.getPrecio(), b.getTipo(), b.getDescripcion(), b.getSolicitud().getCodigo(), b.getCantidad());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Bien ya existe");
@@ -60,9 +60,9 @@ public class Dao {
     }
 
     public void addActivo(Activo a) throws Exception {
-        String sql = "insert into Activo (marca, modelo, bien, categoria) "
+        String sql = "insert into Activo (marca, modelo, precio, categoria) "
                 + "values('%s', '%s', %d, '%s')";
-        sql = String.format(sql, a.getMarca(), a.getModelo(), a.getBien().getCodigo(), a.getCategoria().getNombre());
+        sql = String.format(sql, a.getMarca(), a.getModelo(), a.getPrecio(), a.getCategoria().getNombre());
 
         if (db.executeUpdate(sql) == 0) {
             throw new Exception("Activo ya existe");
@@ -151,7 +151,7 @@ public class Dao {
 
         if (rs.next()) {
             return new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getString("tipo"), rs.getString("descripcion"),
-                    rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
+                    rs.getInt("codigo"), rs.getInt("cantidad"), rs.getInt("precio"), this.searchSolicitud(rs.getInt("solicitud")));
         } else {
             throw new Exception("Categoria no existe");
         }
@@ -210,7 +210,60 @@ public class Dao {
             }
         }
 
+        if (registradores.isEmpty()) {
+            throw new Exception("No existen registradores");
+        }
+
         return registradores;
+    }
+
+    public ArrayList<Funcionario> searchAllFuncionarios() throws Exception {
+        String sql = "select * from Funcionario";
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+
+        while (rs.next()) {
+            funcionarios.add(new Funcionario(rs.getString("nombre"), rs.getString("id"), this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto"))));
+        }
+
+        if (funcionarios.isEmpty()) {
+            throw new Exception("No existen funcionarios");
+        }
+
+        return funcionarios;
+    }
+
+    public ArrayList<Activo> searchAllActivo() throws Exception {
+        String sql = "select * from Activo";
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Activo> activos = new ArrayList<>();
+
+        while (rs.next()) {
+            activos.add(new Activo(rs.getString("marca"), rs.getString("modelo"), rs.getInt("codigo"), rs.getInt("precio"), this.searchCategoria(rs.getString("categoria"))));
+        }
+
+        if (activos.isEmpty()) {
+            throw new Exception("No existen activos");
+        }
+
+        return activos;
+    }
+
+    public ArrayList<Funcionario> searchAllFuncionariosDependencia(String id) throws Exception {
+        String sql = "select * from Funcionario where dependencia = '%s'";
+        sql = String.format(sql, id);
+        ResultSet rs = db.executeQuery(sql);
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+
+        while (rs.next()) {
+            funcionarios.add(new Funcionario(rs.getString("nombre"), rs.getString("id"), this.searchDependencia(rs.getString("dependencia")), this.searchUsuario(rs.getString("puesto"))));
+        }
+
+        if (funcionarios.isEmpty()) {
+            throw new Exception("No existen funcionarios");
+        }
+
+        return funcionarios;
     }
 
     public ArrayList<Dependencia> searchAllDependencias() throws Exception {
@@ -232,6 +285,10 @@ public class Dao {
 
         while (rs.next()) {
             categorias.add(new Categoria(rs.getString("nombre")));
+        }
+        
+        if (categorias.isEmpty()){
+            throw new Exception("No existen categorias");
         }
 
         return categorias;
@@ -282,7 +339,7 @@ public class Dao {
 
         while (rs.next()) {
             Bien b = new Bien(rs.getString("marca"), rs.getString("modelo"), rs.getString("tipo"), rs.getString("descripcion"),
-                    rs.getInt("codigo"), rs.getInt("cantidad"), this.searchSolicitud(rs.getInt("solicitud")));
+                    rs.getInt("codigo"), rs.getInt("cantidad"), rs.getInt("precio"), this.searchSolicitud(rs.getInt("solicitud")));
             bienes.add(b);
         }
 

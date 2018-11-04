@@ -5,11 +5,13 @@ import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import proyecto2.logic.Dependencia;
 
-/**
- *
- * @author jaalf
+/*
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ViewRRHH extends javax.swing.JFrame implements Observer {
 
@@ -19,6 +21,14 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
     public ViewRRHH() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jd_dependencias.setLocationRelativeTo(null);
+        this.jd_funcionarios.setLocationRelativeTo(null);
+
+        DefaultTableCellRenderer alinear = (DefaultTableCellRenderer) jt_dependencias.getCellRenderer(0, 0);
+        alinear.setHorizontalAlignment(SwingConstants.CENTER);
+
+        alinear = (DefaultTableCellRenderer) jt_funcionarios.getCellRenderer(0, 0);
+        alinear.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     public ModelRRHH getModel() {
@@ -94,6 +104,12 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_funcionarios = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_funcionarios = new javax.swing.JTable();
+        jd_dependencias = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_dependencias = new javax.swing.JTable();
         jl_funcionario = new javax.swing.JLabel();
         jl_idFuncionario = new javax.swing.JLabel();
         jl_claveFuncionario = new javax.swing.JLabel();
@@ -115,12 +131,96 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
         jcb_puestoFuncionario = new javax.swing.JComboBox<>();
         jcb_depdenciaFuncionario = new javax.swing.JComboBox<>();
         js_separador = new javax.swing.JSeparator();
+        jb_mostrarFuncionarios = new javax.swing.JButton();
+        jb_mostrarDependencias = new javax.swing.JButton();
         jmb_menu = new javax.swing.JMenuBar();
         jm_opciones = new javax.swing.JMenu();
         jmi_cerrarSesion = new javax.swing.JMenuItem();
 
+        jd_funcionarios.setTitle("Funcionarios");
+        jd_funcionarios.setSize(new java.awt.Dimension(462, 340));
+
+        jt_funcionarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nombre", "Dependencia", "Puesto"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jt_funcionarios);
+
+        javax.swing.GroupLayout jd_funcionariosLayout = new javax.swing.GroupLayout(jd_funcionarios.getContentPane());
+        jd_funcionarios.getContentPane().setLayout(jd_funcionariosLayout);
+        jd_funcionariosLayout.setHorizontalGroup(
+            jd_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_funcionariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jd_funcionariosLayout.setVerticalGroup(
+            jd_funcionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_funcionariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        jd_dependencias.setTitle("Dependencias");
+        jd_dependencias.setSize(new java.awt.Dimension(340, 350));
+
+        jt_dependencias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nombre"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jt_dependencias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_dependenciasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jt_dependencias);
+
+        javax.swing.GroupLayout jd_dependenciasLayout = new javax.swing.GroupLayout(jd_dependencias.getContentPane());
+        jd_dependencias.getContentPane().setLayout(jd_dependenciasLayout);
+        jd_dependenciasLayout.setHorizontalGroup(
+            jd_dependenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_dependenciasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_dependenciasLayout.setVerticalGroup(
+            jd_dependenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_dependenciasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jefe RRHH");
+        setResizable(false);
 
         jl_funcionario.setText("Funcionario");
 
@@ -217,6 +317,22 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
 
         js_separador.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jb_mostrarFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/search.png"))); // NOI18N
+        jb_mostrarFuncionarios.setText("Mostrar");
+        jb_mostrarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_mostrarFuncionariosActionPerformed(evt);
+            }
+        });
+
+        jb_mostrarDependencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2/presentation/iconos/search.png"))); // NOI18N
+        jb_mostrarDependencias.setText("Mostrar");
+        jb_mostrarDependencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_mostrarDependenciasActionPerformed(evt);
+            }
+        });
+
         jm_opciones.setText("Opciones");
 
         jmi_cerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -262,38 +378,37 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
                         .addGap(116, 116, 116)
                         .addComponent(jl_funcionario))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addContainerGap()
                         .addComponent(jb_agregarFuncionario)
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_mostrarFuncionarios)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jb_cancelarFuncionario)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(js_separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addComponent(js_separador, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jl_nombreDependencia)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jl_dependencia)
-                                        .addContainerGap(90, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtf_idDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jtf_nombreDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(82, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jl_idDependencia)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jb_agregarDependencia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_cancelarDependencia)
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jb_mostrarDependencias))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_nombreDependencia)
+                            .addComponent(jl_idDependencia))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jl_dependencia)
+                                .addGap(8, 8, 8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtf_idDependencia, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtf_nombreDependencia))))))
+                .addGap(18, 18, 18)
+                .addComponent(jb_cancelarDependencia)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,16 +419,18 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
                         .addComponent(jl_dependencia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jl_idDependencia)
-                            .addComponent(jtf_idDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtf_idDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_idDependencia))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jl_nombreDependencia)
                             .addComponent(jtf_nombreDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jb_agregarDependencia)
-                            .addComponent(jb_cancelarDependencia)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_cancelarDependencia, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jb_agregarDependencia)
+                                .addComponent(jb_mostrarDependencias))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jl_funcionario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -335,7 +452,8 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jb_agregarFuncionario)
-                            .addComponent(jb_cancelarFuncionario)))
+                            .addComponent(jb_cancelarFuncionario)
+                            .addComponent(jb_mostrarFuncionarios)))
                     .addComponent(js_separador, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -364,7 +482,7 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
         } else {
             JOptionPane.showMessageDialog(null, "Campos sin llenar", "Error", JOptionPane.ERROR_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_jb_agregarDependenciaActionPerformed
 
     private void jtf_idDependenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_idDependenciaKeyPressed
@@ -402,37 +520,34 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_jb_cancelarDependenciaActionPerformed
 
     private void jb_agregarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarFuncionarioActionPerformed
-        if (this.isValidoFuncionario() ) {
+        if (this.isValidoFuncionario()) {
             try {
-                if(!this.model.getDb().isSearchUsuario(jtf_idFuncionario.getText())){
+                if (!this.model.getDb().isSearchUsuario(jtf_idFuncionario.getText())) {
                     try {
                         this.model.getUsuario().setId(jtf_idFuncionario.getText());
                         this.model.getUsuario().setClave(jtf_claveFuncionario.getText());
                         this.model.getUsuario().setPermiso(jcb_puestoFuncionario.getSelectedItem().toString());
-                        
+
                         this.model.getFuncionario().setId(jtf_idFuncionario.getText());
                         this.model.getFuncionario().setNombre(jtf_nombreFuncionario.getText());
                         this.model.getFuncionario().setDependencia(this.model.getDb().searchDependencia(jcb_depdenciaFuncionario.getSelectedItem().toString().substring(jcb_depdenciaFuncionario.getSelectedItem().toString().indexOf("(") + 1, jcb_depdenciaFuncionario.getSelectedItem().toString().length() - 1)));
                         this.model.getFuncionario().setUsuario(this.model.getUsuario());
                         this.controller.agregarFuncionario();
-                        
+
                         JOptionPane.showMessageDialog(null, "Se agrego correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                         this.limpiarCamposFuncionario();
-                        
+
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            } 
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Campos sin llenar", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-        } 
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Campos sin llenar", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jb_agregarFuncionarioActionPerformed
@@ -480,6 +595,47 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
         this.jtf_idFuncionarioKeyPressed(evt);
     }//GEN-LAST:event_jcb_depdenciaFuncionarioKeyPressed
 
+    private void jb_mostrarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarFuncionariosActionPerformed
+        try {
+            jd_funcionarios.setVisible(true);
+            this.model.setTableModelFuncionarios((DefaultTableModel) jt_funcionarios.getModel());
+            this.model.getTableModelFuncionarios().setRowCount(0);
+            this.controller.llenarTablaFuncionarios();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            jd_funcionarios.setVisible(false);
+        }
+    }//GEN-LAST:event_jb_mostrarFuncionariosActionPerformed
+
+    private void jb_mostrarDependenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarDependenciasActionPerformed
+        try {
+            jd_dependencias.setVisible(true);
+            this.model.setTableModelDependencias((DefaultTableModel) jt_dependencias.getModel());
+            this.model.getTableModelDependencias().setRowCount(0);
+            this.controller.llenarTablaDependencias();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            jd_dependencias.setVisible(false);
+        }
+    }//GEN-LAST:event_jb_mostrarDependenciasActionPerformed
+
+    private void jt_dependenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_dependenciasMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+                jd_funcionarios.setVisible(true);
+                this.model.setTableModelFuncionarios((DefaultTableModel) jt_funcionarios.getModel());
+                this.model.getTableModelFuncionarios().setRowCount(0);
+                this.controller.llenarTablaFuncionariosDependencia(jt_dependencias.getValueAt(jt_dependencias.getSelectedRow(), 0).toString());
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage() + " de " + jt_dependencias.getValueAt(jt_dependencias.getSelectedRow(), 1).toString() + " (" + jt_dependencias.getValueAt(jt_dependencias.getSelectedRow(), 0).toString() + ")", "Error", JOptionPane.ERROR_MESSAGE);
+                jd_funcionarios.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_jt_dependenciasMouseClicked
+
     @Override
     public void update(Observable o, Object o1) {
     }
@@ -500,12 +656,18 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jb_agregarDependencia;
     private javax.swing.JButton jb_agregarFuncionario;
     private javax.swing.JButton jb_cancelarDependencia;
     private javax.swing.JButton jb_cancelarFuncionario;
+    private javax.swing.JButton jb_mostrarDependencias;
+    private javax.swing.JButton jb_mostrarFuncionarios;
     private javax.swing.JComboBox<String> jcb_depdenciaFuncionario;
     private javax.swing.JComboBox<String> jcb_puestoFuncionario;
+    private javax.swing.JDialog jd_dependencias;
+    private javax.swing.JDialog jd_funcionarios;
     private javax.swing.JLabel jl_claveFuncionario;
     private javax.swing.JLabel jl_dependencia;
     private javax.swing.JLabel jl_dependenciaFuncionario;
@@ -519,6 +681,8 @@ public class ViewRRHH extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenuBar jmb_menu;
     private javax.swing.JMenuItem jmi_cerrarSesion;
     private javax.swing.JSeparator js_separador;
+    private javax.swing.JTable jt_dependencias;
+    private javax.swing.JTable jt_funcionarios;
     private javax.swing.JTextField jtf_claveFuncionario;
     private javax.swing.JTextField jtf_idDependencia;
     private javax.swing.JTextField jtf_idFuncionario;

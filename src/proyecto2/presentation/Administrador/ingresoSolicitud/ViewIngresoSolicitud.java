@@ -340,6 +340,7 @@ public class ViewIngresoSolicitud extends javax.swing.JFrame implements Observer
                 this.model.getBien().setMarca(jtf_marca.getText());
                 this.model.getBien().setCantidad(Integer.parseInt(jtf_cantidad.getText()));
                 this.model.getBien().setModelo(jtf_modelo.getText());
+                this.model.getBien().setPrecio(Integer.parseInt(jtf_precioU.getText()));
                 this.model.getBien().setTipo(jcb_tipo.getSelectedItem().toString());
                 this.model.getBien().setDescripcion(jtf_descripcion.getText());
                 this.controller.agregarBien();

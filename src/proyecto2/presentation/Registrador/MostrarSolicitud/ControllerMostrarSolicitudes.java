@@ -1,6 +1,5 @@
 package proyecto2.presentation.Registrador.MostrarSolicitud;
 
-import javax.swing.table.DefaultTableModel;
 import proyecto2.Application;
 
 /*
@@ -50,6 +49,9 @@ public class ControllerMostrarSolicitudes {
         Application.CONTROLLER_BIENES.getModel().setSolicitud(this.model.getDb().searchSolicitud(codigo));
     }
 
+    public void llenarCatalogo() throws Exception {
+        this.model.llenarCatalogo();
+    }
 
 =======
     public void setFuncionario(Usuario usuario) throws Exception {

@@ -1,6 +1,5 @@
 package proyecto2.presentation.Secretaria.aprobarSolicitud;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.DefaultTableModel;
@@ -58,7 +57,7 @@ public class ModelAprobarSolicitud extends Observable {
 
     public void jd_llenarTabla(int codigo) throws Exception {
         for (Bien b : this.db.searchBienes(codigo)) {
-            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo()};
+            Object[] o = new Object[]{b.getCodigo(), b.getCantidad(), b.getMarca(), b.getModelo(), "$" + b.getPrecio()};
             jd_tableModel.addRow(o);
         }
     }

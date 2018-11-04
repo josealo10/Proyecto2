@@ -3,7 +3,7 @@ package proyecto2.presentation.Jefe.AsignarRegistrador;
 import proyecto2.Application;
 
 /*
- * @author jaalf
+ * @author Alessandro Fazio Pérez / Jose Alonso Alfaro Perez
  */
 public class ControllerAsignarRegistrador {
 
