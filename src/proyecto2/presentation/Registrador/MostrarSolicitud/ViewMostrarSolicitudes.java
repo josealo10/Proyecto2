@@ -1,5 +1,8 @@
 package proyecto2.presentation.Registrador.MostrarSolicitud;
 
+import com.barcodelib.barcode.QRCode;
+import java.awt.Desktop;
+import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
@@ -13,6 +16,8 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
 
     private ControllerMostrarSolicitudes controller;
     private ModelMostrarSolicitudes model;
+    private int udm = 0, res = 100, rot = 0;
+    private float mi = 0.000f, md = 0.000f, ms = 0.000f, min = 0.000f, tam = 5.000f;
 
     public ViewMostrarSolicitudes() {
         initComponents();
@@ -24,7 +29,7 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
 
         alinear = (DefaultTableCellRenderer) jt_catalogo.getCellRenderer(0, 0);
         alinear.setHorizontalAlignment(SwingConstants.CENTER);
-        
+
         jt_catalogo.add(new javax.swing.JScrollBar());
     }
 
@@ -91,6 +96,11 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jt_catalogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_catalogoMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jt_catalogo);
@@ -284,6 +294,40 @@ public class ViewMostrarSolicitudes extends javax.swing.JFrame implements Observ
             jd_catalogo.setVisible(false);
         }
     }//GEN-LAST:event_jb_catalogoActionPerformed
+
+    private void jt_catalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_catalogoMouseClicked
+        if (evt.getClickCount() == 2) {
+            try {
+                QRCode qr = new QRCode();
+                qr.setData("Codigo: " + jt_catalogo.getValueAt(jt_catalogo.getSelectedRow(), 0).toString()
+                        + "\nMarca: " + jt_catalogo.getValueAt(jt_catalogo.getSelectedRow(), 1).toString()
+                        + "\nModelo: " + jt_catalogo.getValueAt(jt_catalogo.getSelectedRow(), 2).toString()
+                        + "\nCategoria: " + jt_catalogo.getValueAt(jt_catalogo.getSelectedRow(), 3).toString()
+                        + "\nPrecio: " + jt_catalogo.getValueAt(jt_catalogo.getSelectedRow(), 4).toString());
+                qr.setDataMode(QRCode.MODE_BYTE);
+
+                qr.setUOM(udm);
+                qr.setLeftMargin(mi);
+                qr.setResolution(res);
+                qr.setRightMargin(md);
+                qr.setTopMargin(ms);
+                qr.setBottomMargin(min);
+                qr.setRotate(rot);
+                qr.setModuleSize(tam);
+
+                String archivo = System.getProperty("user.home") + "/codigoqr.jpg";
+                qr.renderBarcode(archivo);
+                //qr.renderBarcode(gd, rd);
+
+                Desktop d = Desktop.getDesktop();
+                d.open(new File(archivo));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+    }//GEN-LAST:event_jt_catalogoMouseClicked
 
     @Override
     public void update(Observable o, Object o1) {}
